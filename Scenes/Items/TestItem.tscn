@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://8074rok2q44s"]
+
+[ext_resource type="Script" uid="uid://dkxxrk240jv6v" path="res://Source/Components/Inventory/Usecases/UseDisability.cs" id="1_w8eyj"]
+[ext_resource type="Texture2D" uid="uid://b2fldg4m4tcbo" path="res://icon.svg" id="2_j8xbc"]
+
+[node name="TestItem" type="Node2D" unique_id=1654711881]
+
+[node name="UseDisability" type="Node" parent="." unique_id=1071602389]
+script = ExtResource("1_w8eyj")
+metadata/_custom_type_script = "uid://dkxxrk240jv6v"
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1983916998]
+position = Vector2(14.5, 1)
+scale = Vector2(0.2421875, 0.140625)
+texture = ExtResource("2_j8xbc")

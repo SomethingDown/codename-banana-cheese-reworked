@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://chpksr072g4rd"]
+
+[ext_resource type="Script" uid="uid://dft1kx1vjj81f" path="res://Source/Components/Controllers/AIControllerComponent.cs" id="1_lhmbd"]
+[ext_resource type="Script" uid="uid://ckf60xy1d5yx" path="res://Source/Components/AI/NavigationAgentComponent.cs" id="2_a0igq"]
+[ext_resource type="Script" uid="uid://b0xp48htsan7h" path="res://Source/Components/AI/BrainComponent.cs" id="2_b07n7"]
+[ext_resource type="Script" uid="uid://bamk2sv23kwhg" path="res://Source/Components/Physics/CharacterMovementComponent.cs" id="3_a8o6n"]
+[ext_resource type="Texture2D" uid="uid://b2fldg4m4tcbo" path="res://icon.svg" id="3_b07n7"]
+[ext_resource type="Script" uid="uid://db7kxmotuff4y" path="res://Source/Components/AI/ActorIntentsComponent.cs" id="5_we08j"]
+[ext_resource type="Script" uid="uid://li6c8wf25gt" path="res://Source/Components/AI/Decisons/RandomWanderDecision.cs" id="7_hcars"]
+[ext_resource type="Script" uid="uid://bpb8e2l7376gm" path="res://Source/Components/Detection/EntityDetectorComponent.cs" id="8_hcars"]
+[ext_resource type="Script" uid="uid://bo5vtxrkxvs6m" path="res://Source/Components/Debug/EntityDetectorDebugComponent.cs" id="9_7oewm"]
+[ext_resource type="Script" uid="uid://dhbmi1rn6whh" path="res://Source/Components/Detection/EntityLOSComponent.cs" id="10_iqlxx"]
+[ext_resource type="Script" uid="uid://djikkdw0vlrt" path="res://Source/Components/Debug/EntityLOSDebugComponent.cs" id="11_3hyga"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p0yww"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7oewm"]
+radius = 52.086468
+
+[node name="NPC" type="CharacterBody2D" unique_id=1367578280]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=508069981]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("3_b07n7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2043076090]
+shape = SubResource("CircleShape2D_p0yww")
+
+[node name="NavigationAgentComponent" type="NavigationAgent2D" parent="." unique_id=288700673]
+script = ExtResource("2_a0igq")
+desired_distance = 10.0
+metadata/_custom_type_script = "uid://ckf60xy1d5yx"
+
+[node name="CharacterMovementComponent" type="Node" parent="." unique_id=1201953596]
+script = ExtResource("3_a8o6n")
+metadata/_custom_type_script = "uid://bamk2sv23kwhg"
+
+[node name="AIControllerComponent" type="Node" parent="." unique_id=839493860]
+script = ExtResource("1_lhmbd")
+metadata/_custom_type_script = "uid://dft1kx1vjj81f"
+
+[node name="ActorIntentsComponent" type="Node" parent="." unique_id=1455474431]
+script = ExtResource("5_we08j")
+metadata/_custom_type_script = "uid://db7kxmotuff4y"
+
+[node name="BrainComponent" type="Node" parent="." unique_id=1866497672]
+script = ExtResource("2_b07n7")
+metadata/_custom_type_script = "uid://b0xp48htsan7h"
+
+[node name="RandomWanderDecision" type="Node" parent="BrainComponent" unique_id=998070292 node_paths=PackedStringArray("entity_", "navigation_agent", "intents_component")]
+script = ExtResource("7_hcars")
+entity_ = NodePath("../..")
+navigation_agent = NodePath("../../NavigationAgentComponent")
+intents_component = NodePath("../../ActorIntentsComponent")
+success_score = 10.0
+metadata/_custom_type_script = "uid://li6c8wf25gt"
+
+[node name="EntityDetectorComponent" type="Area2D" parent="." unique_id=137358878]
+script = ExtResource("8_hcars")
+metadata/_custom_type_script = "uid://bpb8e2l7376gm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityDetectorComponent" unique_id=130257143]
+shape = SubResource("CircleShape2D_7oewm")
+
+[node name="EntityDetectorDebugComponent" type="Node" parent="." unique_id=1436212734]
+script = ExtResource("9_7oewm")
+metadata/_custom_type_script = "uid://bo5vtxrkxvs6m"
+
+[node name="EntityLOSComponent" type="Node2D" parent="." unique_id=409430018]
+script = ExtResource("10_iqlxx")
+metadata/_custom_type_script = "uid://dhbmi1rn6whh"
+
+[node name="RayCast2D" type="RayCast2D" parent="EntityLOSComponent" unique_id=2033168541]
+position = Vector2(0, -5)
+target_position = Vector2(70, 0)
+collide_with_areas = true
+
+[node name="RayCast2D2" type="RayCast2D" parent="EntityLOSComponent" unique_id=1341954576]
+target_position = Vector2(70, 0)
+collide_with_areas = true
+
+[node name="RayCast2D3" type="RayCast2D" parent="EntityLOSComponent" unique_id=1455550095]
+position = Vector2(0, 6)
+target_position = Vector2(70, 0)
+collide_with_areas = true
+
+[node name="RayCast2D4" type="RayCast2D" parent="EntityLOSComponent" unique_id=1095781854]
+position = Vector2(0, 12)
+target_position = Vector2(70, 0)
+collide_with_areas = true
+
+[node name="RayCast2D5" type="RayCast2D" parent="EntityLOSComponent" unique_id=1395072750]
+position = Vector2(0, -11)
+target_position = Vector2(70, 0)
+collide_with_areas = true
+
+[node name="EntityLOSDebugComponent" type="Node" parent="." unique_id=446791512]
+script = ExtResource("11_3hyga")
+metadata/_custom_type_script = "uid://djikkdw0vlrt"

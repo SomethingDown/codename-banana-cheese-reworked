@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://doa7okoermkiw"]
+
+[ext_resource type="Texture2D" uid="uid://b2fldg4m4tcbo" path="res://icon.svg" id="1_b4kmf"]
+[ext_resource type="Script" uid="uid://ckf60xy1d5yx" path="res://Source/Components/AI/NavigationAgentComponent.cs" id="2_shd1k"]
+[ext_resource type="Script" uid="uid://db7kxmotuff4y" path="res://Source/Components/AI/ActorIntentsComponent.cs" id="3_5kd0c"]
+[ext_resource type="Script" uid="uid://bamk2sv23kwhg" path="res://Source/Components/Physics/CharacterMovementComponent.cs" id="4_aal88"]
+[ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/InventoryComponent.cs" id="5_4opfx"]
+[ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="6_vtvfp"]
+[ext_resource type="Resource" uid="uid://djrrvj27u3w1l" path="res://Resources/Items/test_item.tres" id="7_ypuv8"]
+[ext_resource type="Script" uid="uid://cly3sbur8n14a" path="res://Source/Components/Inventory/ItemSelectorSwitchComponent.cs" id="8_toq76"]
+[ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="9_hl70s"]
+[ext_resource type="Script" uid="uid://bw1s5y0lofjef" path="res://Source/Components/Controllers/PlayerControllerComponent.cs" id="10_ltdul"]
+[ext_resource type="Script" uid="uid://bvhg2hkb8gvk8" path="res://Source/Components/Inventory/HandComponent.cs" id="11_ibpri"]
+[ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="12_shd1k"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b4kmf"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5kd0c"]
+radius = 7.0
+
+[node name="Player" type="CharacterBody2D" unique_id=29278974]
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=437271352]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_b4kmf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=811187539]
+shape = SubResource("CircleShape2D_b4kmf")
+
+[node name="NavigationAgentComponent" type="NavigationAgent2D" parent="." unique_id=55730638]
+script = ExtResource("2_shd1k")
+desired_distance = 8.0
+metadata/_custom_type_script = "uid://ckf60xy1d5yx"
+
+[node name="ActorIntentsComponent" type="Node" parent="." unique_id=655480975]
+script = ExtResource("3_5kd0c")
+metadata/_custom_type_script = "uid://db7kxmotuff4y"
+
+[node name="CharacterMovementComponent" type="Node" parent="." unique_id=674051150]
+script = ExtResource("4_aal88")
+speed = 80.0
+metadata/_custom_type_script = "uid://bamk2sv23kwhg"
+
+[node name="InventoryComponent" type="Node" parent="." unique_id=1328338131]
+script = ExtResource("5_4opfx")
+items = Array[ExtResource("6_vtvfp")]([ExtResource("7_ypuv8")])
+metadata/_custom_type_script = "uid://bgx6j4m6rux5q"
+
+[node name="ItemSelectorSwitchComponent" type="Node" parent="." unique_id=1309030163]
+script = ExtResource("8_toq76")
+metadata/_custom_type_script = "uid://cly3sbur8n14a"
+
+[node name="ItemSelectorComponent" type="Node" parent="." unique_id=1501808542]
+script = ExtResource("9_hl70s")
+metadata/_custom_type_script = "uid://5f2k3yn2la62"
+
+[node name="PlayerControllerComponent" type="Node" parent="." unique_id=888898655]
+script = ExtResource("10_ltdul")
+metadata/_custom_type_script = "uid://bw1s5y0lofjef"
+
+[node name="HandComponent" type="Node2D" parent="." unique_id=234022227 node_paths=PackedStringArray("hand_axel_", "item_position")]
+script = ExtResource("11_ibpri")
+hand_axel_ = NodePath("Axel")
+item_position = NodePath("Axel/Item position")
+metadata/_custom_type_script = "uid://bvhg2hkb8gvk8"
+
+[node name="Axel" type="Marker2D" parent="HandComponent" unique_id=1665874045]
+
+[node name="Item position" type="Marker2D" parent="HandComponent/Axel" unique_id=242469639]
+position = Vector2(8, 0)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1551415181]
+
+[node name="EntityAreaComponent" type="Area2D" parent="." unique_id=162614264]
+script = ExtResource("12_shd1k")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=147219165]
+shape = SubResource("CircleShape2D_5kd0c")
