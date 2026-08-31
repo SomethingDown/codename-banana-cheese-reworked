@@ -5,8 +5,12 @@
 [ext_resource type="PackedScene" uid="uid://chpksr072g4rd" path="res://Scenes/Characters/NPC.tscn" id="3_kln2b"]
 [ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="4_jw32o"]
 [ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="5_50glp"]
+[ext_resource type="Script" uid="uid://xtt5itxdehdv" path="res://Source/Components/Security/HackableComponent.cs" id="7_4kpch"]
 [ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="7_bmxlf"]
 [ext_resource type="Script" uid="uid://bkrksibpfbj1" path="res://Source/Components/Interactive/InteractionListeners/CurrencyInteractionListenerComponent.cs" id="7_vy5pj"]
+[ext_resource type="Script" uid="uid://djt0xt3lp3k0f" path="res://Source/Components/Debug/EventsDebugComponent.cs" id="8_50glp"]
+[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="8_vy5pj"]
+[ext_resource type="Script" uid="uid://b543x6d16a7ej" path="res://Source/Components/Security/BreachableComponent.cs" id="11_4kpch"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_kln2b"]
 vertices = PackedVector2Array(421.46094, 245.47656, -117, 217.5, -117, -81.14844, 436.53125, -89.828125)
@@ -14,6 +18,8 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(447, -100, 431, 256, -127, 227, -127, -91)])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4kpch"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 
 [node name="Main" type="Node2D" unique_id=1981299511]
 script = ExtResource("1_r150o")
@@ -28,26 +34,35 @@ position = Vector2(80, 69)
 visible = false
 navigation_polygon = SubResource("NavigationPolygon_kln2b")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=2117748571]
+[node name="ATM" type="Node2D" parent="." unique_id=2117748571]
 position = Vector2(141, 40)
 
-[node name="InteractableComponent" type="Node" parent="Node2D" unique_id=596708274]
+[node name="EntityAreaComponent" type="Area2D" parent="ATM" unique_id=1062559607]
+script = ExtResource("7_bmxlf")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ATM/EntityAreaComponent" unique_id=113572178]
+shape = SubResource("CircleShape2D_4kpch")
+
+[node name="InteractableComponent" type="Node" parent="ATM" unique_id=596708274]
 script = ExtResource("4_jw32o")
 metadata/_custom_type_script = "uid://bt6qadveyo2d8"
 
-[node name="Interaction" type="Node" parent="Node2D/InteractableComponent" unique_id=1532834998]
+[node name="Interaction" type="Node" parent="ATM/InteractableComponent" unique_id=1532834998]
 script = ExtResource("5_50glp")
 label = "Collect"
 metadata/_custom_type_script = "uid://c3pa3ibleap0q"
 
-[node name="EntityAreaComponent" type="Area2D" parent="Node2D" unique_id=1062559607]
-script = ExtResource("7_bmxlf")
-metadata/_custom_type_script = "uid://hgcc0pq50e12"
+[node name="HackableComponent" type="Node" parent="ATM" unique_id=780124566]
+script = ExtResource("7_4kpch")
+metadata/_custom_type_script = "uid://xtt5itxdehdv"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/EntityAreaComponent" unique_id=113572178]
-shape = SubResource("CircleShape2D_4kpch")
+[node name="CurrencyComponent" type="Node" parent="ATM" unique_id=2008147920]
+script = ExtResource("8_vy5pj")
+initial_currency = 15.99
+metadata/_custom_type_script = "uid://cjsad3x24fyus"
 
-[node name="CurrencyInteractionListenerComponent" type="Node" parent="Node2D" unique_id=794502837 node_paths=PackedStringArray("interaction")]
+[node name="CurrencyInteractionListenerComponent" type="Node" parent="ATM" unique_id=794502837 node_paths=PackedStringArray("interaction")]
 script = ExtResource("7_vy5pj")
 interaction = NodePath("../InteractableComponent/Interaction")
 metadata/_custom_type_script = "uid://bkrksibpfbj1"
@@ -56,3 +71,39 @@ metadata/_custom_type_script = "uid://bkrksibpfbj1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=864752832]
 polygon = PackedVector2Array(123, 53, 189, 55, 187, 60, 123, 57)
+
+[node name="EventsDebugComponent" type="Node" parent="." unique_id=1847909225]
+script = ExtResource("8_50glp")
+metadata/_custom_type_script = "uid://djt0xt3lp3k0f"
+
+[node name="Safe" type="Node2D" parent="." unique_id=1643365575]
+position = Vector2(169, 40)
+
+[node name="EntityAreaComponent" type="Area2D" parent="Safe" unique_id=1637889770]
+script = ExtResource("7_bmxlf")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Safe/EntityAreaComponent" unique_id=1890198649]
+shape = SubResource("CircleShape2D_bmxlf")
+
+[node name="InteractableComponent" type="Node" parent="Safe" unique_id=76597806]
+script = ExtResource("4_jw32o")
+metadata/_custom_type_script = "uid://bt6qadveyo2d8"
+
+[node name="Interaction" type="Node" parent="Safe/InteractableComponent" unique_id=1150924115]
+script = ExtResource("5_50glp")
+label = "Collect"
+metadata/_custom_type_script = "uid://c3pa3ibleap0q"
+
+[node name="BreachableComponent" type="Node" parent="Safe" unique_id=494315529]
+script = ExtResource("11_4kpch")
+metadata/_custom_type_script = "uid://b543x6d16a7ej"
+
+[node name="CurrencyComponent" type="Node" parent="Safe" unique_id=1648941989]
+script = ExtResource("8_vy5pj")
+metadata/_custom_type_script = "uid://cjsad3x24fyus"
+
+[node name="CurrencyInteractionListenerComponent2" type="Node" parent="Safe" unique_id=1210353493 node_paths=PackedStringArray("interaction")]
+script = ExtResource("7_vy5pj")
+interaction = NodePath("../InteractableComponent/Interaction")
+metadata/_custom_type_script = "uid://bkrksibpfbj1"

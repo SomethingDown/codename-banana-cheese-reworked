@@ -8,6 +8,8 @@ public partial class CurrencyComponent : Node
     [Signal] public delegate void CurrencyAddFailedEventHandler(float value);
     [Signal] public delegate void CurrencyChangedEventHandler(float value);
 
+    [Export] public float initial_currency = 5.0f;
+
     private float currency_val_;
 
     private float currency_
@@ -18,6 +20,11 @@ public partial class CurrencyComponent : Node
             currency_val_=value;
             EmitSignal(SignalName.CurrencyChanged,currency_val_);
         }
+    }
+
+    public override void _Ready()
+    {
+        currency_val_ = initial_currency;
     }
 
 
@@ -40,6 +47,20 @@ public partial class CurrencyComponent : Node
             return;
         }
         currency_ += value;
+    }
+
+    public float SpendCurrency(float value)
+    {
+        bool spent = TrySpend(value);
+        if (spent) return value;
+        return 0.0f;
+    }
+
+    public float SpendAllCurrency()
+    {
+        float value = GetCurrency();
+        currency_ = 0.0f;
+        return value;
     }
 
     public float GetCurrency()

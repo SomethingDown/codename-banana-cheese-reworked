@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://yw4dln1fdmoo" path="res://Source/Components/AI/EntitiesLOSMemoryComponent.cs" id="11_gy426"]
 [ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="12_7blul"]
 [ext_resource type="Script" uid="uid://c04uct6hgp80m" path="res://Source/Components/AI/EntitiesInRangeMemoryComponent.cs" id="12_lka2k"]
+[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="13_gy426"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0yww"]
 radius = 7.0
@@ -108,3 +109,8 @@ metadata/_custom_type_script = "uid://yw4dln1fdmoo"
 [node name="EntitiesInRangeMemoryComponent" type="Node" parent="." unique_id=1812953733]
 script = ExtResource("12_lka2k")
 metadata/_custom_type_script = "uid://c04uct6hgp80m"
+
+[node name="CurrencyComponent" type="Node" parent="." unique_id=83966698]
+script = ExtResource("13_gy426")
+initial_currency = 120.77
+metadata/_custom_type_script = "uid://cjsad3x24fyus"

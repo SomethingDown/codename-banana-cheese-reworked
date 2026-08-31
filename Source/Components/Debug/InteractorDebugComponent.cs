@@ -11,19 +11,19 @@ public partial class InteractorDebugComponent : Node
     {
         interactor_component_ = this.GetComponent<InteractorComponent>();
         interactables_selector_component_ = this.GetComponent<InteractablesSelectorComponent>();
+        interactables_selector_component_.SelectionChanged += e =>
+        {
+            EventsQueue.instance.Publish(
+                new EventMessage{
+                    message=
+                    $"Selected Interactable: {e}|{e?.Name}\n"+
+                    $"Selected Interaction: {interactor_component_.GetHighlightedInteraction()?.label}"
+                }
+        );  
+        };
     }
 
-    public override void _Process(double delta)
-    {
-        if (interactor_component_ == null || interactables_selector_component_ == null) return;
 
-        EventsQueue.instance.Publish(
-            new EventMessage{message=
-            $"Selected Interactable: {interactables_selector_component_.selected_entity}|{interactables_selector_component_.selected_entity?.Name}\n"+
-            $"Selected Interaction: {interactor_component_.GetHighlightedInteraction()?.label}"
-            }
-        );
-    }
 
 
 }
