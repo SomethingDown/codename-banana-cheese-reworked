@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/streamline__controller_node.svg")]
 public partial class ControllerComponent : Node
 {
 	protected Node2D entity_;
@@ -16,7 +16,23 @@ public partial class ControllerComponent : Node
 	{
 		return Vector2.Zero;
 	}
-	public virtual bool GetIsUsing()
+	public virtual bool GetIsStartedUsing()
+	{
+		return false;
+	}
+	public virtual bool GetIsStoppedUsing()
+	{
+		return false;
+	}
+	public virtual bool GetIsStartedUsingAlternative()
+	{
+		return false;
+	}
+	public virtual bool GetIsStoppedUsingAlternative()
+	{
+		return false;
+	}
+	public virtual bool GetIsCanceling()
 	{
 		return false;
 	}
@@ -27,10 +43,6 @@ public partial class ControllerComponent : Node
 	public virtual Vector2 GetLookingNormal()
 	{
 		return Vector2.Zero;
-	}
-	public virtual bool GetIsUsingAlternative()
-	{
-		return false;
 	}
 	public virtual bool GetIsSwitchingItemUp()
 	{
@@ -62,5 +74,14 @@ public partial class ControllerComponent : Node
 		return false;
 	}
 
+	public virtual bool GetIsSwitchingTargetUp()
+	{
+		return false;
+	}
+
+	public virtual bool GetIsSwitchingTargetDown()
+	{
+		return false;
+	}
 
 }

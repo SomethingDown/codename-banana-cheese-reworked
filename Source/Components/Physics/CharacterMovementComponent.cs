@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__motion_vector_node.svg")]
 public partial class CharacterMovementComponent : Node
 {
     [Export] public bool enabled = true; 

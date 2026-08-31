@@ -5,19 +5,29 @@ using System;
 public partial class PlayerControllerComponent : ControllerComponent
 {
 
-
 	public override Vector2 GetMovementAxis()
 	{
 		return Input.GetVector("move_left","move_right","move_up","move_down");
 	}
-	public override bool GetIsUsing()
+	public override bool GetIsStartedUsing()
 	{
 		return Input.IsActionJustPressed("use");
 	}
-
-	public override bool GetIsUsingAlternative()
+	public override bool GetIsStoppedUsing()
+	{
+		return Input.IsActionJustReleased("use");
+	}
+	public override bool GetIsStartedUsingAlternative()
 	{
 		return Input.IsActionJustPressed("use_alternative");
+	}
+	public override bool GetIsStoppedUsingAlternative()
+	{
+		return Input.IsActionJustReleased("use_alternative");
+	}
+	public override bool GetIsCanceling()
+	{
+		return Input.IsActionJustPressed("cancel");
 	}
 
     public override bool GetIsSwitchingItemUp()
@@ -66,5 +76,14 @@ public partial class PlayerControllerComponent : ControllerComponent
 		return Input.IsActionJustPressed("switch_interaction_up");
 	}
 
+    public override bool GetIsSwitchingTargetUp()
+    {
+		return Input.IsActionJustPressed("switch_target_up");
+    }
+
+    public override bool GetIsSwitchingTargetDown()
+    {
+		return Input.IsActionJustPressed("switch_target_down");
+    }
 
 }

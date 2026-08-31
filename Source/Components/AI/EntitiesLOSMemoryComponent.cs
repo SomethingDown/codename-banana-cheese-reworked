@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/pixelarticons__memory_stick_pixel_node.svg")]
 public partial class EntitiesLOSMemoryComponent : Node
 {
     private EntitiesInRangeMemoryComponent entities_in_range_memory_;
@@ -11,7 +11,7 @@ public partial class EntitiesLOSMemoryComponent : Node
     public override void _Ready()
     {
         entities_in_range_memory_ = this.GetComponent<EntitiesInRangeMemoryComponent>();
-
+        entity_los_ = this.GetComponent<EntityLOSComponent>();
     }
 
     public List<EntityAreaComponent> GetEntitiesInLOS()

@@ -8,11 +8,15 @@
 [ext_resource type="Script" uid="uid://db7kxmotuff4y" path="res://Source/Components/AI/ActorIntentsComponent.cs" id="5_we08j"]
 [ext_resource type="Script" uid="uid://li6c8wf25gt" path="res://Source/Components/AI/Decisons/RandomWanderDecision.cs" id="7_hcars"]
 [ext_resource type="Script" uid="uid://bpb8e2l7376gm" path="res://Source/Components/Detection/EntityDetectorComponent.cs" id="8_hcars"]
-[ext_resource type="Script" uid="uid://bo5vtxrkxvs6m" path="res://Source/Components/Debug/EntityDetectorDebugComponent.cs" id="9_7oewm"]
 [ext_resource type="Script" uid="uid://dhbmi1rn6whh" path="res://Source/Components/Detection/EntityLOSComponent.cs" id="10_iqlxx"]
-[ext_resource type="Script" uid="uid://djikkdw0vlrt" path="res://Source/Components/Debug/EntityLOSDebugComponent.cs" id="11_3hyga"]
+[ext_resource type="Script" uid="uid://yw4dln1fdmoo" path="res://Source/Components/AI/EntitiesLOSMemoryComponent.cs" id="11_gy426"]
+[ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="12_7blul"]
+[ext_resource type="Script" uid="uid://c04uct6hgp80m" path="res://Source/Components/AI/EntitiesInRangeMemoryComponent.cs" id="12_lka2k"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0yww"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gy426"]
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7oewm"]
@@ -34,6 +38,7 @@ metadata/_custom_type_script = "uid://ckf60xy1d5yx"
 
 [node name="CharacterMovementComponent" type="Node" parent="." unique_id=1201953596]
 script = ExtResource("3_a8o6n")
+enabled = false
 metadata/_custom_type_script = "uid://bamk2sv23kwhg"
 
 [node name="AIControllerComponent" type="Node" parent="." unique_id=839493860]
@@ -48,13 +53,18 @@ metadata/_custom_type_script = "uid://db7kxmotuff4y"
 script = ExtResource("2_b07n7")
 metadata/_custom_type_script = "uid://b0xp48htsan7h"
 
-[node name="RandomWanderDecision" type="Node" parent="BrainComponent" unique_id=998070292 node_paths=PackedStringArray("entity_", "navigation_agent", "intents_component")]
+[node name="RandomWanderDecision" type="Node" parent="BrainComponent" unique_id=998070292 node_paths=PackedStringArray("intents_component")]
 script = ExtResource("7_hcars")
-entity_ = NodePath("../..")
-navigation_agent = NodePath("../../NavigationAgentComponent")
 intents_component = NodePath("../../ActorIntentsComponent")
 success_score = 10.0
 metadata/_custom_type_script = "uid://li6c8wf25gt"
+
+[node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1032284191]
+script = ExtResource("12_7blul")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=702205233]
+shape = SubResource("CircleShape2D_gy426")
 
 [node name="EntityDetectorComponent" type="Area2D" parent="." unique_id=137358878]
 script = ExtResource("8_hcars")
@@ -62,10 +72,6 @@ metadata/_custom_type_script = "uid://bpb8e2l7376gm"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntityDetectorComponent" unique_id=130257143]
 shape = SubResource("CircleShape2D_7oewm")
-
-[node name="EntityDetectorDebugComponent" type="Node" parent="." unique_id=1436212734]
-script = ExtResource("9_7oewm")
-metadata/_custom_type_script = "uid://bo5vtxrkxvs6m"
 
 [node name="EntityLOSComponent" type="Node2D" parent="." unique_id=409430018]
 script = ExtResource("10_iqlxx")
@@ -95,6 +101,10 @@ position = Vector2(0, -11)
 target_position = Vector2(70, 0)
 collide_with_areas = true
 
-[node name="EntityLOSDebugComponent" type="Node" parent="." unique_id=446791512]
-script = ExtResource("11_3hyga")
-metadata/_custom_type_script = "uid://djikkdw0vlrt"
+[node name="EntitiesLOSMemoryComponent" type="Node" parent="." unique_id=505069654]
+script = ExtResource("11_gy426")
+metadata/_custom_type_script = "uid://yw4dln1fdmoo"
+
+[node name="EntitiesInRangeMemoryComponent" type="Node" parent="." unique_id=1812953733]
+script = ExtResource("12_lka2k")
+metadata/_custom_type_script = "uid://c04uct6hgp80m"

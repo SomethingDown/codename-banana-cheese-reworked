@@ -4,7 +4,6 @@ using System;
 [GlobalClass]
 public partial class AIControllerComponent : ControllerComponent
 {
-    private Node2D entity_;
     private NavigationAgentComponent navigation_agent_;
     private ActorIntentsComponent actor_intents_;
     public override void _Ready()

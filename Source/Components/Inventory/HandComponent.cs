@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__hand_node2d.svg")]
 public partial class HandComponent : Node2D
 {
     [Signal] public delegate void ItemSelectionChangedEventHandler(Node2D item_node);
@@ -13,6 +13,7 @@ public partial class HandComponent : Node2D
     [Export] public Marker2D item_position;
     public Node2D item_node;
     private List<IUse> item_useable_components_ = new List<IUse>();
+
     public override void _Ready()
     {
         item_selector_ = this.GetComponent<ItemSelectorComponent>();
@@ -31,22 +32,82 @@ public partial class HandComponent : Node2D
     {
         hand_axel_.GlobalRotation = controller_.GetLookingRad();
     }
+
     private void Use()
     {
-        bool drop = false;
-        Node2D user = this.GetEntity() as Node2D;
         if (item_node == null) return;
-        if (controller_.GetIsUsing()) item_useable_components_.ForEach(u =>
+        Node2D user = this.GetEntity() as Node2D;
+        bool drop = false;
+
+        if (controller_.GetIsStartedUsing())
         {
-            if (drop) u.Use(user);
-            else drop = u.Use(user);
-        });
-        if (controller_.GetIsUsingAlternative()) item_useable_components_.ForEach(u =>
+            bool result = ItemUseInitiated(user);
+            if (result) drop = true;
+        }
+
+        if (controller_.GetIsStoppedUsing())
         {
-            if (drop) u.UseAlternative(user);
-            else drop = u.UseAlternative(user);
-        });
+            bool result = ItemUseCanceled(user);
+            if (result) drop = true;
+        }
+
+        if (controller_.GetIsStartedUsingAlternative())
+        {
+            bool result = ItemUseAlternativeInitiated(user);
+            if (result) drop = true;
+        }
+
+        if (controller_.GetIsStoppedUsingAlternative())
+        {
+            bool result = ItemUseAlternativeCanceled(user);
+            if (result) drop = true;
+        }
+
         if (drop) item_selector_.RemoveSelectedFromInventory();
+    }
+
+    private bool ItemUseInitiated(Node user)
+    {
+        bool drop = false;
+        foreach (IUse u in item_useable_components_)
+        {
+            if (drop) u.UseInitiaited(user);
+            else drop = u.UseInitiaited(user);
+        }
+        return drop;
+    }
+
+    private bool ItemUseCanceled(Node user)
+    {
+        bool drop = false;
+        foreach (IUse u in item_useable_components_)
+        {
+            if (drop) u.UseCanceled(user);
+            else drop = u.UseCanceled(user);
+        }
+        return drop;
+    }
+
+    private bool ItemUseAlternativeInitiated(Node user)
+    {
+        bool drop = false;
+        foreach (IUse u in item_useable_components_)
+        {
+            if (drop) u.UseAlternativeInitiaited(user);
+            else drop = u.UseAlternativeInitiaited(user);
+        }
+        return drop;
+    }
+
+    private bool ItemUseAlternativeCanceled(Node user)
+    {
+        bool drop = false;
+        foreach (IUse u in item_useable_components_)
+        {
+            if (drop) u.UseAlternativeCanceled(user);
+            else drop = u.UseAlternativeCanceled(user);
+        }
+        return drop;
     }
 
     private void OnSelectedItemChanged(ItemResource new_item)
@@ -54,6 +115,7 @@ public partial class HandComponent : Node2D
         item_node?.QueueFree();
         item_node = null;
         item_useable_components_.Clear();
+
         if (new_item != null)
         {
             item_node = new_item.item_equipped_scene.Instantiate() as Node2D;

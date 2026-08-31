@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__backpack_node.svg")]
 public partial class ItemSelectorComponent : Node
 {
     [Signal] public delegate void SelectionChangedEventHandler(ItemResource item);

@@ -2,7 +2,7 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__backpack_node.svg")]
 public partial class InventoryComponent : Node
 {
 	[Export] public Array<ItemResource> items {get;private set;} = new Array<ItemResource>() ;

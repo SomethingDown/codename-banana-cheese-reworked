@@ -12,12 +12,25 @@
 [ext_resource type="Script" uid="uid://bw1s5y0lofjef" path="res://Source/Components/Controllers/PlayerControllerComponent.cs" id="10_ltdul"]
 [ext_resource type="Script" uid="uid://bvhg2hkb8gvk8" path="res://Source/Components/Inventory/HandComponent.cs" id="11_ibpri"]
 [ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="12_shd1k"]
+[ext_resource type="Script" uid="uid://bpb8e2l7376gm" path="res://Source/Components/Detection/EntityDetectorComponent.cs" id="13_5kd0c"]
+[ext_resource type="Script" uid="uid://dhbmi1rn6whh" path="res://Source/Components/Detection/EntityLOSComponent.cs" id="14_hl70s"]
+[ext_resource type="Script" uid="uid://dm4q4jwf1x7q5" path="res://Source/Components/Interactive/InteractablesMemoryComponent.cs" id="14_ypuv8"]
+[ext_resource type="Script" uid="uid://c04uct6hgp80m" path="res://Source/Components/AI/EntitiesInRangeMemoryComponent.cs" id="15_ibpri"]
+[ext_resource type="Script" uid="uid://b13my2y8s05er" path="res://Source/Components/Interactive/InteractablesSelectorSwitchComponent.cs" id="15_toq76"]
+[ext_resource type="Script" uid="uid://d15bhq1xhf3cq" path="res://Source/Components/Interactive/InteractablesSelectorComponent.cs" id="16_hl70s"]
+[ext_resource type="Script" uid="uid://yw4dln1fdmoo" path="res://Source/Components/AI/EntitiesLOSMemoryComponent.cs" id="16_qd2bg"]
+[ext_resource type="Script" uid="uid://bna53qvcvu8ku" path="res://Source/Components/Interactive/InteractorComponent.cs" id="18_hl70s"]
+[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="21_ibpri"]
+[ext_resource type="Script" uid="uid://igpebnom14w3" path="res://Source/Components/Debug/CurrencyDebugComponent.cs" id="22_qd2bg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4kmf"]
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kd0c"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aal88"]
+radius = 68.007355
 
 [node name="Player" type="CharacterBody2D" unique_id=29278974]
 
@@ -70,11 +83,63 @@ metadata/_custom_type_script = "uid://bvhg2hkb8gvk8"
 [node name="Item position" type="Marker2D" parent="HandComponent/Axel" unique_id=242469639]
 position = Vector2(8, 0)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1551415181]
-
 [node name="EntityAreaComponent" type="Area2D" parent="." unique_id=162614264]
 script = ExtResource("12_shd1k")
 metadata/_custom_type_script = "uid://hgcc0pq50e12"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=147219165]
 shape = SubResource("CircleShape2D_5kd0c")
+
+[node name="EntityDetectorComponent" type="Area2D" parent="." unique_id=263371898]
+script = ExtResource("13_5kd0c")
+metadata/_custom_type_script = "uid://bpb8e2l7376gm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityDetectorComponent" unique_id=1167274329]
+shape = SubResource("CircleShape2D_aal88")
+
+[node name="EntityLOSComponent" type="Node2D" parent="." unique_id=1663231448]
+script = ExtResource("14_hl70s")
+metadata/_custom_type_script = "uid://dhbmi1rn6whh"
+
+[node name="RayCast2D" type="RayCast2D" parent="EntityLOSComponent" unique_id=67678963]
+target_position = Vector2(70, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="EntityLOSComponent" unique_id=1638438540]
+position = Vector2(0, -4)
+target_position = Vector2(70, 0)
+
+[node name="RayCast2D3" type="RayCast2D" parent="EntityLOSComponent" unique_id=1481300719]
+position = Vector2(0, 3)
+target_position = Vector2(70, 0)
+
+[node name="EntitiesInRangeMemoryComponent" type="Node" parent="." unique_id=488205665]
+script = ExtResource("15_ibpri")
+metadata/_custom_type_script = "uid://c04uct6hgp80m"
+
+[node name="EntitiesLOSMemoryComponent" type="Node" parent="." unique_id=954274202]
+script = ExtResource("16_qd2bg")
+metadata/_custom_type_script = "uid://yw4dln1fdmoo"
+
+[node name="CurrencyComponent" type="Node" parent="." unique_id=1160131499]
+script = ExtResource("21_ibpri")
+metadata/_custom_type_script = "uid://cjsad3x24fyus"
+
+[node name="InteractablesSelectorSwitchComponent" type="Node" parent="." unique_id=1325219469]
+script = ExtResource("15_toq76")
+metadata/_custom_type_script = "uid://b13my2y8s05er"
+
+[node name="InteractablesMemoryComponent" type="Node" parent="." unique_id=518618078]
+script = ExtResource("14_ypuv8")
+metadata/_custom_type_script = "uid://dm4q4jwf1x7q5"
+
+[node name="InteractablesSelectorComponent" type="Node" parent="." unique_id=1072051354]
+script = ExtResource("16_hl70s")
+metadata/_custom_type_script = "uid://d15bhq1xhf3cq"
+
+[node name="InteractorComponent" type="Node" parent="." unique_id=804453902]
+script = ExtResource("18_hl70s")
+metadata/_custom_type_script = "uid://bna53qvcvu8ku"
+
+[node name="CurrencyDebugComponent" type="Node" parent="." unique_id=95762403]
+script = ExtResource("22_qd2bg")
+metadata/_custom_type_script = "uid://igpebnom14w3"

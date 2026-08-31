@@ -5,11 +5,19 @@ using System;
 public partial class RandomWanderDecision : Decision
 {
 
-    [Export] public Node2D entity_;
-    [Export] public NavigationAgentComponent navigation_agent;
+    private Node2D entity_;
+    private NavigationAgentComponent navigation_agent_;
     [Export] public float max_distance = 60.0f;
 
     private Random random_ = new Random();
+
+    public override void _Ready()
+    {
+        base._Ready();
+        entity_ = (Node2D)GetParent().GetEntity();
+        navigation_agent_ = GetParent().GetComponent<NavigationAgentComponent>();
+    }
+
 
     public override void Enter()
     {
@@ -24,7 +32,7 @@ public partial class RandomWanderDecision : Decision
     public override void Execute()
     {
         base.Execute();
-        if (entity_ ==  null || navigation_agent == null ) return;
+        if (entity_ ==  null || navigation_agent_ == null ) return;
         
         if (intents_component.target_position == null)
         {
@@ -36,7 +44,7 @@ public partial class RandomWanderDecision : Decision
                 );
         }
         
-        if (navigation_agent.IsTargetReached() || !navigation_agent.IsTargetReachable())
+        if (navigation_agent_.IsTargetReached() || !navigation_agent_.IsTargetReachable())
         {
             intents_component.target_position = null;
         }

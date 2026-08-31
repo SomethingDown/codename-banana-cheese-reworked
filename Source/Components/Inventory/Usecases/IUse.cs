@@ -3,6 +3,10 @@ using System;
 
 public interface IUse
 {
-    public bool Use(Node user);
-    public bool UseAlternative(Node user);
+    public bool UseInitiaited(Node user);
+    public bool UseCanceled(Node user);
+
+    public bool UseAlternativeInitiaited(Node user);
+    public bool UseAlternativeCanceled(Node user);
+
 }

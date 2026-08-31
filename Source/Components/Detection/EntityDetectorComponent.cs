@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__eye_node2d.svg")]
 public partial class EntityDetectorComponent : Area2D
 {
     [Signal] public delegate void EntityAreaEnteredEventHandler(EntityAreaComponent entity_area);
@@ -12,7 +12,10 @@ public partial class EntityDetectorComponent : Area2D
     public override void _Ready()
     {
         self_entity_area = this.GetComponent<EntityAreaComponent>();
+
+        CollisionMask = PhysicsLayers.Entities;
         
+
         AreaEntered += a=>
         {
             EntityAreaComponent entity_area = a as EntityAreaComponent;

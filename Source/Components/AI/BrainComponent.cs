@@ -1,7 +1,7 @@
 using Godot;
 using System.Linq;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__brain_node.svg")]
 public partial class BrainComponent : Node
 {
     private Decision prefered_decision_ ;

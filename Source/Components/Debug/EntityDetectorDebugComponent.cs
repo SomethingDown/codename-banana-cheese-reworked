@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__speech_bubble_exclamation_node.svg")]
 public partial class EntityDetectorDebugComponent : Node
 {
 
