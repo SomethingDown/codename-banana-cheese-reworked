@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://1xnd167kxjj8"]
+
+[ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="1_8ijk0"]
+[ext_resource type="Script" uid="uid://ddevj1fmllxgv" path="res://Source/Components/Inventory/Usecases/UseHack.cs" id="2_dltji"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu8wk"]
+atlas = ExtResource("1_8ijk0")
+region = Rect2(0, 0, 16, 16)
+
+[node name="HackTool" type="Node2D" unique_id=1654711881]
+
+[node name="Graphics" type="Node2D" parent="." unique_id=108245497]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphics" unique_id=729881118]
+position = Vector2(2, -2)
+texture = SubResource("AtlasTexture_cu8wk")
+
+[node name="UseHack" type="Node" parent="." unique_id=860527573]
+script = ExtResource("2_dltji")
+metadata/_custom_type_script = "uid://ddevj1fmllxgv"

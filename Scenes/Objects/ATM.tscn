@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://bp4n5fr2x3npu"]
+
+[ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="1_lm1xb"]
+[ext_resource type="Texture2D" uid="uid://ckik2y1e6sf5o" path="res://Assets/Spreadsheets/Objects spreadsheet.png" id="1_uijmt"]
+[ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="2_uijmt"]
+[ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="3_7ysnp"]
+[ext_resource type="Script" uid="uid://xtt5itxdehdv" path="res://Source/Components/Security/HackableComponent.cs" id="4_mjwbc"]
+[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="5_d58mo"]
+[ext_resource type="Script" uid="uid://bkrksibpfbj1" path="res://Source/Components/Interactive/InteractionListeners/CurrencyInteractionListenerComponent.cs" id="6_fgip1"]
+[ext_resource type="Script" uid="uid://tye6jmwwdjk0" path="res://Source/Components/Visuals/SignalToAnimationComponent.cs" id="8_7ysnp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uijmt"]
+atlas = ExtResource("1_uijmt")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ysnp"]
+atlas = ExtResource("1_uijmt")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mjwbc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uijmt")
+}],
+"loop": true,
+"name": &"Hacked",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ysnp")
+}],
+"loop": true,
+"name": &"Secured",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_uijmt"]
+resource_name = "Hacked"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Hacked"]
+}
+
+[sub_resource type="Animation" id="Animation_7ysnp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Secured"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mjwbc"]
+_data = {
+&"Hacked": SubResource("Animation_uijmt"),
+&"RESET": SubResource("Animation_7ysnp")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uijmt"]
+size = Vector2(10, 13)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kpch"]
+
+[node name="ATM" type="Node2D" unique_id=1299385066]
+
+[node name="Graphics" type="Node2D" parent="." unique_id=1168714747]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1014525122]
+sprite_frames = SubResource("SpriteFrames_mjwbc")
+animation = &"Secured"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics" unique_id=1104206374]
+libraries/ = SubResource("AnimationLibrary_mjwbc")
+
+[node name="Collision" type="Node2D" parent="." unique_id=1200441788]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collision" unique_id=1417776061]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D" unique_id=797036897]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_uijmt")
+
+[node name="EntityAreaComponent" type="Area2D" parent="." unique_id=439492143]
+script = ExtResource("1_lm1xb")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=763302685]
+shape = SubResource("CircleShape2D_4kpch")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=143118288]
+script = ExtResource("2_uijmt")
+metadata/_custom_type_script = "uid://bt6qadveyo2d8"
+
+[node name="Interaction" type="Node" parent="InteractableComponent" unique_id=646426468]
+script = ExtResource("3_7ysnp")
+label = "Collect"
+metadata/_custom_type_script = "uid://c3pa3ibleap0q"
+
+[node name="HackableComponent" type="Node" parent="." unique_id=1450523997]
+script = ExtResource("4_mjwbc")
+metadata/_custom_type_script = "uid://xtt5itxdehdv"
+
+[node name="CurrencyComponent" type="Node" parent="." unique_id=527468259]
+script = ExtResource("5_d58mo")
+initial_currency = 15.99
+metadata/_custom_type_script = "uid://cjsad3x24fyus"
+
+[node name="CurrencyInteractionListenerComponent" type="Node" parent="." unique_id=1664844210 node_paths=PackedStringArray("interaction")]
+script = ExtResource("6_fgip1")
+interaction = NodePath("../InteractableComponent/Interaction")
+metadata/_custom_type_script = "uid://bkrksibpfbj1"
+
+[node name="SignalToAnimationComponent" type="Node" parent="." unique_id=1754596542 node_paths=PackedStringArray("source_", "animation_player_")]
+script = ExtResource("8_7ysnp")
+source_ = NodePath("../HackableComponent")
+signal_name_ = "Hacked"
+animation_player_ = NodePath("../Graphics/AnimationPlayer")
+animation_name_ = "Hacked"
+metadata/_custom_type_script = "uid://tye6jmwwdjk0"

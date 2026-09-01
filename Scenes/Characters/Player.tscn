@@ -1,12 +1,12 @@
 [gd_scene format=3 uid="uid://doa7okoermkiw"]
 
-[ext_resource type="Texture2D" uid="uid://b2fldg4m4tcbo" path="res://icon.svg" id="1_b4kmf"]
 [ext_resource type="Script" uid="uid://ckf60xy1d5yx" path="res://Source/Components/AI/NavigationAgentComponent.cs" id="2_shd1k"]
 [ext_resource type="Script" uid="uid://db7kxmotuff4y" path="res://Source/Components/AI/ActorIntentsComponent.cs" id="3_5kd0c"]
 [ext_resource type="Script" uid="uid://bamk2sv23kwhg" path="res://Source/Components/Physics/CharacterMovementComponent.cs" id="4_aal88"]
 [ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/InventoryComponent.cs" id="5_4opfx"]
 [ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="6_vtvfp"]
-[ext_resource type="Resource" uid="uid://djrrvj27u3w1l" path="res://Resources/Items/test_item.tres" id="7_ypuv8"]
+[ext_resource type="Resource" uid="uid://db6rbn3gul0ys" path="res://Resources/Items/DrillResource.tres" id="7_qeewm"]
+[ext_resource type="Resource" uid="uid://drtinikjajib5" path="res://Resources/Items/HackToolResource.tres" id="8_81gbe"]
 [ext_resource type="Script" uid="uid://cly3sbur8n14a" path="res://Source/Components/Inventory/ItemSelectorSwitchComponent.cs" id="8_toq76"]
 [ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="9_hl70s"]
 [ext_resource type="Script" uid="uid://bw1s5y0lofjef" path="res://Source/Components/Controllers/PlayerControllerComponent.cs" id="10_ltdul"]
@@ -34,9 +34,8 @@ radius = 68.007355
 
 [node name="Player" type="CharacterBody2D" unique_id=29278974]
 
-[node name="Icon" type="Sprite2D" parent="." unique_id=437271352]
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("1_b4kmf")
+[node name="Camera2D" type="Camera2D" parent="." unique_id=673502319]
+position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=811187539]
 shape = SubResource("CircleShape2D_b4kmf")
@@ -57,7 +56,7 @@ metadata/_custom_type_script = "uid://bamk2sv23kwhg"
 
 [node name="InventoryComponent" type="Node" parent="." unique_id=1328338131]
 script = ExtResource("5_4opfx")
-items = Array[ExtResource("6_vtvfp")]([ExtResource("7_ypuv8")])
+items = Array[ExtResource("6_vtvfp")]([ExtResource("7_qeewm"), ExtResource("8_81gbe")])
 metadata/_custom_type_script = "uid://bgx6j4m6rux5q"
 
 [node name="ItemSelectorSwitchComponent" type="Node" parent="." unique_id=1309030163]

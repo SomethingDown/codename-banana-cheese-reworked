@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://ca56tjl8eaa2a"]
+
+[ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="1_hmeh1"]
+[ext_resource type="Script" uid="uid://b1xnsdvg4nskt" path="res://Source/Components/Inventory/Usecases/UseBreach.cs" id="1_sfb5d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgy3s"]
+atlas = ExtResource("1_hmeh1")
+region = Rect2(0, 16, 16, 16)
+
+[node name="Drill" type="Node2D" unique_id=1307184989]
+
+[node name="Graphics" type="Node2D" parent="." unique_id=1198135792]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphics" unique_id=3724967]
+position = Vector2(4, -1)
+texture = SubResource("AtlasTexture_pgy3s")
+
+[node name="UseBreach" type="Node" parent="." unique_id=523885776]
+script = ExtResource("1_sfb5d")
+metadata/_custom_type_script = "uid://b1xnsdvg4nskt"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://db6rbn3gul0ys"]
+
+[ext_resource type="PackedScene" uid="uid://ca56tjl8eaa2a" path="res://Scenes/Items/Drill.tscn" id="1_q8fle"]
+[ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="2_pju6k"]
+
+[resource]
+script = ExtResource("2_pju6k")
+name = "Drill"
+description = "Used to breach into stuff."
+item_equipped_scene = ExtResource("1_q8fle")
+metadata/_custom_type_script = "uid://bcemd0ydhmjbe"

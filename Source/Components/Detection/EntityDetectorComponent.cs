@@ -14,7 +14,8 @@ public partial class EntityDetectorComponent : Area2D
         self_entity_area = this.GetComponent<EntityAreaComponent>();
 
         CollisionMask = PhysicsLayers.Entities;
-        
+        CollisionLayer = 0;
+
 
         AreaEntered += a=>
         {

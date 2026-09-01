@@ -3,8 +3,8 @@ using Godot;
 [GlobalClass]
 public partial class CurrencyInteractionListenerComponent : InteractionListenerComponent
 {
+    [Signal] public delegate void CurrencyDepleatedEventHandler();
     private bool collected = false;
-
     private CurrencyComponent currency_component_;
     private HackableComponent hackable_componnet_;
 
@@ -28,6 +28,7 @@ public partial class CurrencyInteractionListenerComponent : InteractionListenerC
         if (breachable != null && !breachable.IsBreached) return;
 
         entity.GetComponentInEntity<CurrencyComponent>()?.AddCurrency(currency_component_.SpendAllCurrency());
+        EmitSignal(SignalName.CurrencyDepleated);
     }
 
 }

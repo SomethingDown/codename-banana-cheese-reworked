@@ -18,7 +18,7 @@ public partial class UseHack : Node, IUse
         if (entities.Count <= 0) return false;
 
         entities.First().entity.GetComponentInEntity<HackableComponent>().Hack();
-        GD.Print("Fsgdg");
+
         return false;
     }
     public bool UseCanceled(Node user)=>false;
