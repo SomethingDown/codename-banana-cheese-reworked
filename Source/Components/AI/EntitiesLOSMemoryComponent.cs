@@ -18,7 +18,7 @@ public partial class EntitiesLOSMemoryComponent : Node
         entity_los_ = this.GetComponent<EntityLOSComponent>();
     }
 
-    public List<EntityAreaComponent> GetEntitiesInLOS()
+    public override void _PhysicsProcess(double delta)
     {
         entities_ = entities_in_range_memory_.entities.Where(e=>entity_los_.IsEntityInLOS(e)).ToList();
 
@@ -27,14 +27,17 @@ public partial class EntitiesLOSMemoryComponent : Node
         last_entities_ = entities_;
 
         if (changed) EmitSignal(SignalName.EntitiesChanged);
+    }
 
+
+    public List<EntityAreaComponent> GetEntitiesInLOS()
+    {
         return entities_;
     }
 
     public List<EntityAreaComponent> GetEntitiesInLOSWithComponent<T>() where T : class
     {
-        entities_ = GetEntitiesInLOS().Where(e=>e.entity.GetComponentInEntity<T>() != null).ToList();
-        return entities_;
+        return GetEntitiesInLOS().Where(e=>e.entity.GetComponentInEntity<T>() != null).ToList();
     }
 
 }

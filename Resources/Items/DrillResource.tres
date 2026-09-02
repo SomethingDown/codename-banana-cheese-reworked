@@ -1,11 +1,14 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://db6rbn3gul0ys"]
 
 [ext_resource type="PackedScene" uid="uid://ca56tjl8eaa2a" path="res://Scenes/Items/Drill.tscn" id="1_q8fle"]
+[ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="1_qbvsu"]
 [ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="2_pju6k"]
+[ext_resource type="Resource" uid="uid://5ngs7dhtas7u" path="res://Resources/Authorizations/BreachAuthResource.tres" id="2_qbvsu"]
 
 [resource]
 script = ExtResource("2_pju6k")
 name = "Drill"
 description = "Used to breach into stuff."
 item_equipped_scene = ExtResource("1_q8fle")
+authorizations = Array[ExtResource("1_qbvsu")]([ExtResource("2_qbvsu")])
 metadata/_custom_type_script = "uid://bcemd0ydhmjbe"

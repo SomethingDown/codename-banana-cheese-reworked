@@ -6,7 +6,7 @@ using System.Linq;
 [GlobalClass]
 public partial class UseBreach : Node, IUse
 {
-
+    [Signal] public delegate void FiredEventHandler();
     public bool UseInitiaited(Node user)
     {
         EntitiesLOSMemoryComponent entities_los_memory_component = user.GetComponentInEntity<EntitiesLOSMemoryComponent>();
@@ -18,6 +18,7 @@ public partial class UseBreach : Node, IUse
         if (entities.Count <= 0) return false;
 
         entities.First().entity.GetComponentInEntity<BreachableComponent>().Breach();
+        EmitSignal(SignalName.Fired);
         return false;
     }
     public bool UseCanceled(Node user)=>false;

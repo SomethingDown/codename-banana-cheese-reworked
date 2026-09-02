@@ -5,17 +5,20 @@ using System;
 public partial class RandomWanderDecision : Decision
 {
 
-    private Node2D entity_;
-    private NavigationAgentComponent navigation_agent_;
     [Export] public float max_distance = 60.0f;
-
+    private Node2D entity_;
+    private CharacterStuckNotifierComponnet stuck_notifier_;
     private Random random_ = new Random();
 
     public override void _Ready()
     {
         base._Ready();
         entity_ = (Node2D)GetParent().GetEntity();
-        navigation_agent_ = GetParent().GetComponent<NavigationAgentComponent>();
+        stuck_notifier_ = GetParent().GetComponent<CharacterStuckNotifierComponnet>();
+        if (stuck_notifier_!=null) stuck_notifier_.CharacterStuck += () =>
+        {
+            intents_component.target_position = null;
+        };
     }
 
 
@@ -32,24 +35,12 @@ public partial class RandomWanderDecision : Decision
     public override void Execute()
     {
         base.Execute();
-        if (entity_ ==  null || navigation_agent_ == null ) return;
-        
+        if (entity_ == null) return;
         if (intents_component.target_position == null)
         {
-            intents_component.target_position = 
-                entity_.GlobalPosition + 
-                new Vector2(
-                    (random_.NextSingle()*2 - 1) * max_distance,
-                    (random_.NextSingle()*2 - 1) * max_distance
-                );
+            float angle = random_.NextSingle() * Mathf.Tau;
+            float dist = random_.NextSingle() * max_distance;
+            intents_component.target_position = entity_.GlobalPosition + Vector2.Right.Rotated(angle) * dist;
         }
-        
-        if (navigation_agent_.IsTargetReached() || !navigation_agent_.IsTargetReachable())
-        {
-            intents_component.target_position = null;
-        }
-
     }
-
-
 }

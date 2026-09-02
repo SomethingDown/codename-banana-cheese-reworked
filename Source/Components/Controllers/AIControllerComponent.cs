@@ -16,17 +16,20 @@ public partial class AIControllerComponent : ControllerComponent
     public override Vector2 GetMovementAxis()
     {
         Vector2? target_position = actor_intents_.target_position;
-        navigation_agent_.TargetPosition = Vector2.Zero;
-
+        
         if (target_position == null || entity_ == null) return Vector2.Zero;
 
-        navigation_agent_.TargetPosition = (Vector2)target_position;
+        if (navigation_agent_.TargetPosition != (Vector2)target_position)
+            navigation_agent_.TargetPosition = (Vector2)target_position;
 
-        if (navigation_agent_.IsTargetReached() || !navigation_agent_.IsTargetReachable()) return Vector2.Zero;
+        if (navigation_agent_.IsTargetReached() || !navigation_agent_.IsTargetReachable())
+        {
+            actor_intents_.target_position = null;
+            return Vector2.Zero;
+        }
 
         Vector2 movement_normal = (navigation_agent_.GetNextPathPosition() - entity_.GlobalPosition).Normalized();
-        
-        return movement_normal; 
+        return movement_normal;
     }
 
 }

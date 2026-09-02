@@ -3,11 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://ckik2y1e6sf5o" path="res://Assets/Spreadsheets/Objects spreadsheet.png" id="1_2agfb"]
 [ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="1_gp0il"]
 [ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="2_2agfb"]
+[ext_resource type="Script" uid="uid://cb3ne1gdfuk76" path="res://Source/Components/Visuals/SignalToAnimationResource.cs" id="3_71h4h"]
 [ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="3_aenh3"]
 [ext_resource type="Script" uid="uid://b543x6d16a7ej" path="res://Source/Components/Security/BreachableComponent.cs" id="4_71h4h"]
 [ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="5_8geyv"]
 [ext_resource type="Script" uid="uid://bkrksibpfbj1" path="res://Source/Components/Interactive/InteractionListeners/CurrencyInteractionListenerComponent.cs" id="6_qpabv"]
 [ext_resource type="Script" uid="uid://tye6jmwwdjk0" path="res://Source/Components/Visuals/SignalToAnimationComponent.cs" id="7_2agfb"]
+[ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="7_qpabv"]
+[ext_resource type="Resource" uid="uid://5ngs7dhtas7u" path="res://Resources/Authorizations/BreachAuthResource.tres" id="8_3wc4i"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aenh3"]
 atlas = ExtResource("1_2agfb")
@@ -127,6 +130,22 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8geyv"]
 size = Vector2(10, 12)
 
+[sub_resource type="Resource" id="Resource_8geyv"]
+script = ExtResource("3_71h4h")
+source_path = NodePath("../BreachableComponent")
+signal_name = "Breached"
+animation_player_path = NodePath("../Graphics/AnimationPlayer")
+animation_name = "Breached"
+metadata/_custom_type_script = "uid://cb3ne1gdfuk76"
+
+[sub_resource type="Resource" id="Resource_71h4h"]
+script = ExtResource("3_71h4h")
+source_path = NodePath("../CurrencyInteractionListenerComponent")
+signal_name = "CurrencyDepleated"
+animation_player_path = NodePath("../Graphics/AnimationPlayer")
+animation_name = "Collected"
+metadata/_custom_type_script = "uid://cb3ne1gdfuk76"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_bmxlf"]
 
 [node name="Safe" type="Node2D" unique_id=326658387]
@@ -144,7 +163,7 @@ libraries/ = SubResource("AnimationLibrary_00ncc")
 position = Vector2(-1, 4)
 emitting = false
 amount = 16
-lifetime = 0.09999999999999999
+lifetime = 0.1
 one_shot = true
 speed_scale = 0.5
 explosiveness = 0.26
@@ -165,6 +184,11 @@ initial_velocity_max = 102.94
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_8geyv")
 
+[node name="SignalToAnimationComponent" type="Node" parent="." unique_id=705493983]
+script = ExtResource("7_2agfb")
+signals_to_animations_ = Array[ExtResource("3_71h4h")]([SubResource("Resource_8geyv"), SubResource("Resource_71h4h")])
+metadata/_custom_type_script = "uid://tye6jmwwdjk0"
+
 [node name="EntityAreaComponent" type="Area2D" parent="." unique_id=791056169]
 script = ExtResource("1_gp0il")
 metadata/_custom_type_script = "uid://hgcc0pq50e12"
@@ -178,7 +202,8 @@ metadata/_custom_type_script = "uid://bt6qadveyo2d8"
 
 [node name="Interaction" type="Node" parent="InteractableComponent" unique_id=1195277403]
 script = ExtResource("3_aenh3")
-label = "Collect"
+label = "Collect Safe"
+authorizations = Array[ExtResource("7_qpabv")]([ExtResource("8_3wc4i")])
 metadata/_custom_type_script = "uid://c3pa3ibleap0q"
 
 [node name="BreachableComponent" type="Node" parent="." unique_id=45300262]
@@ -193,19 +218,3 @@ metadata/_custom_type_script = "uid://cjsad3x24fyus"
 script = ExtResource("6_qpabv")
 interaction = NodePath("../InteractableComponent/Interaction")
 metadata/_custom_type_script = "uid://bkrksibpfbj1"
-
-[node name="SignalToAnimationComponent" type="Node" parent="." unique_id=705493983 node_paths=PackedStringArray("source_", "animation_player_")]
-script = ExtResource("7_2agfb")
-source_ = NodePath("../BreachableComponent")
-signal_name_ = "Breached"
-animation_player_ = NodePath("../Graphics/AnimationPlayer")
-animation_name_ = "Breached"
-metadata/_custom_type_script = "uid://tye6jmwwdjk0"
-
-[node name="SignalToAnimationComponent2" type="Node" parent="." unique_id=855737748 node_paths=PackedStringArray("source_", "animation_player_")]
-script = ExtResource("7_2agfb")
-source_ = NodePath("../CurrencyInteractionListenerComponent")
-signal_name_ = "CurrencyDepleated"
-animation_player_ = NodePath("../Graphics/AnimationPlayer")
-animation_name_ = "Collected"
-metadata/_custom_type_script = "uid://tye6jmwwdjk0"

@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://doa7okoermkiw"]
 
+[ext_resource type="Texture2D" uid="uid://irxvq3jh1suw" path="res://Assets/Spreadsheets/Characters spreadsheet.png" id="1_qeewm"]
 [ext_resource type="Script" uid="uid://ckf60xy1d5yx" path="res://Source/Components/AI/NavigationAgentComponent.cs" id="2_shd1k"]
 [ext_resource type="Script" uid="uid://db7kxmotuff4y" path="res://Source/Components/AI/ActorIntentsComponent.cs" id="3_5kd0c"]
 [ext_resource type="Script" uid="uid://bamk2sv23kwhg" path="res://Source/Components/Physics/CharacterMovementComponent.cs" id="4_aal88"]
@@ -22,9 +23,35 @@
 [ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="21_ibpri"]
 [ext_resource type="Script" uid="uid://igpebnom14w3" path="res://Source/Components/Debug/CurrencyDebugComponent.cs" id="22_qd2bg"]
 [ext_resource type="Script" uid="uid://bspbboy231t7e" path="res://Source/Components/Debug/InteractorDebugComponent.cs" id="22_qeewm"]
+[ext_resource type="Script" uid="uid://b703ufrr5qn6k" path="res://Source/Components/Physics/CharacterStuckNotifierComponnet.cs" id="24_81gbe"]
+[ext_resource type="Script" uid="uid://c6wrgm0vfcok2" path="res://Source/Components/Security/AuthorizationComponent.cs" id="25_3vnku"]
+[ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="26_mc0oj"]
+[ext_resource type="Resource" uid="uid://5ngs7dhtas7u" path="res://Resources/Authorizations/BreachAuthResource.tres" id="27_fxftb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4kmf"]
-radius = 6.0
+radius = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81gbe"]
+atlas = ExtResource("1_qeewm")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vnku"]
+atlas = ExtResource("1_qeewm")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqlak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81gbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3vnku")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5kd0c"]
 radius = 7.0
@@ -39,6 +66,14 @@ position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=811187539]
 shape = SubResource("CircleShape2D_b4kmf")
+
+[node name="Graphics" type="Node2D" parent="." unique_id=191712926]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1240223573]
+position = Vector2(0, -3)
+sprite_frames = SubResource("SpriteFrames_hqlak")
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="NavigationAgentComponent" type="NavigationAgent2D" parent="." unique_id=55730638]
 script = ExtResource("2_shd1k")
@@ -142,3 +177,12 @@ metadata/_custom_type_script = "uid://igpebnom14w3"
 [node name="InteractorDebugComponent" type="Node" parent="." unique_id=1118781408]
 script = ExtResource("22_qeewm")
 metadata/_custom_type_script = "uid://bspbboy231t7e"
+
+[node name="CharacterStuckNotifierComponnet" type="Node" parent="." unique_id=664202299]
+script = ExtResource("24_81gbe")
+metadata/_custom_type_script = "uid://b703ufrr5qn6k"
+
+[node name="AuthorizationComponent" type="Node" parent="." unique_id=1371257926]
+script = ExtResource("25_3vnku")
+authorizations = Array[ExtResource("26_mc0oj")]([ExtResource("27_fxftb")])
+metadata/_custom_type_script = "uid://c6wrgm0vfcok2"

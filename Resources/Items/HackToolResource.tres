@@ -1,11 +1,14 @@
 [gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://drtinikjajib5"]
 
+[ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="1_8rxgl"]
 [ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="1_lypfa"]
 [ext_resource type="PackedScene" uid="uid://1xnd167kxjj8" path="res://Scenes/Items/HackTool.tscn" id="1_m78ol"]
+[ext_resource type="Resource" uid="uid://0nhpc0y468l4" path="res://Resources/Authorizations/HackingAuthResource.tres" id="2_8rxgl"]
 
 [resource]
 script = ExtResource("1_lypfa")
 name = "Hack Tool"
 description = "Used to hack into electronics."
 item_equipped_scene = ExtResource("1_m78ol")
+authorizations = Array[ExtResource("1_8rxgl")]([ExtResource("2_8rxgl")])
 metadata/_custom_type_script = "uid://bcemd0ydhmjbe"

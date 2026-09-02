@@ -1,5 +1,5 @@
 using Godot;
-using System;
+using Godot.Collections;
 
 [GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__push_button_node.svg")]
 public partial class Interaction : Node
@@ -8,6 +8,7 @@ public partial class Interaction : Node
     [Signal] public delegate void InteractionCanceledEventHandler(Node interactor);
 
     [Export] public string label;
+    [Export] public Array<AuthorizationResource> authorizations = new Array<AuthorizationResource>();
     
     public void Enter(Node interactor)
     {
