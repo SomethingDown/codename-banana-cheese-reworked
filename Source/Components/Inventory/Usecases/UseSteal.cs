@@ -15,11 +15,11 @@ public partial class UseSteal : Node, IUse
         EntitiesLOSMemoryComponent entities_los_memory_ = user.GetComponentInEntity<EntitiesLOSMemoryComponent>();
         if (entities_los_memory_ == null) return false;
         
-        List<EntityAreaComponent> entities = entities_los_memory_.GetEntitiesInLOSWithComponent<CurrencyComponent>();
-        entities = entities.Where(e=>e.entity.GetComponentInEntity<CurrencyComponent>().GetCurrency() > 0 ).ToList();
+        List<Node> entities = entities_los_memory_.GetEntitiesInLOSWithComponent<CurrencyComponent>();
+        entities = entities.Where(e=>e.GetComponentInEntity<CurrencyComponent>().GetCurrency() > 0 ).ToList();
         
         if (entities.Count <= 0) return false;
-        currency_component.AddCurrency(entities.First().entity.GetComponentInEntity<CurrencyComponent>().SpendAllCurrency());
+        currency_component.AddCurrency(entities.First().GetComponentInEntity<CurrencyComponent>().SpendAllCurrency());
         
         return false;
     }

@@ -12,7 +12,8 @@ public partial class RandomWanderDecision : Decision
 
     public override void _Ready()
     {
-        base._Ready();
+        if (intents_component==null) return;
+        
         entity_ = (Node2D)GetParent().GetEntity();
         stuck_notifier_ = GetParent().GetComponent<CharacterStuckNotifierComponnet>();
         if (stuck_notifier_!=null) stuck_notifier_.CharacterStuck += () =>

@@ -2,13 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://irxvq3jh1suw" path="res://Assets/Spreadsheets/Characters spreadsheet.png" id="1_qeewm"]
 [ext_resource type="Script" uid="uid://ckf60xy1d5yx" path="res://Source/Components/AI/NavigationAgentComponent.cs" id="2_shd1k"]
-[ext_resource type="Script" uid="uid://db7kxmotuff4y" path="res://Source/Components/AI/ActorIntentsComponent.cs" id="3_5kd0c"]
 [ext_resource type="Script" uid="uid://bamk2sv23kwhg" path="res://Source/Components/Physics/CharacterMovementComponent.cs" id="4_aal88"]
 [ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/InventoryComponent.cs" id="5_4opfx"]
 [ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="6_vtvfp"]
 [ext_resource type="Resource" uid="uid://db6rbn3gul0ys" path="res://Resources/Items/DrillResource.tres" id="7_qeewm"]
 [ext_resource type="Resource" uid="uid://drtinikjajib5" path="res://Resources/Items/HackToolResource.tres" id="8_81gbe"]
 [ext_resource type="Script" uid="uid://cly3sbur8n14a" path="res://Source/Components/Inventory/ItemSelectorSwitchComponent.cs" id="8_toq76"]
+[ext_resource type="Resource" uid="uid://bkjt3su6ey1tv" path="res://Resources/Items/GenericWeaponResource.tres" id="8_x4yal"]
 [ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="9_hl70s"]
 [ext_resource type="Script" uid="uid://bw1s5y0lofjef" path="res://Source/Components/Controllers/PlayerControllerComponent.cs" id="10_ltdul"]
 [ext_resource type="Script" uid="uid://bvhg2hkb8gvk8" path="res://Source/Components/Inventory/HandComponent.cs" id="11_ibpri"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://d15bhq1xhf3cq" path="res://Source/Components/Interactive/InteractablesSelectorComponent.cs" id="16_hl70s"]
 [ext_resource type="Script" uid="uid://yw4dln1fdmoo" path="res://Source/Components/AI/EntitiesLOSMemoryComponent.cs" id="16_qd2bg"]
 [ext_resource type="Script" uid="uid://bna53qvcvu8ku" path="res://Source/Components/Interactive/InteractorComponent.cs" id="18_hl70s"]
+[ext_resource type="Script" uid="uid://dui6fhdnjnsvc" path="res://Source/Components/Vitality/HealthComponent.cs" id="18_mc0oj"]
 [ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="21_ibpri"]
 [ext_resource type="Script" uid="uid://igpebnom14w3" path="res://Source/Components/Debug/CurrencyDebugComponent.cs" id="22_qd2bg"]
 [ext_resource type="Script" uid="uid://bspbboy231t7e" path="res://Source/Components/Debug/InteractorDebugComponent.cs" id="22_qeewm"]
@@ -27,9 +28,15 @@
 [ext_resource type="Script" uid="uid://c6wrgm0vfcok2" path="res://Source/Components/Security/AuthorizationComponent.cs" id="25_3vnku"]
 [ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="26_mc0oj"]
 [ext_resource type="Resource" uid="uid://5ngs7dhtas7u" path="res://Resources/Authorizations/BreachAuthResource.tres" id="27_fxftb"]
+[ext_resource type="Script" uid="uid://cb2sw7ojt5leh" path="res://Source/Components/Debug/HealthDebugComponnet.cs" id="28_fxftb"]
+[ext_resource type="Script" uid="uid://cu7xy2fly1g2k" path="res://Source/Components/Gameplay/IAmPlayerComponent.cs" id="29_spibu"]
+[ext_resource type="Script" uid="uid://d0d1dd5vdn4ks" path="res://Source/Components/Vitality/DeleteOnDeathComponent.cs" id="30_2n8gu"]
+[ext_resource type="Script" uid="uid://cpkki4ums7wor" path="res://Source/Components/Vitality/DamageRecieverComponent.cs" id="30_h1o3h"]
+[ext_resource type="Script" uid="uid://di377n0x7ceig" path="res://Source/Components/Interactive/InteractionSelectorComponent.cs" id="33_ynkr0"]
+[ext_resource type="Script" uid="uid://8acsjhbwwkv3" path="res://Source/Components/Physics/KnockbackOnDamageComponent.cs" id="34_ynkr0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4kmf"]
-radius = 2.0
+radius = 2.65
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_81gbe"]
 atlas = ExtResource("1_qeewm")
@@ -53,11 +60,12 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5kd0c"]
-radius = 7.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_spibu"]
+radius = 4.651163
+height = 23.255814
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aal88"]
-radius = 68.007355
+radius = 25.079872
 
 [node name="Player" type="CharacterBody2D" unique_id=29278974]
 
@@ -65,9 +73,11 @@ radius = 68.007355
 position = Vector2(0, -2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=811187539]
+position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_b4kmf")
 
 [node name="Graphics" type="Node2D" parent="." unique_id=191712926]
+position = Vector2(0, -5)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1240223573]
 position = Vector2(0, -3)
@@ -80,18 +90,14 @@ script = ExtResource("2_shd1k")
 desired_distance = 8.0
 metadata/_custom_type_script = "uid://ckf60xy1d5yx"
 
-[node name="ActorIntentsComponent" type="Node" parent="." unique_id=655480975]
-script = ExtResource("3_5kd0c")
-metadata/_custom_type_script = "uid://db7kxmotuff4y"
-
 [node name="CharacterMovementComponent" type="Node" parent="." unique_id=674051150]
 script = ExtResource("4_aal88")
-speed = 80.0
+speed = 60.0
 metadata/_custom_type_script = "uid://bamk2sv23kwhg"
 
 [node name="InventoryComponent" type="Node" parent="." unique_id=1328338131]
 script = ExtResource("5_4opfx")
-items = Array[ExtResource("6_vtvfp")]([ExtResource("7_qeewm"), ExtResource("8_81gbe")])
+items = Array[ExtResource("6_vtvfp")]([ExtResource("7_qeewm"), ExtResource("8_81gbe"), ExtResource("8_x4yal")])
 metadata/_custom_type_script = "uid://bgx6j4m6rux5q"
 
 [node name="ItemSelectorSwitchComponent" type="Node" parent="." unique_id=1309030163]
@@ -107,6 +113,7 @@ script = ExtResource("10_ltdul")
 metadata/_custom_type_script = "uid://bw1s5y0lofjef"
 
 [node name="HandComponent" type="Node2D" parent="." unique_id=234022227 node_paths=PackedStringArray("hand_axel_", "item_position")]
+position = Vector2(0, -7)
 script = ExtResource("11_ibpri")
 hand_axel_ = NodePath("Axel")
 item_position = NodePath("Axel/Item position")
@@ -118,11 +125,14 @@ metadata/_custom_type_script = "uid://bvhg2hkb8gvk8"
 position = Vector2(8, 0)
 
 [node name="EntityAreaComponent" type="Area2D" parent="." unique_id=162614264]
+position = Vector2(-1.0000001, 0)
+scale = Vector2(0.43, 0.43)
 script = ExtResource("12_shd1k")
 metadata/_custom_type_script = "uid://hgcc0pq50e12"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=147219165]
-shape = SubResource("CircleShape2D_5kd0c")
+position = Vector2(2.3255816, -16.27907)
+shape = SubResource("CapsuleShape2D_spibu")
 
 [node name="EntityDetectorComponent" type="Area2D" parent="." unique_id=263371898]
 script = ExtResource("13_5kd0c")
@@ -158,6 +168,10 @@ metadata/_custom_type_script = "uid://yw4dln1fdmoo"
 script = ExtResource("21_ibpri")
 metadata/_custom_type_script = "uid://cjsad3x24fyus"
 
+[node name="HealthComponent" type="Node" parent="." unique_id=1097863576]
+script = ExtResource("18_mc0oj")
+metadata/_custom_type_script = "uid://dui6fhdnjnsvc"
+
 [node name="InteractablesSelectorSwitchComponent" type="Node" parent="." unique_id=1325219469]
 script = ExtResource("15_toq76")
 metadata/_custom_type_script = "uid://b13my2y8s05er"
@@ -166,9 +180,34 @@ metadata/_custom_type_script = "uid://b13my2y8s05er"
 script = ExtResource("16_hl70s")
 metadata/_custom_type_script = "uid://d15bhq1xhf3cq"
 
+[node name="InteractionSelectorComponent" type="Node" parent="." unique_id=520103309]
+script = ExtResource("33_ynkr0")
+metadata/_custom_type_script = "uid://di377n0x7ceig"
+
 [node name="InteractorComponent" type="Node" parent="." unique_id=804453902]
 script = ExtResource("18_hl70s")
 metadata/_custom_type_script = "uid://bna53qvcvu8ku"
+
+[node name="CharacterStuckNotifierComponnet" type="Node" parent="." unique_id=664202299]
+script = ExtResource("24_81gbe")
+metadata/_custom_type_script = "uid://b703ufrr5qn6k"
+
+[node name="DeleteOnDeathComponent" type="Node" parent="." unique_id=12437925]
+script = ExtResource("30_2n8gu")
+metadata/_custom_type_script = "uid://d0d1dd5vdn4ks"
+
+[node name="AuthorizationComponent" type="Node" parent="." unique_id=1371257926]
+script = ExtResource("25_3vnku")
+authorizations = Array[ExtResource("26_mc0oj")]([ExtResource("27_fxftb")])
+metadata/_custom_type_script = "uid://c6wrgm0vfcok2"
+
+[node name="IAmPlayerComponent" type="Node" parent="." unique_id=1264270837]
+script = ExtResource("29_spibu")
+metadata/_custom_type_script = "uid://cu7xy2fly1g2k"
+
+[node name="DamageRecieverComponent" type="Node" parent="." unique_id=1763461465]
+script = ExtResource("30_h1o3h")
+metadata/_custom_type_script = "uid://cpkki4ums7wor"
 
 [node name="CurrencyDebugComponent" type="Node" parent="." unique_id=857645681]
 script = ExtResource("22_qd2bg")
@@ -178,11 +217,10 @@ metadata/_custom_type_script = "uid://igpebnom14w3"
 script = ExtResource("22_qeewm")
 metadata/_custom_type_script = "uid://bspbboy231t7e"
 
-[node name="CharacterStuckNotifierComponnet" type="Node" parent="." unique_id=664202299]
-script = ExtResource("24_81gbe")
-metadata/_custom_type_script = "uid://b703ufrr5qn6k"
+[node name="HealthDebugComponnet" type="Node" parent="." unique_id=78997399]
+script = ExtResource("28_fxftb")
+metadata/_custom_type_script = "uid://cb2sw7ojt5leh"
 
-[node name="AuthorizationComponent" type="Node" parent="." unique_id=1371257926]
-script = ExtResource("25_3vnku")
-authorizations = Array[ExtResource("26_mc0oj")]([ExtResource("27_fxftb")])
-metadata/_custom_type_script = "uid://c6wrgm0vfcok2"
+[node name="KnockbackOnDamageComponent" type="Node" parent="." unique_id=869383311]
+script = ExtResource("34_ynkr0")
+metadata/_custom_type_script = "uid://8acsjhbwwkv3"

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dnxmxooyfwgfp"]
+
+[ext_resource type="Script" uid="uid://3s3hgtbvy3kt" path="res://Source/UI/HUD/InteractionsHud.cs" id="1_8s5c8"]
+[ext_resource type="PackedScene" uid="uid://c52hbhlskxii4" path="res://Scenes/UI/HUD/InteractionDisplayHud.tscn" id="2_03mlo"]
+
+[node name="InteractionsHUD" type="Control" unique_id=959886488 node_paths=PackedStringArray("interactions_container_")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8s5c8")
+intreaction_display_scene_ = ExtResource("2_03mlo")
+interactions_container_ = NodePath("VBoxContainer")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=652629412]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -272.0
+offset_bottom = -118.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="InteractionDisplayHUD" parent="VBoxContainer" unique_id=351377306 instance=ExtResource("2_03mlo")]
+layout_mode = 2
+
+[node name="InteractionDisplayHUD2" parent="VBoxContainer" unique_id=413899642 instance=ExtResource("2_03mlo")]
+layout_mode = 2

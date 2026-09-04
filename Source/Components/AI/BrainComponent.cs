@@ -4,9 +4,9 @@ using System.Linq;
 [GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__brain_node.svg")]
 public partial class BrainComponent : Node
 {
+    [Signal] public delegate void DecisionChangedEventHandler(Decision decision); 
     private Decision prefered_decision_ ;
     private float prefered_decision_score_ ;
-
 
     public override void _Process(double delta)
     {
@@ -30,8 +30,7 @@ public partial class BrainComponent : Node
             prefered_decision_?.Exit();
             prefered_decision_ = new_prefered_decision_;
             prefered_decision_?.Enter();
-
-            EventsQueue.instance.Publish(new EventMessage{message=$"{prefered_decision_?.Name}"});
+            if (prefered_decision_!=null) EmitSignal(SignalName.DecisionChanged,prefered_decision_);
         }
         prefered_decision_?.Execute();
     }

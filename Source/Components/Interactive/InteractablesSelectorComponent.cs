@@ -6,11 +6,11 @@ using System.Linq;
 [GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/streamline__hand_cursor_node.svg")]
 public partial class InteractablesSelectorComponent : Node
 {
-    [Signal] public delegate void SelectionChangedEventHandler(EntityAreaComponent entity_area);
+    [Signal] public delegate void SelectionChangedEventHandler(Node entity);
 
     private EntitiesLOSMemoryComponent entities_memory_;
-    private List<EntityAreaComponent> interactables_ => entities_memory_.GetEntitiesInLOSWithComponent<InteractableComponent>();
-    public EntityAreaComponent selected_entity {get;private set;} = null;
+    private List<Node> interactables_ => entities_memory_.GetEntitiesInLOSWithComponent<InteractableComponent>();
+    public Node selected_entity {get;private set;} = null;
 
     public override void _Ready()
     {
@@ -41,10 +41,12 @@ public partial class InteractablesSelectorComponent : Node
         return interactables_.IndexOf(selected_entity);
     }
 
-    private void SetSelected(EntityAreaComponent entity_area)
+    private void SetSelected(Node entity)
     {
-        if (selected_entity == entity_area) return;
-        selected_entity = entity_area;
+        if (selected_entity == entity) return;
+        selected_entity?.GetComponentInEntity<InteractableComponent>()?.Unselect();
+        selected_entity = entity;
+        selected_entity?.GetComponentInEntity<InteractableComponent>()?.Select();
         EmitSelectionChangedSignal();
     }
 
@@ -57,9 +59,9 @@ public partial class InteractablesSelectorComponent : Node
     {
         int index = IndexOfSelected();
         if (index == -1)
-        {
-            Unselect();
-            return;
+        {   
+            if (interactables_.Count <= 0) {Unselect();return;}
+            index = 0;
         }
         SelectAt(index);
     }

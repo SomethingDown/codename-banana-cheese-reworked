@@ -1,0 +1,134 @@
+[gd_scene format=3 uid="uid://cs8up888xpi88"]
+
+[ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="1_450ol"]
+[ext_resource type="Script" uid="uid://bsf02vgadr0gi" path="res://Source/Components/Inventory/Usecases/UseShoot.cs" id="1_l644b"]
+[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="2_62fll"]
+[ext_resource type="PackedScene" uid="uid://rxua84gab15j" path="res://Scenes/Objects/Bullet.tscn" id="2_a5gco"]
+[ext_resource type="Script" uid="uid://tye6jmwwdjk0" path="res://Source/Components/Visuals/SignalToAnimationComponent.cs" id="3_018qa"]
+[ext_resource type="Script" uid="uid://cb3ne1gdfuk76" path="res://Source/Components/Visuals/SignalToAnimationResource.cs" id="4_o1a7w"]
+[ext_resource type="Script" uid="uid://lcnommejn6jr" path="res://Source/Components/Visuals/SignalToTweenComponent.cs" id="5_o1a7w"]
+[ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="5_ybakc"]
+[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="6_ybakc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbpv3"]
+atlas = ExtResource("1_450ol")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="Animation" id="Animation_62fll"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_1k8np"]
+resource_name = "Shot"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/CPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bgute"]
+_data = {
+&"RESET": SubResource("Animation_62fll"),
+&"Shot": SubResource("Animation_1k8np")
+}
+
+[sub_resource type="Resource" id="Resource_h4n6s"]
+script = ExtResource("4_o1a7w")
+source_path = NodePath("../UseShoot")
+signal_name = "Shot"
+animation_player_path = NodePath("../Graphics/AnimationPlayer")
+animation_name = "Shot"
+metadata/_custom_type_script = "uid://cb3ne1gdfuk76"
+
+[sub_resource type="Resource" id="Resource_1k8np"]
+script = ExtResource("2_62fll")
+node_path = NodePath("../Graphics")
+action = "rotation"
+value = -0.1
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_o1a7w"]
+script = ExtResource("2_62fll")
+node_path = NodePath("../Graphics")
+action = "rotation"
+value = 0.0
+duration = 0.05
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_irutj"]
+script = ExtResource("6_ybakc")
+source_path = NodePath("../UseShoot")
+signal_name = "Shot"
+tween_resources = Array[ExtResource("2_62fll")]([SubResource("Resource_1k8np"), SubResource("Resource_o1a7w")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"
+
+[node name="Weapon" type="Node2D" unique_id=1546239798]
+
+[node name="Graphics" type="Node2D" parent="." unique_id=1789711694]
+position = Vector2(0, 2)
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphics" unique_id=1082430362]
+position = Vector2(4, -2)
+texture = SubResource("AtlasTexture_cbpv3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics" unique_id=607029239]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_bgute")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Graphics" unique_id=1056933173]
+position = Vector2(11, -4)
+emitting = false
+amount = 3
+lifetime = 0.1
+one_shot = true
+explosiveness = 0.2
+fixed_fps = 60
+direction = Vector2(10, 0)
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+color = Color(0.99215686, 0.8509804, 0, 1)
+
+[node name="Marker2D" type="Marker2D" parent="Graphics" unique_id=968406016]
+position = Vector2(12, -3)
+
+[node name="SignalToAnimationComponent" type="Node" parent="." unique_id=298255284]
+script = ExtResource("3_018qa")
+signals_to_animations_ = Array[ExtResource("4_o1a7w")]([SubResource("Resource_h4n6s")])
+metadata/_custom_type_script = "uid://tye6jmwwdjk0"
+
+[node name="SignalToTweenComponent" type="Node" parent="." unique_id=1621717999]
+script = ExtResource("5_o1a7w")
+tweens_ = Array[ExtResource("6_ybakc")]([SubResource("Resource_irutj")])
+metadata/_custom_type_script = "uid://lcnommejn6jr"
+
+[node name="TweenComponent" type="Node" parent="." unique_id=1224667646]
+script = ExtResource("5_ybakc")
+metadata/_custom_type_script = "uid://cnahluscj58pv"
+
+[node name="UseShoot" type="Node" parent="." unique_id=1333988825 node_paths=PackedStringArray("muzzle")]
+script = ExtResource("1_l644b")
+projectile_scene = ExtResource("2_a5gco")
+cooldown = 0.2
+muzzle = NodePath("../Graphics/Marker2D")
+metadata/_custom_type_script = "uid://bsf02vgadr0gi"

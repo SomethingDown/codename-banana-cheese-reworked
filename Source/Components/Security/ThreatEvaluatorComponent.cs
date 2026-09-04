@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/pixelarticons__square_alert_sharp_pixel_node.svg")]
 public partial class ThreatEvaluatorComponent : Node
 {
     [Signal] public delegate void ThreatDetectedEventHandler(Node entity);
@@ -23,10 +23,10 @@ public partial class ThreatEvaluatorComponent : Node
         List<Node> threats = new List<Node>();
         entities_los_memory_.GetEntitiesInLOSWithComponent<AuthorizationComponent>().ToList().ForEach(e =>
         {
-            var auth_comp = e.entity.GetComponentInEntity<AuthorizationComponent>();
+            var auth_comp = e.GetComponentInEntity<AuthorizationComponent>();
             if (auth_comp == null) return;
 
-            var requiredAuths = GetRequiredAuthorizations(e.entity);
+            var requiredAuths = GetRequiredAuthorizations(e);
 
             bool unauthorized = requiredAuths.Any(a => !auth_comp.authorizations.Contains(a));
 
@@ -35,15 +35,20 @@ public partial class ThreatEvaluatorComponent : Node
                 threats.Add(e);
             }
         });
+
         threats.ForEach(e =>
         {
-            if (!last_threats_.Contains(e)) EmitSignal(SignalName.ThreatDetected,e);
+            if (GodotObject.IsInstanceValid(e) && !last_threats_.Contains(e))
+                EmitSignal(SignalName.ThreatDetected, e);
         });
+
         last_threats_.ForEach(e =>
         {
-            if (!threats.Contains(e)) EmitSignal(SignalName.ThreatCleared,e);
+            if (GodotObject.IsInstanceValid(e) && !threats.Contains(e))
+                EmitSignal(SignalName.ThreatCleared, e);
         });
-        last_threats_ = threats;
+
+        last_threats_ = threats.Where(GodotObject.IsInstanceValid).ToList();
     }
 
     private List<AuthorizationResource> GetRequiredAuthorizations(Node entity)

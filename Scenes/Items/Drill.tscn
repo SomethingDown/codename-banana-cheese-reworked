@@ -3,78 +3,54 @@
 [ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="1_hmeh1"]
 [ext_resource type="Script" uid="uid://b1xnsdvg4nskt" path="res://Source/Components/Inventory/Usecases/UseBreach.cs" id="1_sfb5d"]
 [ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="2_nnklp"]
+[ext_resource type="Script" uid="uid://lcnommejn6jr" path="res://Source/Components/Visuals/SignalToTweenComponent.cs" id="4_c4ndu"]
 [ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="4_e3syp"]
-[ext_resource type="Script" uid="uid://tye6jmwwdjk0" path="res://Source/Components/Visuals/SignalToAnimationComponent.cs" id="5_c4ndu"]
-[ext_resource type="Script" uid="uid://cb3ne1gdfuk76" path="res://Source/Components/Visuals/SignalToAnimationResource.cs" id="6_e3syp"]
+[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="5_dd46k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgy3s"]
 atlas = ExtResource("1_hmeh1")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="Resource" id="Resource_dd46k"]
-script = ExtResource("2_nnklp")
-node_path = NodePath("Graphics/Sprite2D")
-action = "position"
-value = Vector2(2, 0)
-duration = 0.1
-metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
-
 [sub_resource type="Resource" id="Resource_sb7mj"]
 script = ExtResource("2_nnklp")
-node_path = NodePath("Graphics/Sprite2D")
-parallel_to_previous = true
+node_path = NodePath("../Graphics")
 action = "rotation"
-value = 1.2
+value = 0.3
 duration = 0.1
 metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
 
 [sub_resource type="Resource" id="Resource_e3syp"]
 script = ExtResource("2_nnklp")
-node_path = NodePath("Graphics/Sprite2D")
-action = "position"
-value = Vector2(0, 0)
-duration = 0.05
+node_path = NodePath("../Graphics")
+parallel_to_previous = true
+action = "scale"
+value = Vector2(1.1, 1.1)
+duration = 0.1
 metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
 
 [sub_resource type="Resource" id="Resource_quy13"]
 script = ExtResource("2_nnklp")
-node_path = NodePath("Graphics/Sprite2D")
-parallel_to_previous = true
+node_path = NodePath("../Graphics")
 action = "rotation"
 value = 0.0
-duration = 0.05
+duration = 0.1
 metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
 
-[sub_resource type="Animation" id="Animation_sb7mj"]
-resource_name = "Drill"
-length = 0.001
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("TweenComponent")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [[SubResource("Resource_dd46k"), SubResource("Resource_sb7mj"), SubResource("Resource_e3syp"), SubResource("Resource_quy13")]],
-"method": &"InitiateTween"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_quy13"]
-_data = {
-&"Drill": SubResource("Animation_sb7mj")
-}
-
 [sub_resource type="Resource" id="Resource_c4ndu"]
-script = ExtResource("6_e3syp")
+script = ExtResource("2_nnklp")
+node_path = NodePath("../Graphics")
+parallel_to_previous = true
+action = "scale"
+value = Vector2(1, 1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_rof77"]
+script = ExtResource("5_dd46k")
 source_path = NodePath("../UseBreach")
 signal_name = "Fired"
-animation_player_path = NodePath("../Graphics/AnimationPlayer")
-animation_name = "Drill"
-metadata/_custom_type_script = "uid://cb3ne1gdfuk76"
+tween_resources = Array[ExtResource("2_nnklp")]([SubResource("Resource_sb7mj"), SubResource("Resource_e3syp"), SubResource("Resource_quy13"), SubResource("Resource_c4ndu")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"
 
 [node name="Drill" type="Node2D" unique_id=1307184989]
 
@@ -84,10 +60,6 @@ metadata/_custom_type_script = "uid://cb3ne1gdfuk76"
 position = Vector2(4, -1)
 texture = SubResource("AtlasTexture_pgy3s")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics" unique_id=888121862]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_quy13")
-
 [node name="UseBreach" type="Node" parent="." unique_id=523885776]
 script = ExtResource("1_sfb5d")
 metadata/_custom_type_script = "uid://b1xnsdvg4nskt"
@@ -96,7 +68,7 @@ metadata/_custom_type_script = "uid://b1xnsdvg4nskt"
 script = ExtResource("4_e3syp")
 metadata/_custom_type_script = "uid://cnahluscj58pv"
 
-[node name="SignalToAnimationComponent" type="Node" parent="." unique_id=574139879]
-script = ExtResource("5_c4ndu")
-signals_to_animations_ = Array[ExtResource("6_e3syp")]([SubResource("Resource_c4ndu")])
-metadata/_custom_type_script = "uid://tye6jmwwdjk0"
+[node name="SignalToTweenComponent" type="Node" parent="." unique_id=624411488]
+script = ExtResource("4_c4ndu")
+tweens_ = Array[ExtResource("5_dd46k")]([SubResource("Resource_rof77")])
+metadata/_custom_type_script = "uid://lcnommejn6jr"

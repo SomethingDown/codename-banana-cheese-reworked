@@ -4,7 +4,7 @@ using System;
 [GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/streamline__collaborations_idea_node.svg")]
 public partial class Decision : Node
 {
-    [Export] public ActorIntentsComponent intents_component;
+    [Export] public CharacterIntentsComponent intents_component;
     [Export] public float success_score;
 
     public virtual void Enter(){}

@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ckik2y1e6sf5o" path="res://Assets/Spreadsheets/Objects spreadsheet.png" id="1_uijmt"]
 [ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="2_uijmt"]
 [ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="3_7ysnp"]
+[ext_resource type="Script" uid="uid://727uolqg3b74" path="res://Source/Components/Visuals/SignalToOutlineComponent.cs" id="3_adwil"]
 [ext_resource type="Script" uid="uid://cb3ne1gdfuk76" path="res://Source/Components/Visuals/SignalToAnimationResource.cs" id="3_mjwbc"]
 [ext_resource type="Script" uid="uid://xtt5itxdehdv" path="res://Source/Components/Security/HackableComponent.cs" id="4_mjwbc"]
 [ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="5_d58mo"]
@@ -11,6 +12,7 @@
 [ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="7_fgip1"]
 [ext_resource type="Script" uid="uid://tye6jmwwdjk0" path="res://Source/Components/Visuals/SignalToAnimationComponent.cs" id="8_7ysnp"]
 [ext_resource type="Resource" uid="uid://0nhpc0y468l4" path="res://Resources/Authorizations/HackingAuthResource.tres" id="8_oigph"]
+[ext_resource type="Script" uid="uid://d1g63tu86plw7" path="res://Source/Components/Visuals/OutlineComponent.cs" id="12_oigph"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uijmt"]
 atlas = ExtResource("1_uijmt")
@@ -76,8 +78,11 @@ _data = {
 &"RESET": SubResource("Animation_7ysnp")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uijmt"]
-size = Vector2(10, 13)
+[sub_resource type="CircleShape2D" id="CircleShape2D_fgip1"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4kpch"]
+radius = 6.3245554
 
 [sub_resource type="Resource" id="Resource_d58mo"]
 script = ExtResource("3_mjwbc")
@@ -87,11 +92,10 @@ animation_player_path = NodePath("../Graphics/AnimationPlayer")
 animation_name = "Hacked"
 metadata/_custom_type_script = "uid://cb3ne1gdfuk76"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4kpch"]
-
 [node name="ATM" type="Node2D" unique_id=1299385066]
 
 [node name="Graphics" type="Node2D" parent="." unique_id=1168714747]
+position = Vector2(0, -8)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1014525122]
 sprite_frames = SubResource("SpriteFrames_mjwbc")
@@ -101,24 +105,38 @@ animation = &"Secured"
 libraries/ = SubResource("AnimationLibrary_mjwbc")
 
 [node name="Collision" type="Node2D" parent="." unique_id=1200441788]
+position = Vector2(0, -8)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Collision" unique_id=1417776061]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D" unique_id=797036897]
-position = Vector2(0, 1.5)
-shape = SubResource("RectangleShape2D_uijmt")
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_fgip1")
 
-[node name="SignalToAnimationComponent" type="Node" parent="." unique_id=1754596542]
-script = ExtResource("8_7ysnp")
-signals_to_animations_ = Array[ExtResource("3_mjwbc")]([SubResource("Resource_d58mo")])
-metadata/_custom_type_script = "uid://tye6jmwwdjk0"
+[node name="OutlineComponent" type="Node" parent="." unique_id=2000899811 node_paths=PackedStringArray("visual_")]
+script = ExtResource("12_oigph")
+visual_ = NodePath("../Graphics/AnimatedSprite2D")
+metadata/_custom_type_script = "uid://d1g63tu86plw7"
+
+[node name="SignalToOutlineComponent" type="Node" parent="." unique_id=547764386 node_paths=PackedStringArray("source_")]
+script = ExtResource("3_adwil")
+source_ = NodePath("../InteractableComponent")
+enable_outline_signal_ = "Selected"
+disable_outline_signal_ = "Unselected"
+metadata/_custom_type_script = "uid://727uolqg3b74"
 
 [node name="EntityAreaComponent" type="Area2D" parent="." unique_id=439492143]
+position = Vector2(0, -6)
 script = ExtResource("1_lm1xb")
 metadata/_custom_type_script = "uid://hgcc0pq50e12"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=763302685]
 shape = SubResource("CircleShape2D_4kpch")
+
+[node name="SignalToAnimationComponent" type="Node" parent="." unique_id=1754596542]
+script = ExtResource("8_7ysnp")
+signals_to_animations_ = Array[ExtResource("3_mjwbc")]([SubResource("Resource_d58mo")])
+metadata/_custom_type_script = "uid://tye6jmwwdjk0"
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=143118288]
 script = ExtResource("2_uijmt")
@@ -127,6 +145,12 @@ metadata/_custom_type_script = "uid://bt6qadveyo2d8"
 [node name="Interaction" type="Node" parent="InteractableComponent" unique_id=646426468]
 script = ExtResource("3_7ysnp")
 label = "Collect ATM"
+authorizations = Array[ExtResource("7_fgip1")]([ExtResource("8_oigph")])
+metadata/_custom_type_script = "uid://c3pa3ibleap0q"
+
+[node name="Interaction2" type="Node" parent="InteractableComponent" unique_id=1875634698]
+script = ExtResource("3_7ysnp")
+label = "Collect ATM2"
 authorizations = Array[ExtResource("7_fgip1")]([ExtResource("8_oigph")])
 metadata/_custom_type_script = "uid://c3pa3ibleap0q"
 
@@ -143,3 +167,5 @@ metadata/_custom_type_script = "uid://cjsad3x24fyus"
 script = ExtResource("6_fgip1")
 interaction = NodePath("../InteractableComponent/Interaction")
 metadata/_custom_type_script = "uid://bkrksibpfbj1"
+
+[node name="Node2D" type="Node2D" parent="." unique_id=536708508]

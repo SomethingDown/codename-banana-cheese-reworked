@@ -15,7 +15,7 @@ public partial class EntityDetectorDebugComponent : Node
         entity_detector_.EntityAreaEntered += e =>
         {
             EventsQueue.instance.Publish(new EventMessage{message=$"Entered: {
-                string.Join(" ",e.entity.GetChildren().Select(n=>n.Name))
+                string.Join(" ",e.GetChildren().Select(n=>n.Name))
             }"});
         };
         entity_detector_.EntityAreaExited += e =>

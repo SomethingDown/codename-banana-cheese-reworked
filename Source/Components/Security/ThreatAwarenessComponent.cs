@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/pixelarticons__square_alert_sharp_pixel_node.svg")]
 public partial class ThreatAwarenessComponent : Node
 {
     [Signal] public delegate void ThreatConfirmedEventHandler(Node entity);
@@ -39,7 +39,6 @@ public partial class ThreatAwarenessComponent : Node
     {
         actively_detected_.Remove(entity);
     }
-
     public override void _Process(double delta)
     {
         var entities_to_remove = new List<Node>();
@@ -47,6 +46,13 @@ public partial class ThreatAwarenessComponent : Node
         entity_threat_meter_.ToList().ForEach(kv =>
         {
             Node entity = kv.Key;
+
+            if (!GodotObject.IsInstanceValid(entity))
+            {
+                entities_to_remove.Add(entity);
+                return;
+            }
+
             float meter = kv.Value;
 
             meter += (actively_detected_.Contains(entity) ? fill_rate : -drain_rate) * (float) delta;
@@ -63,7 +69,13 @@ public partial class ThreatAwarenessComponent : Node
         {
             entity_threat_meter_.Remove(e);
             confirmed_threats_.Remove(e);
+            actively_detected_.Remove(e);
         });
+    }
+    public HashSet<Node> GetConfirmedThreats()
+    {
+        confirmed_threats_.RemoveWhere(e => !GodotObject.IsInstanceValid(e));
+        return confirmed_threats_;
     }
 
     private void UpdateConfirmedState(Node entity, float meter)

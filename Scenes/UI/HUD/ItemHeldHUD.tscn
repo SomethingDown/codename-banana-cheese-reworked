@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://c18bh1coln4wt"]
+
+[ext_resource type="Script" uid="uid://c543l67rtk037" path="res://Source/UI/HUD/ItemHeldHud.cs" id="1_t2kby"]
+[ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="2_y414m"]
+[ext_resource type="Theme" uid="uid://cbfhieu2egpd5" path="res://Resources/UI/Theme/Theme01.tres" id="3_1bgge"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grg3l"]
+atlas = ExtResource("2_y414m")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kpch"]
+atlas = ExtResource("2_y414m")
+region = Rect2(0, 48, 16, 16)
+
+[node name="ItemHeldHUD" type="Control" unique_id=85850289 node_paths=PackedStringArray("item_name_label_", "item_icon_texture_")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_t2kby")
+item_name_label_ = NodePath("VBox/RichTextLabel")
+item_icon_texture_ = NodePath("VBox/TextureRect")
+no_item_texture = SubResource("AtlasTexture_grg3l")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=362997910]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.86875
+anchor_top = 0.7277778
+anchor_right = 0.99375
+anchor_bottom = 0.98888886
+grow_horizontal = 0
+grow_vertical = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBox" unique_id=1245088540]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("3_1bgge")
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "stuff"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBox" unique_id=2056306108]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 4.0
+texture = SubResource("AtlasTexture_4kpch")
+stretch_mode = 5

@@ -4,11 +4,18 @@
 [ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="1_qbvsu"]
 [ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="2_pju6k"]
 [ext_resource type="Resource" uid="uid://5ngs7dhtas7u" path="res://Resources/Authorizations/BreachAuthResource.tres" id="2_qbvsu"]
+[ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="3_b32bk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hwujg"]
+atlas = ExtResource("3_b32bk")
+region = Rect2(0, 16, 16, 16)
 
 [resource]
 script = ExtResource("2_pju6k")
 name = "Drill"
 description = "Used to breach into stuff."
+icon = SubResource("AtlasTexture_hwujg")
+item_type = 0
 item_equipped_scene = ExtResource("1_q8fle")
 authorizations = Array[ExtResource("1_qbvsu")]([ExtResource("2_qbvsu")])
 metadata/_custom_type_script = "uid://bcemd0ydhmjbe"

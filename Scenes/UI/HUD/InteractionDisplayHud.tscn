@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://c52hbhlskxii4"]
+
+[ext_resource type="Script" uid="uid://kr0n3jkgg1ls" path="res://Source/UI/HUD/InteractionDisplayHud.cs" id="1_yyarm"]
+
+[node name="InteractionDisplayHUD" type="Control" unique_id=351377306 node_paths=PackedStringArray("interaction_name_label")]
+layout_mode = 3
+anchor_right = 0.153125
+anchor_bottom = 0.1388889
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_yyarm")
+interaction_name_label = NodePath("RichTextLabel")
+metadata/_edit_use_anchors_ = true
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1432887669]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 8
+bbcode_enabled = true
+text = "placeholder stststs"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true

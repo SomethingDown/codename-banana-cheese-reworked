@@ -1,15 +1,26 @@
+using System;
+using System.ComponentModel;
+using System.IO;
 using Godot;
 
 [GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__speech_bubble_exclamation_node.svg")]
 public partial class EventsDebugComponent :Node
 {
+    private Action<Event> action_=null;
     public override void _Ready()
     {
-        EventsBus.instance.Subscribe(
-            e =>
+        action_= e =>
             {
                 GD.Print($"Event resolved-[{e}]");
-            }
+            };
+
+        EventsBus.instance.Subscribe(
+            action_
         );
+    }
+
+    public override void _ExitTree()
+    {
+        EventsBus.instance.Unsubscribe(action_);
     }
 }

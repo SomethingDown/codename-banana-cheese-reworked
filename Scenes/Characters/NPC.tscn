@@ -4,25 +4,48 @@
 [ext_resource type="Script" uid="uid://dft1kx1vjj81f" path="res://Source/Components/Controllers/AIControllerComponent.cs" id="1_lhmbd"]
 [ext_resource type="Script" uid="uid://ckf60xy1d5yx" path="res://Source/Components/AI/NavigationAgentComponent.cs" id="2_a0igq"]
 [ext_resource type="Script" uid="uid://b0xp48htsan7h" path="res://Source/Components/AI/BrainComponent.cs" id="2_b07n7"]
+[ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="3_5simk"]
 [ext_resource type="Script" uid="uid://bamk2sv23kwhg" path="res://Source/Components/Physics/CharacterMovementComponent.cs" id="3_a8o6n"]
-[ext_resource type="Script" uid="uid://db7kxmotuff4y" path="res://Source/Components/AI/ActorIntentsComponent.cs" id="5_we08j"]
+[ext_resource type="Script" uid="uid://lcnommejn6jr" path="res://Source/Components/Visuals/SignalToTweenComponent.cs" id="3_n0hmj"]
+[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="5_w6yc2"]
+[ext_resource type="Script" uid="uid://db7kxmotuff4y" path="res://Source/Components/AI/CharacterIntentsComponent.cs" id="5_we08j"]
+[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="6_oxv2e"]
 [ext_resource type="Script" uid="uid://li6c8wf25gt" path="res://Source/Components/AI/Decisons/RandomWanderDecision.cs" id="7_hcars"]
+[ext_resource type="Resource" uid="uid://b2aa20rcninj0" path="res://Assets/Tweens/DamageEffect01.tres" id="7_q7vcw"]
 [ext_resource type="Script" uid="uid://bpb8e2l7376gm" path="res://Source/Components/Detection/EntityDetectorComponent.cs" id="8_hcars"]
+[ext_resource type="Script" uid="uid://cmmbkuu3xp1kc" path="res://Source/Components/AI/Decisons/FleeDecision.cs" id="9_wea0g"]
+[ext_resource type="Script" uid="uid://ckilslj6l8gye" path="res://Source/Components/AI/Decisons/ChaseDecision.cs" id="10_heust"]
 [ext_resource type="Script" uid="uid://dhbmi1rn6whh" path="res://Source/Components/Detection/EntityLOSComponent.cs" id="10_iqlxx"]
+[ext_resource type="Script" uid="uid://bvhg2hkb8gvk8" path="res://Source/Components/Inventory/HandComponent.cs" id="11_2bmg2"]
 [ext_resource type="Script" uid="uid://yw4dln1fdmoo" path="res://Source/Components/AI/EntitiesLOSMemoryComponent.cs" id="11_gy426"]
+[ext_resource type="Script" uid="uid://ds2qccesiw55x" path="res://Source/Components/AI/Decisons/HoldWeaponDecision.cs" id="11_vg632"]
 [ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="12_7blul"]
 [ext_resource type="Script" uid="uid://c04uct6hgp80m" path="res://Source/Components/AI/EntitiesInRangeMemoryComponent.cs" id="12_lka2k"]
+[ext_resource type="Script" uid="uid://bytwum3vklvy3" path="res://Source/Components/AI/Decisons/UnholdWeaponDecision.cs" id="12_vkwbg"]
 [ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="13_gy426"]
+[ext_resource type="Script" uid="uid://cp2rdbfskdygf" path="res://Source/Components/AI/Decisons/UseWeaponDecision.cs" id="13_xync2"]
 [ext_resource type="Script" uid="uid://b703ufrr5qn6k" path="res://Source/Components/Physics/CharacterStuckNotifierComponnet.cs" id="14_lka2k"]
 [ext_resource type="Script" uid="uid://c6wrgm0vfcok2" path="res://Source/Components/Security/AuthorizationComponent.cs" id="15_abgwp"]
 [ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="16_g3jgu"]
+[ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="16_ji2ae"]
 [ext_resource type="Resource" uid="uid://netg3oqhkum4" path="res://Resources/Authorizations/WeaponAuthResource.tres" id="17_3vs80"]
 [ext_resource type="Script" uid="uid://c0h7a686qgghg" path="res://Source/Components/Security/ThreatEvaluatorComponent.cs" id="18_g3jgu"]
 [ext_resource type="Script" uid="uid://er3tenwxkt2j" path="res://Source/Components/Security/ThreatAwarenessComponent.cs" id="19_3u3c4"]
 [ext_resource type="Script" uid="uid://bbekkpx11njnj" path="res://Source/Components/Debug/ThreatEvaluatorDebugComponent.cs" id="19_3vs80"]
+[ext_resource type="Resource" uid="uid://bkjt3su6ey1tv" path="res://Resources/Items/GenericWeaponResource.tres" id="21_xync2"]
+[ext_resource type="Script" uid="uid://d0d1dd5vdn4ks" path="res://Source/Components/Vitality/DeleteOnDeathComponent.cs" id="22_knnuf"]
+[ext_resource type="Script" uid="uid://dyjx130p2s1e6" path="res://Source/Components/Debug/BrainDebugComponent.cs" id="22_x307b"]
+[ext_resource type="Script" uid="uid://cly3sbur8n14a" path="res://Source/Components/Inventory/ItemSelectorSwitchComponent.cs" id="25_12pmu"]
+[ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/InventoryComponent.cs" id="26_xhvfd"]
+[ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="27_ji2ae"]
+[ext_resource type="Script" uid="uid://dui6fhdnjnsvc" path="res://Source/Components/Vitality/HealthComponent.cs" id="34_dpuba"]
+[ext_resource type="Script" uid="uid://dm8pem0le2ymo" path="res://Source/Components/UI/HealthVisualComponent.cs" id="35_31vux"]
+[ext_resource type="Script" uid="uid://8acsjhbwwkv3" path="res://Source/Components/Physics/KnockbackOnDamageComponent.cs" id="40_dsdj3"]
+[ext_resource type="Script" uid="uid://cpkki4ums7wor" path="res://Source/Components/Vitality/DamageRecieverComponent.cs" id="41_we3hc"]
+[ext_resource type="Script" uid="uid://bwo6grccsbtfu" path="res://Source/Components/Visuals/DamageIndicatorComponent.cs" id="42_we3hc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0yww"]
-radius = 2.236068
+radius = 3.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lka2k"]
 atlas = ExtResource("1_gy426")
@@ -46,18 +69,43 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_dsdj3"]
+script = ExtResource("6_oxv2e")
+node_path = NodePath("../Graphics/ProgressBar")
+action = "modulate:a"
+value = 1.0
+duration = 0.2
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_we3hc"]
+script = ExtResource("6_oxv2e")
+node_path = NodePath("../Graphics/ProgressBar")
+action = "modulate:a"
+value = 0.0
+duration = 3.0
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_q7vcw"]
+script = ExtResource("5_w6yc2")
+source_path = NodePath("../HealthComponent")
+signal_name = "HealthChanged"
+tween_resources = Array[ExtResource("6_oxv2e")]([SubResource("Resource_dsdj3"), SubResource("Resource_we3hc")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_gy426"]
-radius = 7.0
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7oewm"]
-radius = 52.086468
+radius = 119.03781
 
 [node name="NPC" type="CharacterBody2D" unique_id=1367578280]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2043076090]
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_p0yww")
 
 [node name="Graphics" type="Node2D" parent="." unique_id=52135343]
+position = Vector2(0, -3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1887175315]
 position = Vector2(0, -5)
@@ -65,31 +113,63 @@ sprite_frames = SubResource("SpriteFrames_gebkd")
 animation = &"Idle"
 autoplay = "Idle"
 
+[node name="ProgressBar" type="ProgressBar" parent="Graphics" unique_id=1564427192]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -15.0
+offset_right = 10.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(10, 2)
+show_percentage = false
+
+[node name="HealthVisualComponent" type="Node" parent="." unique_id=1556112236 node_paths=PackedStringArray("health_bar_")]
+script = ExtResource("35_31vux")
+health_bar_ = NodePath("../Graphics/ProgressBar")
+metadata/_custom_type_script = "uid://dm8pem0le2ymo"
+
+[node name="TweenComponent" type="Node" parent="." unique_id=1227916416]
+script = ExtResource("3_5simk")
+metadata/_custom_type_script = "uid://cnahluscj58pv"
+
+[node name="SignalToTweenComponent" type="Node" parent="." unique_id=891645051]
+script = ExtResource("3_n0hmj")
+tweens_ = Array[ExtResource("5_w6yc2")]([SubResource("Resource_q7vcw"), ExtResource("7_q7vcw")])
+metadata/_custom_type_script = "uid://lcnommejn6jr"
+
 [node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1032284191]
 script = ExtResource("12_7blul")
 metadata/_custom_type_script = "uid://hgcc0pq50e12"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=702205233]
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_gy426")
 
+[node name="CharacterIntentsComponent" type="Node" parent="." unique_id=2061913600]
+script = ExtResource("5_we08j")
+metadata/_custom_type_script = "uid://db7kxmotuff4y"
+
 [node name="NavigationAgentComponent" type="NavigationAgent2D" parent="." unique_id=288700673]
+path_postprocessing = 1
+radius = 12.0
+time_horizon_obstacles = 1.0
 script = ExtResource("2_a0igq")
 desired_distance = 32.0
 metadata/_custom_type_script = "uid://ckf60xy1d5yx"
 
 [node name="CharacterMovementComponent" type="Node" parent="." unique_id=1201953596]
 script = ExtResource("3_a8o6n")
-enabled = false
-speed = 30.0
+speed = 20.0
 metadata/_custom_type_script = "uid://bamk2sv23kwhg"
 
 [node name="AIControllerComponent" type="Node" parent="." unique_id=839493860]
 script = ExtResource("1_lhmbd")
 metadata/_custom_type_script = "uid://dft1kx1vjj81f"
-
-[node name="ActorIntentsComponent" type="Node" parent="." unique_id=1455474431]
-script = ExtResource("5_we08j")
-metadata/_custom_type_script = "uid://db7kxmotuff4y"
 
 [node name="BrainComponent" type="Node" parent="." unique_id=1866497672]
 script = ExtResource("2_b07n7")
@@ -98,9 +178,52 @@ metadata/_custom_type_script = "uid://b0xp48htsan7h"
 [node name="RandomWanderDecision" type="Node" parent="BrainComponent" unique_id=998070292 node_paths=PackedStringArray("intents_component")]
 script = ExtResource("7_hcars")
 max_distance = 100.0
-intents_component = NodePath("../../ActorIntentsComponent")
-success_score = 150.0
+intents_component = NodePath("../../CharacterIntentsComponent")
+success_score = 10.0
 metadata/_custom_type_script = "uid://li6c8wf25gt"
+
+[node name="FleeDecision" type="Node" parent="BrainComponent" unique_id=540631429 node_paths=PackedStringArray("intents_component")]
+script = ExtResource("9_wea0g")
+intents_component = NodePath("../../CharacterIntentsComponent")
+success_score = 20.0
+metadata/_custom_type_script = "uid://cmmbkuu3xp1kc"
+
+[node name="ChaseDecision" type="Node" parent="BrainComponent" unique_id=2112666205 node_paths=PackedStringArray("intents_component")]
+script = ExtResource("10_heust")
+desired_chase_distance = 10.0
+intents_component = NodePath("../../CharacterIntentsComponent")
+success_score = 30.0
+metadata/_custom_type_script = "uid://ckilslj6l8gye"
+
+[node name="HoldWeaponDecision" type="Node" parent="BrainComponent" unique_id=877918672 node_paths=PackedStringArray("intents_component")]
+script = ExtResource("11_vg632")
+intents_component = NodePath("../../CharacterIntentsComponent")
+success_score = 50.0
+metadata/_custom_type_script = "uid://ds2qccesiw55x"
+
+[node name="UnholdWeaponDecision" type="Node" parent="BrainComponent" unique_id=175484656 node_paths=PackedStringArray("intents_component")]
+script = ExtResource("12_vkwbg")
+intents_component = NodePath("../../CharacterIntentsComponent")
+success_score = 50.0
+metadata/_custom_type_script = "uid://bytwum3vklvy3"
+
+[node name="UseWeaponDecision" type="Node" parent="BrainComponent" unique_id=1355806022 node_paths=PackedStringArray("intents_component")]
+script = ExtResource("13_xync2")
+intents_component = NodePath("../../CharacterIntentsComponent")
+success_score = 100.0
+metadata/_custom_type_script = "uid://cp2rdbfskdygf"
+
+[node name="HandComponent" type="Node2D" parent="." unique_id=1534592723 node_paths=PackedStringArray("hand_axel_", "item_position")]
+position = Vector2(0, -6)
+script = ExtResource("11_2bmg2")
+hand_axel_ = NodePath("Marker2D")
+item_position = NodePath("Marker2D/Marker2D2")
+metadata/_custom_type_script = "uid://bvhg2hkb8gvk8"
+
+[node name="Marker2D" type="Marker2D" parent="HandComponent" unique_id=894732860]
+
+[node name="Marker2D2" type="Marker2D" parent="HandComponent/Marker2D" unique_id=1737169467]
+position = Vector2(6, 0)
 
 [node name="EntityDetectorComponent" type="Area2D" parent="." unique_id=137358878]
 script = ExtResource("8_hcars")
@@ -115,27 +238,44 @@ metadata/_custom_type_script = "uid://dhbmi1rn6whh"
 
 [node name="RayCast2D" type="RayCast2D" parent="EntityLOSComponent" unique_id=2033168541]
 position = Vector2(0, -5)
-target_position = Vector2(70, 0)
+target_position = Vector2(140, 0)
 collide_with_areas = true
 
 [node name="RayCast2D2" type="RayCast2D" parent="EntityLOSComponent" unique_id=1341954576]
-target_position = Vector2(70, 0)
+target_position = Vector2(140, 0)
 collide_with_areas = true
 
 [node name="RayCast2D3" type="RayCast2D" parent="EntityLOSComponent" unique_id=1455550095]
 position = Vector2(0, 6)
-target_position = Vector2(70, 0)
+target_position = Vector2(140, 0)
 collide_with_areas = true
 
 [node name="RayCast2D4" type="RayCast2D" parent="EntityLOSComponent" unique_id=1095781854]
 position = Vector2(0, 12)
-target_position = Vector2(70, 0)
+target_position = Vector2(140, 0)
 collide_with_areas = true
 
 [node name="RayCast2D5" type="RayCast2D" parent="EntityLOSComponent" unique_id=1395072750]
 position = Vector2(0, -11)
-target_position = Vector2(70, 0)
+target_position = Vector2(140, 0)
 collide_with_areas = true
+
+[node name="ItemSelectorSwitchComponent" type="Node" parent="." unique_id=868987406]
+script = ExtResource("25_12pmu")
+metadata/_custom_type_script = "uid://cly3sbur8n14a"
+
+[node name="ItemSelectorComponent" type="Node" parent="." unique_id=1603408992]
+script = ExtResource("27_ji2ae")
+metadata/_custom_type_script = "uid://5f2k3yn2la62"
+
+[node name="InventoryComponent" type="Node" parent="." unique_id=882306563]
+script = ExtResource("26_xhvfd")
+items = Array[ExtResource("16_ji2ae")]([ExtResource("21_xync2")])
+metadata/_custom_type_script = "uid://bgx6j4m6rux5q"
+
+[node name="DeleteOnDeathComponent" type="Node" parent="InventoryComponent" unique_id=1775480697]
+script = ExtResource("22_knnuf")
+metadata/_custom_type_script = "uid://d0d1dd5vdn4ks"
 
 [node name="EntitiesLOSMemoryComponent" type="Node" parent="." unique_id=505069654]
 script = ExtResource("11_gy426")
@@ -165,10 +305,35 @@ metadata/_custom_type_script = "uid://c0h7a686qgghg"
 
 [node name="ThreatAwarenessComponent" type="Node" parent="." unique_id=1536688537]
 script = ExtResource("19_3u3c4")
-drain_rate = 0.2
-threshold = 5.0
+fill_rate = 100.0
+drain_rate = 1.0
+threshold = 2.0
 metadata/_custom_type_script = "uid://er3tenwxkt2j"
 
 [node name="ThreatEvaluatorDebugComponent" type="Node" parent="." unique_id=239762038]
 script = ExtResource("19_3vs80")
 metadata/_custom_type_script = "uid://bbekkpx11njnj"
+
+[node name="BrainDebugComponent" type="Node" parent="." unique_id=1684210454]
+script = ExtResource("22_x307b")
+metadata/_custom_type_script = "uid://dyjx130p2s1e6"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=946884420]
+script = ExtResource("34_dpuba")
+metadata/_custom_type_script = "uid://dui6fhdnjnsvc"
+
+[node name="DeleteOnDeathComponent" type="Node" parent="." unique_id=1870448812]
+script = ExtResource("22_knnuf")
+metadata/_custom_type_script = "uid://d0d1dd5vdn4ks"
+
+[node name="KnockbackOnDamageComponent" type="Node" parent="." unique_id=1176480069]
+script = ExtResource("40_dsdj3")
+metadata/_custom_type_script = "uid://8acsjhbwwkv3"
+
+[node name="DamageRecieverComponent" type="Node" parent="." unique_id=1623597486]
+script = ExtResource("41_we3hc")
+metadata/_custom_type_script = "uid://cpkki4ums7wor"
+
+[node name="DamageIndicatorComponent" type="Node" parent="." unique_id=1927454384]
+script = ExtResource("42_we3hc")
+metadata/_custom_type_script = "uid://bwo6grccsbtfu"

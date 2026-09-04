@@ -9,7 +9,7 @@ public partial class EntitiesInRangeMemoryComponent : Node
     private EntityDetectorComponent entity_detector_;
 
 
-    public List<EntityAreaComponent> entities = new List<EntityAreaComponent>();
+    public List<Node> entities = new List<Node>();
 
 
     public override void _Ready()
@@ -19,6 +19,7 @@ public partial class EntitiesInRangeMemoryComponent : Node
         entity_detector_.EntityAreaEntered += e =>
         {
             entities.Add(e);
+            e.TreeExiting += ()=>entities.Remove(e);
         };
         entity_detector_.EntityAreaExited += e =>
         {

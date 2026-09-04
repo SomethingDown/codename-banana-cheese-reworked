@@ -12,12 +12,12 @@ public partial class UseHack : Node, IUse
         EntitiesLOSMemoryComponent entities_los_memory_component = user.GetComponentInEntity<EntitiesLOSMemoryComponent>();
         if (entities_los_memory_component == null) return false;
         
-        List<EntityAreaComponent> entities = entities_los_memory_component.GetEntitiesInLOSWithComponent<HackableComponent>();
-        entities = entities.Where(e=>e.entity.GetComponentInEntity<HackableComponent>().IsHacked==false).ToList();
+        List<Node> entities = entities_los_memory_component.GetEntitiesInLOSWithComponent<HackableComponent>();
+        entities = entities.Where(e=>e.GetComponentInEntity<HackableComponent>().IsHacked==false).ToList();
 
         if (entities.Count <= 0) return false;
 
-        entities.First().entity.GetComponentInEntity<HackableComponent>().Hack();
+        entities.First().GetComponentInEntity<HackableComponent>().Hack();
 
         return false;
     }

@@ -31,6 +31,13 @@ public partial class HandComponent : Node2D
     private void Aim()
     {
         hand_axel_.GlobalRotation = controller_.GetLookingRad();
+        
+        
+        //IDK IF THIS IS THE RIGHT PLACE ITEM ROTATION
+        Vector2 rotation_vector = Vector2.FromAngle(hand_axel_.GlobalRotation);
+        if(rotation_vector.X>0) item_position.Scale = new Vector2(1.0f,1.0f);
+        else item_position.Scale = new Vector2(1.0f,-1.0f);
+
     }
 
     private void Use()

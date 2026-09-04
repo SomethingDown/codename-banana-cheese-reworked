@@ -20,8 +20,10 @@ public partial class EntityLOSComponent : Node2D
     }
 
 
-    public bool IsEntityInLOS(EntityAreaComponent entity_area_component)
+    public bool IsEntityInLOS(Node entity)
     {
+        EntityAreaComponent entity_area_component = entity.GetComponentInEntity<EntityAreaComponent>();
+        if (entity_area_component == null) return false;
 
         LookAt(entity_area_component.GlobalPosition);
 

@@ -16,7 +16,7 @@ public partial class SignalToAnimationComponent : Node
             AnimationPlayer animation_player = GetNodeOrNull(r.animation_player_path) as AnimationPlayer;
             if (animation_player == null) return;
             
-            source.Connect(r.signal_name, Callable.From(() => animation_player.Play(r.animation_name)));
+            source.Connect(r.signal_name, this.CreateCallableForSignal(source,r.signal_name,() => animation_player.Play(r.animation_name)));
         });
     }
 }
