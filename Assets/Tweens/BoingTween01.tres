@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SignalToTweenResource" format=3 uid="uid://ha2481cjb18i"]
 
-[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="1_3cyci"]
-[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="2_fvvt6"]
+[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Resources/SignalToTweenResource.cs" id="1_3cyci"]
+[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Resources/TweenResource.cs" id="2_fvvt6"]
 
 [sub_resource type="Resource" id="Resource_65y27"]
 script = ExtResource("2_fvvt6")

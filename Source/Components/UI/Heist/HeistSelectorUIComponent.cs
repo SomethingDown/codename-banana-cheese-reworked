@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 
 [GlobalClass]
-public partial class HeistSelectorUI : Node
+public partial class HeistSelectorUIComponent : Node
 {
 
     [Export] private Control heists_container_;

@@ -5,15 +5,19 @@ using System;
 public partial class ItemSelectorComponent : Node
 {
     [Signal] public delegate void SelectionChangedEventHandler(ItemResource item);
+    [Export]private bool use_player_state_inventory_ = false;
 
     private InventoryComponent inventory_;
+
 
     public ItemResource selected_item {get;private set;} = null;
 
 
     public override void _Ready()
     {
-        inventory_ = this.GetComponent<InventoryComponent>();
+        if (!use_player_state_inventory_)inventory_ = this.GetComponent<InventoryComponent>();
+        else inventory_ = PlayerState.instance.banked_inventory_component;
+
         if (inventory_ == null) return;
         inventory_.ItemsChanged += OnItemsChanged;
     }

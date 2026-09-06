@@ -3,7 +3,7 @@ using System;
 
 
 [GlobalClass]
-public partial class ItemSelectorInfoCardDisplayerUI : Node
+public partial class ItemSelectorInfoCardDisplayerUIComponent : Node
 {
     [Export] private InfoCardUI info_card_;
     private ItemSelectorComponent item_selector_;

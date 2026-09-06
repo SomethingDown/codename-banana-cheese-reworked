@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="1_hmeh1"]
 [ext_resource type="Script" uid="uid://b1xnsdvg4nskt" path="res://Source/Components/Inventory/Usecases/UseBreach.cs" id="1_sfb5d"]
-[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="2_nnklp"]
+[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Resources/TweenResource.cs" id="2_nnklp"]
 [ext_resource type="Script" uid="uid://lcnommejn6jr" path="res://Source/Components/Visuals/SignalToTweenComponent.cs" id="4_c4ndu"]
 [ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="4_e3syp"]
-[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="5_dd46k"]
+[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Resources/SignalToTweenResource.cs" id="5_dd46k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pgy3s"]
 atlas = ExtResource("1_hmeh1")

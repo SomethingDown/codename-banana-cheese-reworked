@@ -4,11 +4,7 @@
 [ext_resource type="Script" uid="uid://ckf60xy1d5yx" path="res://Source/Components/AI/NavigationAgentComponent.cs" id="2_shd1k"]
 [ext_resource type="Script" uid="uid://bamk2sv23kwhg" path="res://Source/Components/Physics/CharacterMovementComponent.cs" id="4_aal88"]
 [ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/InventoryComponent.cs" id="5_4opfx"]
-[ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="6_vtvfp"]
-[ext_resource type="Resource" uid="uid://db6rbn3gul0ys" path="res://Resources/Items/DrillResource.tres" id="7_qeewm"]
-[ext_resource type="Resource" uid="uid://drtinikjajib5" path="res://Resources/Items/HackToolResource.tres" id="8_81gbe"]
 [ext_resource type="Script" uid="uid://cly3sbur8n14a" path="res://Source/Components/Inventory/ItemSelectorSwitchComponent.cs" id="8_toq76"]
-[ext_resource type="Resource" uid="uid://bkjt3su6ey1tv" path="res://Resources/Items/GenericWeaponResource.tres" id="8_x4yal"]
 [ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="9_hl70s"]
 [ext_resource type="Script" uid="uid://bw1s5y0lofjef" path="res://Source/Components/Controllers/PlayerControllerComponent.cs" id="10_ltdul"]
 [ext_resource type="Script" uid="uid://bvhg2hkb8gvk8" path="res://Source/Components/Inventory/HandComponent.cs" id="11_ibpri"]
@@ -26,7 +22,7 @@
 [ext_resource type="Script" uid="uid://bspbboy231t7e" path="res://Source/Components/Debug/InteractorDebugComponent.cs" id="22_qeewm"]
 [ext_resource type="Script" uid="uid://b703ufrr5qn6k" path="res://Source/Components/Physics/CharacterStuckNotifierComponnet.cs" id="24_81gbe"]
 [ext_resource type="Script" uid="uid://c6wrgm0vfcok2" path="res://Source/Components/Security/AuthorizationComponent.cs" id="25_3vnku"]
-[ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="26_mc0oj"]
+[ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Resources/AuthorizationResource.cs" id="26_mc0oj"]
 [ext_resource type="Resource" uid="uid://5ngs7dhtas7u" path="res://Resources/Authorizations/BreachAuthResource.tres" id="27_fxftb"]
 [ext_resource type="Script" uid="uid://cb2sw7ojt5leh" path="res://Source/Components/Debug/HealthDebugComponnet.cs" id="28_fxftb"]
 [ext_resource type="Script" uid="uid://cu7xy2fly1g2k" path="res://Source/Components/Gameplay/IAmPlayerComponent.cs" id="29_spibu"]
@@ -34,6 +30,7 @@
 [ext_resource type="Script" uid="uid://cpkki4ums7wor" path="res://Source/Components/Vitality/DamageRecieverComponent.cs" id="30_h1o3h"]
 [ext_resource type="Script" uid="uid://di377n0x7ceig" path="res://Source/Components/Interactive/InteractionSelectorComponent.cs" id="33_ynkr0"]
 [ext_resource type="Script" uid="uid://8acsjhbwwkv3" path="res://Source/Components/Physics/KnockbackOnDamageComponent.cs" id="34_ynkr0"]
+[ext_resource type="Script" uid="uid://1c751b7f3sko" path="res://Source/Components/Inventory/PlayerStateInventoryInitializerComponent.cs" id="35_mrttg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4kmf"]
 radius = 2.65
@@ -97,7 +94,6 @@ metadata/_custom_type_script = "uid://bamk2sv23kwhg"
 
 [node name="InventoryComponent" type="Node" parent="." unique_id=1328338131]
 script = ExtResource("5_4opfx")
-items = Array[ExtResource("6_vtvfp")]([ExtResource("7_qeewm"), ExtResource("8_81gbe"), ExtResource("8_x4yal")])
 metadata/_custom_type_script = "uid://bgx6j4m6rux5q"
 
 [node name="ItemSelectorSwitchComponent" type="Node" parent="." unique_id=1309030163]
@@ -227,3 +223,7 @@ metadata/_custom_type_script = "uid://cb2sw7ojt5leh"
 [node name="KnockbackOnDamageComponent" type="Node" parent="." unique_id=869383311]
 script = ExtResource("34_ynkr0")
 metadata/_custom_type_script = "uid://8acsjhbwwkv3"
+
+[node name="PlayerStateInventoryInitializerComponent" type="Node" parent="." unique_id=1622084915]
+script = ExtResource("35_mrttg")
+metadata/_custom_type_script = "uid://1c751b7f3sko"

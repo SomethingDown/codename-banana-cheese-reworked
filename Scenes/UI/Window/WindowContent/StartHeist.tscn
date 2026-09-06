@@ -1,13 +1,20 @@
 [gd_scene format=3 uid="uid://by2o1qprok8uf"]
 
 [ext_resource type="PackedScene" uid="uid://cldjrco5qixuo" path="res://Scenes/UI/Options/LabelOptionUI.tscn" id="2_4ks6k"]
-[ext_resource type="Script" uid="uid://bk02ou7ygbr13" path="res://Source/UI/Heist/HeistSelectorUI.cs" id="2_vqnvc"]
+[ext_resource type="Script" uid="uid://bk02ou7ygbr13" path="res://Source/Components/UI/Heist/HeistSelectorUIComponent.cs" id="2_vqnvc"]
 [ext_resource type="PackedScene" uid="uid://dkd2phc7o1p7w" path="res://Scenes/UI/Buttons/PrettyTextureButtonUI.tscn" id="3_u654o"]
 [ext_resource type="PackedScene" uid="uid://dk6khfy84q7wc" path="res://Scenes/UI/Info/InfoCardUI.tscn" id="3_vqnvc"]
 [ext_resource type="Script" uid="uid://mvjd5imq3rgq" path="res://Source/Components/Heist/HeistSelectorComponent.cs" id="4_idajr"]
-[ext_resource type="Script" uid="uid://b1ycqnqsyir33" path="res://Source/UI/Heist/HeistSelectorInfoCardDisplayerUI.cs" id="5_4ks6k"]
+[ext_resource type="Script" uid="uid://b1ycqnqsyir33" path="res://Source/Components/UI/Heist/HeistSelectorInfoDisplayUIComponent.cs" id="5_4ks6k"]
+[ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/InventoryComponent.cs" id="7_6cch6"]
 [ext_resource type="Script" uid="uid://bl4jpf03fe02t" path="res://Source/Heist/HeistStarter.cs" id="7_n8p28"]
 [ext_resource type="Script" uid="uid://suv0cfrbomsl" path="res://Source/Heist/HeistAcceptChecker.cs" id="8_6cch6"]
+[ext_resource type="Script" uid="uid://dut14qkabc4fd" path="res://Source/Components/UI/Inventory/InventoryDisplayerUIComponent.cs" id="8_blge2"]
+[ext_resource type="PackedScene" uid="uid://buf21j6blrdj4" path="res://Scenes/UI/TextureContainers/PrettyTextureRect.tscn" id="9_blge2"]
+[ext_resource type="Script" uid="uid://ckkful1iwhkny" path="res://Source/Components/UI/Inventory/ItemSelectorInfoCardDisplayerUIComponent.cs" id="12_8tqtw"]
+[ext_resource type="Script" uid="uid://cby38u416iv5c" path="res://Source/Components/UI/Inventory/ItemTransferUIComponent.cs" id="12_hwxkw"]
+[ext_resource type="Script" uid="uid://c7pagcu43bs4x" path="res://Source/Components/UI/PlayerStateItemSelectorUIComponent.cs" id="14_byxp0"]
+[ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="15_1dquk"]
 
 [node name="StartHeist" type="Control" unique_id=217217804]
 layout_mode = 3
@@ -49,25 +56,73 @@ size_flags_stretch_ratio = 4.0
 [node name="InfoCardUI" parent="TabContainer/Heist/VBoxContainer2" unique_id=1953515434 instance=ExtResource("3_vqnvc")]
 layout_mode = 2
 
-[node name="Accept" type="Control" parent="TabContainer" unique_id=845383887]
+[node name="Inventory" type="HBoxContainer" parent="TabContainer" unique_id=1207791025]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="LabelOptionUI" parent="TabContainer/Accept" unique_id=399929310 instance=ExtResource("2_4ks6k")]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -70.0
-offset_top = -32.0
-offset_right = 0.0
-offset_bottom = 0.0
-grow_horizontal = 0
-grow_vertical = 0
-button_text = "Start"
+[node name="ItemsInBank" type="VBoxContainer" parent="TabContainer/Inventory" unique_id=290696881]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Inventory/ItemsInBank" unique_id=144541153]
+layout_mode = 2
+text = "Inventory"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Inventory/ItemsInBank" unique_id=1734028358]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemsContainer" type="VBoxContainer" parent="TabContainer/Inventory/ItemsInBank/ScrollContainer" unique_id=1442327584]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Info" type="VBoxContainer" parent="TabContainer/Inventory" unique_id=1343529271]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 4.0
+
+[node name="InfoCardUI" parent="TabContainer/Inventory/Info" unique_id=308866705 instance=ExtResource("3_vqnvc")]
+layout_mode = 2
+
+[node name="LabelOptionUI" parent="TabContainer/Inventory/Info" unique_id=399929310 instance=ExtResource("2_4ks6k")]
+layout_mode = 2
+button_text = "Add/Remove"
+is_label_invisible_ = true
+
+[node name="ItemsToTransfer" type="VBoxContainer" parent="TabContainer/Inventory" unique_id=446816716]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Inventory/ItemsToTransfer" unique_id=1222126629]
+layout_mode = 2
+text = "To Transfer"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Inventory/ItemsToTransfer" unique_id=14964205]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ItemsContainer" type="VBoxContainer" parent="TabContainer/Inventory/ItemsToTransfer/ScrollContainer" unique_id=1418417586]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Start" type="VBoxContainer" parent="TabContainer" unique_id=1544883948]
+visible = false
+layout_mode = 2
+alignment = 2
+metadata/_tab_index = 2
+
+[node name="AcceptButton" parent="TabContainer/Start" unique_id=1602039561 instance=ExtResource("2_4ks6k")]
+layout_mode = 2
+button_text = "Begin..."
 is_label_invisible_ = true
 
 [node name="Heist" type="Node2D" parent="." unique_id=48846270]
@@ -87,16 +142,56 @@ script = ExtResource("5_4ks6k")
 info_card_ = NodePath("../../TabContainer/Heist/VBoxContainer2/InfoCardUI")
 metadata/_custom_type_script = "uid://b1ycqnqsyir33"
 
+[node name="Inventory" type="Node2D" parent="." unique_id=1659186299]
+
+[node name="Transfer" type="Node2D" parent="Inventory" unique_id=320973397]
+
+[node name="InventoryDisplayerUI" type="Node" parent="Inventory/Transfer" unique_id=847442323 node_paths=PackedStringArray("items_container")]
+script = ExtResource("8_blge2")
+texture_rect_scene_ = ExtResource("9_blge2")
+items_container = NodePath("../../../TabContainer/Inventory/ItemsToTransfer/ScrollContainer/ItemsContainer")
+metadata/_custom_type_script = "uid://dut14qkabc4fd"
+
+[node name="InventoryComponent" type="Node" parent="Inventory/Transfer" unique_id=1442700687]
+script = ExtResource("7_6cch6")
+metadata/_custom_type_script = "uid://bgx6j4m6rux5q"
+
+[node name="Selection" type="Node2D" parent="Inventory" unique_id=1430031192]
+
+[node name="PlayerStateItemSelectorUI" type="Node" parent="Inventory/Selection" unique_id=1482375916 node_paths=PackedStringArray("items_container")]
+script = ExtResource("14_byxp0")
+texture_button_scene_ = ExtResource("3_u654o")
+items_container = NodePath("../../../TabContainer/Inventory/ItemsInBank/ScrollContainer/ItemsContainer")
+metadata/_custom_type_script = "uid://c7pagcu43bs4x"
+
+[node name="ItemSelectorInfoCardDisplayerUI" type="Node" parent="Inventory/Selection" unique_id=1825645316 node_paths=PackedStringArray("info_card_")]
+script = ExtResource("12_8tqtw")
+info_card_ = NodePath("../../../TabContainer/Inventory/Info/InfoCardUI")
+metadata/_custom_type_script = "uid://ckkful1iwhkny"
+
+[node name="ItemSelectorComponent" type="Node" parent="Inventory/Selection" unique_id=1310361608]
+script = ExtResource("15_1dquk")
+use_player_state_inventory_ = true
+metadata/_custom_type_script = "uid://5f2k3yn2la62"
+
+[node name="ItemTransferUI" type="Node" parent="Inventory" unique_id=478576688 node_paths=PackedStringArray("source_selector_", "destination_inventory_", "option_button_")]
+script = ExtResource("12_hwxkw")
+source_selector_ = NodePath("../Selection/ItemSelectorComponent")
+destination_inventory_ = NodePath("../Transfer/InventoryComponent")
+option_button_ = NodePath("../../TabContainer/Inventory/Info/LabelOptionUI")
+metadata/_custom_type_script = "uid://cby38u416iv5c"
+
 [node name="Accept" type="Node2D" parent="." unique_id=1560332122]
 
-[node name="HeistStarter" type="Node" parent="Accept" unique_id=2047359220 node_paths=PackedStringArray("heist_accept_checker_", "heist_selector")]
+[node name="HeistStarter" type="Node" parent="Accept" unique_id=2047359220 node_paths=PackedStringArray("heist_accept_checker_", "heist_selector_", "transfer_inventory_")]
 script = ExtResource("7_n8p28")
 heist_accept_checker_ = NodePath("../HeistAcceptChecker")
-heist_selector = NodePath("../../Heist/HeistSelectorComponent")
+heist_selector_ = NodePath("../../Heist/HeistSelectorComponent")
+transfer_inventory_ = NodePath("../../Inventory/Transfer/InventoryComponent")
 metadata/_custom_type_script = "uid://bl4jpf03fe02t"
 
 [node name="HeistAcceptChecker" type="Node" parent="Accept" unique_id=1894438649 node_paths=PackedStringArray("heist_selector_", "option_")]
 script = ExtResource("8_6cch6")
 heist_selector_ = NodePath("../../Heist/HeistSelectorComponent")
-option_ = NodePath("../../TabContainer/Accept/LabelOptionUI")
+option_ = NodePath("../../TabContainer/Start/AcceptButton")
 metadata/_custom_type_script = "uid://suv0cfrbomsl"

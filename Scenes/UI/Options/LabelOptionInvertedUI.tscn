@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://cdjgwh2w6043x" path="res://Source/UI/Buttons/CenterPivotButtonUI.cs" id="2_kev7n"]
 [ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="3_hfxmy"]
 [ext_resource type="Script" uid="uid://lcnommejn6jr" path="res://Source/Components/Visuals/SignalToTweenComponent.cs" id="4_2j2im"]
-[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="5_xwf44"]
-[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="6_trbm3"]
+[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Resources/SignalToTweenResource.cs" id="5_xwf44"]
+[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Resources/TweenResource.cs" id="6_trbm3"]
 
 [sub_resource type="Resource" id="Resource_25b7c"]
 script = ExtResource("6_trbm3")

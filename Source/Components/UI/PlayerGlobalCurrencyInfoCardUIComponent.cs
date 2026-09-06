@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class PlayerCurrencyInfoCardSetterUI : Node
+public partial class PlayerGlobalCurrencyInfoCardUIComponent : Node
 {
     [Export] private InfoCardUI infocard_;
 

@@ -2,17 +2,17 @@
 
 [ext_resource type="PackedScene" uid="uid://dk6khfy84q7wc" path="res://Scenes/UI/Info/InfoCardUI.tscn" id="3_r54u5"]
 [ext_resource type="PackedScene" uid="uid://iujrk8xxtyhr" path="res://Scenes/UI/Options/LabelOptionInvertedUI.tscn" id="4_khmv6"]
-[ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Components/Inventory/ItemResource.cs" id="4_p882w"]
+[ext_resource type="Script" uid="uid://bcemd0ydhmjbe" path="res://Source/Resources/ItemResource.cs" id="4_p882w"]
 [ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/InventoryComponent.cs" id="4_r54u5"]
 [ext_resource type="Resource" uid="uid://db6rbn3gul0ys" path="res://Resources/Items/DrillResource.tres" id="5_3fb6t"]
 [ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="5_khmv6"]
 [ext_resource type="Resource" uid="uid://bkjt3su6ey1tv" path="res://Resources/Items/GenericWeaponResource.tres" id="6_gmck5"]
 [ext_resource type="Resource" uid="uid://drtinikjajib5" path="res://Resources/Items/HackToolResource.tres" id="7_xosw0"]
-[ext_resource type="Script" uid="uid://cosicsmxidyxo" path="res://Source/UI/Inventory/ItemSelectorUI.cs" id="9_k8i6h"]
+[ext_resource type="Script" uid="uid://cosicsmxidyxo" path="res://Source/Components/UI/Inventory/ItemSelectorUIComponent.cs" id="9_k8i6h"]
 [ext_resource type="PackedScene" uid="uid://dkd2phc7o1p7w" path="res://Scenes/UI/Buttons/PrettyTextureButtonUI.tscn" id="10_gmck5"]
-[ext_resource type="Script" uid="uid://ckkful1iwhkny" path="res://Source/UI/Inventory/ItemSelectorInfoCardDisplayerUI.cs" id="11_3fb6t"]
-[ext_resource type="Script" uid="uid://7gwl5a4qs5qn" path="res://Source/UI/Store/ItemPurchaseUI.cs" id="12_gmck5"]
-[ext_resource type="Script" uid="uid://c1f2vyf6ggegu" path="res://Source/UI/Currency/PlayerCurrencyInfoCardSetterUI.cs" id="13_xosw0"]
+[ext_resource type="Script" uid="uid://ckkful1iwhkny" path="res://Source/Components/UI/Inventory/ItemSelectorInfoCardDisplayerUIComponent.cs" id="11_3fb6t"]
+[ext_resource type="Script" uid="uid://7gwl5a4qs5qn" path="res://Source/Components/UI/Inventory/ItemPurchaseUIComponent.cs" id="12_gmck5"]
+[ext_resource type="Script" uid="uid://c1f2vyf6ggegu" path="res://Source/Components/UI/PlayerGlobalCurrencyInfoCardUIComponent.cs" id="13_xosw0"]
 
 [node name="Store" type="Control" unique_id=2090663343]
 layout_mode = 3
@@ -62,15 +62,6 @@ layout_mode = 2
 layout_mode = 2
 button_text = "Buy"
 
-[node name="InventoryComponent" type="Node" parent="." unique_id=1568926086]
-script = ExtResource("4_r54u5")
-items = Array[ExtResource("4_p882w")]([ExtResource("5_3fb6t"), ExtResource("6_gmck5"), ExtResource("7_xosw0")])
-metadata/_custom_type_script = "uid://bgx6j4m6rux5q"
-
-[node name="ItemSelectorComponent" type="Node" parent="." unique_id=1039378293]
-script = ExtResource("5_khmv6")
-metadata/_custom_type_script = "uid://5f2k3yn2la62"
-
 [node name="ItemSelectorUI" type="Node" parent="." unique_id=1762308136 node_paths=PackedStringArray("items_container")]
 script = ExtResource("9_k8i6h")
 texture_button_scene_ = ExtResource("10_gmck5")
@@ -91,3 +82,12 @@ metadata/_custom_type_script = "uid://7gwl5a4qs5qn"
 script = ExtResource("13_xosw0")
 infocard_ = NodePath("../HBoxContainer/VBoxContainer/InfoCardUI")
 metadata/_custom_type_script = "uid://c1f2vyf6ggegu"
+
+[node name="InventoryComponent" type="Node" parent="." unique_id=1568926086]
+script = ExtResource("4_r54u5")
+items = Array[ExtResource("4_p882w")]([ExtResource("5_3fb6t"), ExtResource("6_gmck5"), ExtResource("7_xosw0")])
+metadata/_custom_type_script = "uid://bgx6j4m6rux5q"
+
+[node name="ItemSelectorComponent" type="Node" parent="." unique_id=1039378293]
+script = ExtResource("5_khmv6")
+metadata/_custom_type_script = "uid://5f2k3yn2la62"

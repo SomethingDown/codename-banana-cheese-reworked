@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AuthorizationResource" format=3 uid="uid://5ngs7dhtas7u"]
 
-[ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Components/Security/AuthorizationResource.cs" id="1_f7s1s"]
+[ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Resources/AuthorizationResource.cs" id="1_f7s1s"]
 
 [resource]
 script = ExtResource("1_f7s1s")

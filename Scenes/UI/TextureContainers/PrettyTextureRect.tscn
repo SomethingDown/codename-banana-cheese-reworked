@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://buf21j6blrdj4"]
+
+[ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="1_gl65j"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekej7"]
+atlas = ExtResource("1_gl65j")
+region = Rect2(0, 48, 16, 16)
+
+[node name="PrettyTextureRect" type="TextureRect" unique_id=924461515]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = -1
+anchor_right = 0.1
+anchor_bottom = 0.17777778
+offset_right = -16.0
+offset_bottom = -16.0
+texture = SubResource("AtlasTexture_ekej7")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true

@@ -1,5 +1,8 @@
 using Godot;
+using Godot.Collections;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 public class PlayerState
 {
@@ -10,12 +13,14 @@ public class PlayerState
     public Action<Node> PlayerChanged;
 
     public Node player_entity = null;
-    public CurrencyComponent banked_currency_component = new CurrencyComponent{initial_currency=100.99f};
+    public CurrencyComponent banked_currency_component = new CurrencyComponent{};
     public InventoryComponent banked_inventory_component = new InventoryComponent(); 
+    public InventoryComponent transfer_Inventory_component = new InventoryComponent();
 
     public void SubscribePlayer(Node entity)
     {
         player_entity = entity;
+        banked_inventory_component.Add(GD.Load<ItemResource>("res://Resources/Items/DrillResource.tres"));
         PlayerChanged?.Invoke(player_entity);
     }
     public void UnsubscribePlayer()

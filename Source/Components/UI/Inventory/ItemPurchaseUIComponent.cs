@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class ItemPurchaseUI : Node
+public partial class ItemPurchaseUIComponent : Node
 {
     [Export] private LabelOptionUI label_option_;
 

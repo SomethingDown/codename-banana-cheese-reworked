@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class HeistSelectorInfoCardDisplayerUI : Node
+public partial class HeistSelectorInfoDisplayUIComponent : Node
 {
     [Export] private InfoCardUI info_card_;
     private HeistSelectorComponent heist_selector_;

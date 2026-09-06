@@ -2,9 +2,10 @@ using Godot;
 using System;
 
 [GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__paintbrush_node.svg")]
-public partial class HealthVisualComponent : Node
+public partial class HealthVisualUIComponent : Node
 {
     [Export] private ProgressBar health_bar_;
+    
     private HealthComponent health_component_;
 
     public override void _Ready()

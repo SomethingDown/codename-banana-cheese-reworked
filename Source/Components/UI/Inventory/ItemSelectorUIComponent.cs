@@ -3,7 +3,7 @@ using System;
 using System.Linq;
 
 [GlobalClass]
-public partial class ItemSelectorUI : Node
+public partial class ItemSelectorUIComponent : Node
 {
 
     [Export] private PackedScene texture_button_scene_;
