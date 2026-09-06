@@ -43,8 +43,8 @@ public partial class ItemHeldHud : Control
             item_icon_texture_.Texture = no_item_texture;
             return;
         }
-            item_name_label_.Text = i.name;
-            item_icon_texture_.Texture = i.icon;
+        item_name_label_.Text = i.name;
+        item_icon_texture_.Texture = i.icon;
     }
 
 }

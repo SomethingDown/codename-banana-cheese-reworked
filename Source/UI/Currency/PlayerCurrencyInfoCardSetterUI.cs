@@ -12,11 +12,19 @@ public partial class PlayerCurrencyInfoCardSetterUI : Node
 
         infocard_.title = "Currency";
         infocard_.data = $"{PlayerState.instance.banked_currency_component.GetCurrency()}$";
-        PlayerState.instance.banked_currency_component.CurrencyChanged += v =>
-        {
-            infocard_.data = $"{v}$";
-        };
+        PlayerState.instance.banked_currency_component.CurrencyChanged += OnBankedCurrencyChanged;
     }
+    public override void _ExitTree()
+    {
+        PlayerState.instance.banked_currency_component.CurrencyChanged -= OnBankedCurrencyChanged;
+    }
+
+    public void OnBankedCurrencyChanged(float v)
+    {
+        infocard_.data = $"{v}$";
+    }
+
+    
 
 
 }

@@ -19,6 +19,7 @@ public partial class InteractionsHud : Control
     public override void _ExitTree()
     {
         PlayerState.instance.PlayerChanged -= OnPlayerChanged;
+        if(interactable_selector_ != null) interactable_selector_.SelectionChanged += OnInteractableChanged;
     }
 
     public void OnPlayerChanged(Node player)

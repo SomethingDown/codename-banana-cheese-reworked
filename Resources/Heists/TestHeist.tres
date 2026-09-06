@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="HeistResource" format=3 uid="uid://djtx66c4nos2e"]
+
+[ext_resource type="Script" uid="uid://sr31x1p8agvv" path="res://Source/Components/Heist/HeistResource.cs" id="1_5yku1"]
+[ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="1_qcvu6"]
+[ext_resource type="PackedScene" uid="uid://c7csrb8b58l6u" path="res://Scenes/Game/TestHeistLevel.tscn" id="2_83maw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfisv"]
+atlas = ExtResource("1_qcvu6")
+region = Rect2(0, 48, 16, 16)
+
+[resource]
+script = ExtResource("1_5yku1")
+name = "Test heist"
+description = "Testing level"
+icon = SubResource("AtlasTexture_pfisv")
+scene = ExtResource("2_83maw")
+metadata/_custom_type_script = "uid://sr31x1p8agvv"

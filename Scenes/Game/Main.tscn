@@ -1,17 +1,23 @@
 [gd_scene format=3 uid="uid://b4c6qffrioh4t"]
 
 [ext_resource type="PackedScene" uid="uid://wynm1s6qkdlm" path="res://Scenes/UI/HUD/PlayerHUD.tscn" id="1_dfwoq"]
-[ext_resource type="PackedScene" uid="uid://bhakk6p4linro" path="res://Scenes/Game/MainMenuLevel.tscn" id="1_y4a8c"]
 [ext_resource type="Script" uid="uid://ibxuajmlmuqn" path="res://Source/Components/Gameplay/IAmLevelContainer.cs" id="2_c6dyv"]
 [ext_resource type="Script" uid="uid://djt0xt3lp3k0f" path="res://Source/Components/Debug/EventsDebugComponent.cs" id="2_cyew3"]
+[ext_resource type="Script" uid="uid://dvdttjai2nnlr" path="res://Source/Components/Gameplay/IAmWindowContainer.cs" id="2_ushg2"]
 [ext_resource type="Script" uid="uid://di0gik1l4ld6y" path="res://Source/Components/Managment/EventsBusUpdaterComponent.cs" id="3_y4a8c"]
-[ext_resource type="Script" uid="uid://cj3be8rq5l6c0" path="res://Source/Components/Managment/GameoverComponent.cs" id="5_5k2w5"]
 
 [node name="Main" type="Node2D" unique_id=549649426]
 
-[node name="HUD" parent="." unique_id=1469353660 instance=ExtResource("1_dfwoq")]
-
 [node name="Menu" type="CanvasLayer" parent="." unique_id=364623328]
+process_mode = 3
+layer = 2
+
+[node name="IAmWindowContainer" type="Node" parent="Menu" unique_id=1108074165]
+script = ExtResource("2_ushg2")
+metadata/_custom_type_script = "uid://dvdttjai2nnlr"
+
+[node name="HUD" parent="." unique_id=1469353660 instance=ExtResource("1_dfwoq")]
+process_mode = 3
 
 [node name="CurrentLevelContainer" type="Node2D" parent="." unique_id=2142684475]
 
@@ -19,16 +25,9 @@
 script = ExtResource("2_c6dyv")
 metadata/_custom_type_script = "uid://ibxuajmlmuqn"
 
-[node name="MainMenu" parent="CurrentLevelContainer" unique_id=1479910579 instance=ExtResource("1_y4a8c")]
-
 [node name="EventsBusUpdaterComponent" type="Node" parent="." unique_id=1303621262]
 script = ExtResource("3_y4a8c")
 metadata/_custom_type_script = "uid://di0gik1l4ld6y"
-
-[node name="GameoverComponent" type="Node" parent="." unique_id=1240234405]
-script = ExtResource("5_5k2w5")
-scene_ = ExtResource("1_y4a8c")
-metadata/_custom_type_script = "uid://cj3be8rq5l6c0"
 
 [node name="EventsDebugComponent" type="Node" parent="." unique_id=1298179589]
 script = ExtResource("2_cyew3")

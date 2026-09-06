@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cdnhh5kwdpsq1"]
+
+[ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="1_nkbfq"]
+[ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="2_kf87c"]
+[ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="3_xq4by"]
+[ext_resource type="Script" uid="uid://ctdvpr8bsb7hb" path="res://Source/Components/Interactive/InteractionListeners/InstanceWindowedSceneInteractionListenerComponent.cs" id="4_vl0kk"]
+[ext_resource type="PackedScene" uid="uid://c8a1ev4ng5u4h" path="res://Scenes/UI/Window/WindowContent/Store.tscn" id="5_m1hnl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esd16"]
+
+[node name="Store" type="Node2D" unique_id=1204181944]
+
+[node name="Graphics" type="Node2D" parent="." unique_id=551305332]
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=2111214190]
+script = ExtResource("1_nkbfq")
+metadata/_custom_type_script = "uid://bt6qadveyo2d8"
+
+[node name="Interaction" type="Node" parent="InteractableComponent" unique_id=779559951]
+script = ExtResource("2_kf87c")
+label = "Open"
+metadata/_custom_type_script = "uid://c3pa3ibleap0q"
+
+[node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1715164749]
+script = ExtResource("3_xq4by")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=1584107236]
+shape = SubResource("CircleShape2D_esd16")
+
+[node name="InstanceWindowedSceneInteractionListenerComponent" type="Node" parent="." unique_id=815251419 node_paths=PackedStringArray("interaction")]
+script = ExtResource("4_vl0kk")
+scene_scene_ = ExtResource("5_m1hnl")
+interaction = NodePath("../InteractableComponent/Interaction")
+metadata/_custom_type_script = "uid://ctdvpr8bsb7hb"
