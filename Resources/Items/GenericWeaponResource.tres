@@ -14,6 +14,7 @@ region = Rect2(0, 32, 16, 16)
 script = ExtResource("2_l2d7j")
 name = "Generic Weapon"
 description = "Generic"
+base_price = 75.99
 icon = SubResource("AtlasTexture_i0gjm")
 item_type = 0
 item_equipped_scene = ExtResource("3_5uy4o")

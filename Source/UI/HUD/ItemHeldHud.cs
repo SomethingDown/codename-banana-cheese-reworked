@@ -10,14 +10,29 @@ public partial class ItemHeldHud : Control
 
     public override void _Ready()
     {
-        Node player = PlayerState.instance.player_entity;
+        PlayerState.instance.PlayerChanged += OnPlayerChanged;
+        OnPlayerChanged(PlayerState.instance.player_entity);
+
+    }
+    public override void _ExitTree()
+    {
+        PlayerState.instance.PlayerChanged -= OnPlayerChanged;
+    }
+    public void OnPlayerChanged(Node player)
+    {
+        item_name_label_.Visible = false;
+        item_icon_texture_.Visible = false;
+
         if (player == null) return;
 
-        ItemSelectorComponent item_selector = player.GetComponentInEntity<ItemSelectorComponent>();
-        if(item_selector == null) return;
+        item_name_label_.Visible = true;
+        item_icon_texture_.Visible = true;
 
-        item_selector.SelectionChanged += OnSelectionChanged;
-        OnSelectionChanged(item_selector.selected_item);
+            ItemSelectorComponent item_selector = player.GetComponentInEntity<ItemSelectorComponent>();
+            if(item_selector == null) return;
+
+            item_selector.SelectionChanged += OnSelectionChanged;
+            OnSelectionChanged(item_selector.selected_item);
     }
 
     public void OnSelectionChanged(ItemResource i)

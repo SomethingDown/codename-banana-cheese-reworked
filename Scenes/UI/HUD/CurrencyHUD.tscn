@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://cugod7krol6e"]
+
+[ext_resource type="Script" uid="uid://dy1kq6nhxdtqn" path="res://Source/UI/HUD/CurrencyHud.cs" id="1_bjxny"]
+
+[node name="CurrencyHUD" type="Control" unique_id=1730293762 node_paths=PackedStringArray("currency_amount_label_")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bjxny")
+currency_amount_label_ = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1904922017]
+custom_minimum_size = Vector2(32, 12)
+custom_maximum_size = Vector2(64, 12)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.95555556
+anchor_right = 0.175
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = -6.0
+offset_right = 2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 4
+bbcode_enabled = true
+text = "Currency
+"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1

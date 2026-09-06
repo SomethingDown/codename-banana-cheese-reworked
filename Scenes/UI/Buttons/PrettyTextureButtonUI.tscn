@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://dkd2phc7o1p7w"]
+
+[ext_resource type="Texture2D" uid="uid://bwbvhgg77dd8t" path="res://Assets/Spreadsheets/Items spreadsheet.png" id="1_m0gql"]
+[ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="2_euxcn"]
+[ext_resource type="Script" uid="uid://dv4j8ggfegwo7" path="res://Source/UI/Buttons/CenterPivotTextureButtonUI.cs" id="2_teg2t"]
+[ext_resource type="Script" uid="uid://lcnommejn6jr" path="res://Source/Components/Visuals/SignalToTweenComponent.cs" id="3_5g2ae"]
+[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="4_ape66"]
+[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="6_teg2t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esd16"]
+atlas = ExtResource("1_m0gql")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="Resource" id="Resource_bxehd"]
+script = ExtResource("6_teg2t")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(1.1, 1.1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_urky1"]
+script = ExtResource("6_teg2t")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.1
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_m1elb"]
+script = ExtResource("6_teg2t")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(1, 1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_merk0"]
+script = ExtResource("6_teg2t")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_m3p82"]
+script = ExtResource("4_ape66")
+source_path = NodePath("..")
+signal_name = "mouse_entered"
+tween_resources = Array[ExtResource("6_teg2t")]([SubResource("Resource_bxehd"), SubResource("Resource_urky1"), SubResource("Resource_m1elb"), SubResource("Resource_merk0")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"
+
+[sub_resource type="Resource" id="Resource_teg2t"]
+script = ExtResource("6_teg2t")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(0.9, 0.9)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_mhsfp"]
+script = ExtResource("6_teg2t")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.1
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_u7vqd"]
+script = ExtResource("6_teg2t")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(1, 1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_12jvs"]
+script = ExtResource("6_teg2t")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_hmgnw"]
+script = ExtResource("4_ape66")
+source_path = NodePath("..")
+signal_name = "pressed"
+tween_resources = Array[ExtResource("6_teg2t")]([SubResource("Resource_teg2t"), SubResource("Resource_mhsfp"), SubResource("Resource_u7vqd"), SubResource("Resource_12jvs")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"
+
+[node name="PrettyTextureButtonUI" type="TextureButton" unique_id=397670085]
+custom_minimum_size = Vector2(32, 32)
+texture_normal = SubResource("AtlasTexture_esd16")
+stretch_mode = 5
+script = ExtResource("2_teg2t")
+
+[node name="TweenComponent" type="Node" parent="." unique_id=1125191480]
+script = ExtResource("2_euxcn")
+metadata/_custom_type_script = "uid://cnahluscj58pv"
+
+[node name="SignalToTweenComponent" type="Node" parent="." unique_id=621586813]
+script = ExtResource("3_5g2ae")
+tweens_ = Array[ExtResource("4_ape66")]([SubResource("Resource_m3p82"), SubResource("Resource_hmgnw")])
+metadata/_custom_type_script = "uid://lcnommejn6jr"

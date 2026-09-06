@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="Codename Banana Cheese Reworked"
-run/main_scene="uid://c7csrb8b58l6u"
-config/features=PackedStringArray("4.6", "C#", "GL Compatibility")
+run/main_scene="uid://b4c6qffrioh4t"
+config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [display]
 
 window/size/viewport_width=320
 window/size/viewport_height=180
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
@@ -28,6 +28,10 @@ project/assembly_name="Codename Banana Cheese Reworked"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot-easy-icons/plugin.cfg")
+
+[gui]
+
+theme/custom="uid://cbfhieu2egpd5"
 
 [input]
 

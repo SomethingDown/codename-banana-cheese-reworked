@@ -3,7 +3,7 @@ using Godot.Collections;
 using System;
 using System.Linq;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__paintbrush_node.svg")]
 public partial class TweenComponent : Node
 {
         Tween tween;

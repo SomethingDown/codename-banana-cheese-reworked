@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://07enpg1e3jsu"]
+
+[ext_resource type="Script" uid="uid://foaoxi142lr2" path="res://Source/UI/Window/WindowUI.cs" id="1_lpe61"]
+[ext_resource type="PackedScene" uid="uid://cldjrco5qixuo" path="res://Scenes/UI/Options/LabelOptionUI.tscn" id="3_lpe61"]
+[ext_resource type="Script" uid="uid://dfqmmnxwv48hb" path="res://Source/Components/Lifetime/SignalToRemoveSelfComponent.cs" id="3_rnqvg"]
+
+[node name="Control" type="Control" unique_id=794959986 node_paths=PackedStringArray("panel_")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lpe61")
+panel_ = NodePath("VBoxContainer/ScrollContainer/Panel")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=726111168]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer" unique_id=614680791]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/ScrollContainer" unique_id=1983090360]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="LabelOptionUI" parent="VBoxContainer" unique_id=399929310 instance=ExtResource("3_lpe61")]
+layout_mode = 2
+button_text = "Exit"
+is_label_invisible_ = true
+
+[node name="SignalToRemoveSelfComponent" type="Node" parent="." unique_id=1751964077 node_paths=PackedStringArray("source_", "node_")]
+script = ExtResource("3_rnqvg")
+source_ = NodePath("../VBoxContainer/LabelOptionUI")
+signal_name_ = "Pressed"
+node_ = NodePath("..")
+metadata/_custom_type_script = "uid://dfqmmnxwv48hb"

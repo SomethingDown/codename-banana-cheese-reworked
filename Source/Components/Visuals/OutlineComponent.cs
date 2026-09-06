@@ -13,7 +13,7 @@ public partial class OutlineComponent : Node
     public override void _Ready()
     {
         outlineMaterial_ = new ShaderMaterial();
-        outlineMaterial_.Shader = GD.Load<Shader>("res://assets/shaders/outline.gdshader");
+        outlineMaterial_.Shader = GD.Load<Shader>("res://Assets/Shaders/outline.gdshader");
         outlineMaterial_.SetShaderParameter("number_of_images",partitions_in_visual_);
     }
 

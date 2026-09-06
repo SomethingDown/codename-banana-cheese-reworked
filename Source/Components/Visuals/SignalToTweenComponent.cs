@@ -3,7 +3,7 @@ using System.Linq;
 using Godot;
 using Godot.Collections;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__link_node.svg")]
 public partial class SignalToTweenComponent : Node
 {
     [Export] private Array<SignalToTweenResource> tweens_ = new Array<SignalToTweenResource>();

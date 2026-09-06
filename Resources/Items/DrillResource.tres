@@ -14,6 +14,7 @@ region = Rect2(0, 16, 16, 16)
 script = ExtResource("2_pju6k")
 name = "Drill"
 description = "Used to breach into stuff."
+base_price = 15.0
 icon = SubResource("AtlasTexture_hwujg")
 item_type = 0
 item_equipped_scene = ExtResource("1_q8fle")

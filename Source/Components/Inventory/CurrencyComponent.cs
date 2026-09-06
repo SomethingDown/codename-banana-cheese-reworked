@@ -10,7 +10,7 @@ public partial class CurrencyComponent : Node
 
     [Export] public float initial_currency = 5.0f;
 
-    private float currency_val_;
+    private float currency_val_ = 100;
 
     private float currency_
     {

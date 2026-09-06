@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://bhakk6p4linro"]
+
+[ext_resource type="PackedScene" uid="uid://cldjrco5qixuo" path="res://Scenes/UI/Options/LabelOptionUI.tscn" id="1_77p2a"]
+[ext_resource type="Script" uid="uid://bbhtbj68i1ksl" path="res://Source/Components/Transition/TransitionTimerComponent.cs" id="2_qcded"]
+[ext_resource type="Script" uid="uid://m8ts2ayd1fw" path="res://Source/Components/Transition/TransitionListeners/SceneTransitionListenerComponent.cs" id="3_7mdu2"]
+[ext_resource type="PackedScene" uid="uid://daynehvdp273u" path="res://Scenes/Game/PreparationLevel.tscn" id="4_d7j6u"]
+
+[node name="MainMenuLevel" type="Node2D" unique_id=1479910579]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1516583919]
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer" unique_id=648398989]
+clip_contents = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 91.0
+offset_top = 10.0
+offset_right = -91.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ScrollContainer" unique_id=1500560266]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="Option" parent="CanvasLayer/ScrollContainer/VBoxContainer" unique_id=399929310 instance=ExtResource("1_77p2a")]
+layout_mode = 2
+is_label_invisible_ = true
+
+[node name="TransitionTimerComponent" type="Node" parent="." unique_id=1102060915 node_paths=PackedStringArray("source_")]
+script = ExtResource("2_qcded")
+source_ = NodePath("../CanvasLayer/ScrollContainer/VBoxContainer/Option")
+signal_name_ = "Pressed"
+time_ = 0.2
+metadata/_custom_type_script = "uid://bbhtbj68i1ksl"
+
+[node name="SceneTransitionComponent" type="Node" parent="." unique_id=159791318 node_paths=PackedStringArray("transision_timer_")]
+script = ExtResource("3_7mdu2")
+scene_ = ExtResource("4_d7j6u")
+transision_timer_ = NodePath("../TransitionTimerComponent")
+metadata/_custom_type_script = "uid://m8ts2ayd1fw"

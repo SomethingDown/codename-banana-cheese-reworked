@@ -4,7 +4,66 @@
 [ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="2_ayrwc"]
 [ext_resource type="Script" uid="uid://lcnommejn6jr" path="res://Source/Components/Visuals/SignalToTweenComponent.cs" id="3_0y50m"]
 [ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="4_yuxdc"]
-[ext_resource type="Resource" uid="uid://b2aa20rcninj0" path="res://Assets/Tweens/DamageEffect01.tres" id="5_yuxdc"]
+[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="5_yuxdc"]
+
+[sub_resource type="Resource" id="Resource_16lmb"]
+script = ExtResource("5_yuxdc")
+node_path = NodePath("../ProgressBar")
+action = "modulate:g"
+value = 0.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_gou4s"]
+script = ExtResource("5_yuxdc")
+node_path = NodePath("../ProgressBar")
+parallel_to_previous = true
+action = "modulate:b"
+value = 0.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_g77g7"]
+script = ExtResource("5_yuxdc")
+node_path = NodePath("../ProgressBar")
+parallel_to_previous = true
+action = "scale"
+value = Vector2(0.8, 0.8)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_pepnu"]
+script = ExtResource("5_yuxdc")
+node_path = NodePath("../ProgressBar")
+action = "modulate:g"
+value = 1.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_qsrac"]
+script = ExtResource("5_yuxdc")
+node_path = NodePath("../ProgressBar")
+parallel_to_previous = true
+action = "modulate:b"
+value = 1.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_ko6tr"]
+script = ExtResource("5_yuxdc")
+node_path = NodePath("../ProgressBar")
+parallel_to_previous = true
+action = "scale"
+value = Vector2(1, 1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_xk07n"]
+script = ExtResource("4_yuxdc")
+source_path = NodePath("..")
+signal_name = "HealthDecreased"
+tween_resources = Array[ExtResource("5_yuxdc")]([SubResource("Resource_16lmb"), SubResource("Resource_gou4s"), SubResource("Resource_g77g7"), SubResource("Resource_pepnu"), SubResource("Resource_qsrac"), SubResource("Resource_ko6tr")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"
 
 [node name="HealthBarHUD" type="Control" unique_id=2055633891 node_paths=PackedStringArray("health_bar")]
 layout_mode = 3
@@ -36,5 +95,5 @@ metadata/_custom_type_script = "uid://cnahluscj58pv"
 
 [node name="SignalToTweenComponent" type="Node" parent="." unique_id=652132539]
 script = ExtResource("3_0y50m")
-tweens_ = Array[ExtResource("4_yuxdc")]([ExtResource("5_yuxdc")])
+tweens_ = Array[ExtResource("4_yuxdc")]([SubResource("Resource_xk07n")])
 metadata/_custom_type_script = "uid://lcnommejn6jr"

@@ -12,7 +12,18 @@ public partial class InteractionsHud : Control
 
     public override void _Ready()
     {
-        Node player = PlayerState.instance.player_entity;
+        PlayerState.instance.PlayerChanged += OnPlayerChanged;
+        OnPlayerChanged(PlayerState.instance.player_entity);
+
+    }
+    public override void _ExitTree()
+    {
+        PlayerState.instance.PlayerChanged -= OnPlayerChanged;
+    }
+
+    public void OnPlayerChanged(Node player)
+    {
+
         if (player == null) return;
 
         interactable_selector_ = player.GetComponentInEntity<InteractablesSelectorComponent>();
@@ -24,7 +35,6 @@ public partial class InteractionsHud : Control
         
         interactable_selector_.SelectionChanged += OnInteractableChanged;
         OnInteractableChanged(null);
-
     }
 
     private void OnInteractableChanged(Node entity)

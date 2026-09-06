@@ -64,10 +64,29 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_lk8q2")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
 "speed": 5.0
 }]
+
+[sub_resource type="FontFile" id="FontFile_q7vcw"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gy426"]
+radius = 6.0
 
 [sub_resource type="Resource" id="Resource_dsdj3"]
 script = ExtResource("6_oxv2e")
@@ -92,8 +111,64 @@ signal_name = "HealthChanged"
 tween_resources = Array[ExtResource("6_oxv2e")]([SubResource("Resource_dsdj3"), SubResource("Resource_we3hc")])
 metadata/_custom_type_script = "uid://chu18liur6wt6"
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_gy426"]
-radius = 6.0
+[sub_resource type="Resource" id="Resource_jjcjf"]
+script = ExtResource("6_oxv2e")
+node_path = NodePath("../Graphics/AnimatedSprite2D")
+action = "modulate:g"
+value = 0.6
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_7qo8i"]
+script = ExtResource("6_oxv2e")
+node_path = NodePath("../Graphics/AnimatedSprite2D")
+parallel_to_previous = true
+action = "modulate:b"
+value = 0.6
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_ye3fu"]
+script = ExtResource("6_oxv2e")
+node_path = NodePath("../Graphics/AnimatedSprite2D")
+parallel_to_previous = true
+action = "scale"
+value = Vector2(0.8, 0.8)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_85fcw"]
+script = ExtResource("6_oxv2e")
+node_path = NodePath("../Graphics/AnimatedSprite2D")
+action = "modulate:g"
+value = 1.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_x1oaa"]
+script = ExtResource("6_oxv2e")
+node_path = NodePath("../Graphics/AnimatedSprite2D")
+parallel_to_previous = true
+action = "modulate:b"
+value = 1.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_wgvpe"]
+script = ExtResource("6_oxv2e")
+node_path = NodePath("../Graphics/AnimatedSprite2D")
+parallel_to_previous = true
+action = "scale"
+value = Vector2(1, 1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_io8sx"]
+script = ExtResource("5_w6yc2")
+source_path = NodePath("../DamageRecieverComponent")
+signal_name = "Damaged"
+tween_resources = Array[ExtResource("6_oxv2e")]([SubResource("Resource_jjcjf"), SubResource("Resource_7qo8i"), SubResource("Resource_ye3fu"), SubResource("Resource_85fcw"), SubResource("Resource_x1oaa"), SubResource("Resource_wgvpe")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7oewm"]
 radius = 119.03781
@@ -133,14 +208,14 @@ script = ExtResource("35_31vux")
 health_bar_ = NodePath("../Graphics/ProgressBar")
 metadata/_custom_type_script = "uid://dm8pem0le2ymo"
 
-[node name="TweenComponent" type="Node" parent="." unique_id=1227916416]
-script = ExtResource("3_5simk")
-metadata/_custom_type_script = "uid://cnahluscj58pv"
-
-[node name="SignalToTweenComponent" type="Node" parent="." unique_id=891645051]
-script = ExtResource("3_n0hmj")
-tweens_ = Array[ExtResource("5_w6yc2")]([SubResource("Resource_q7vcw"), ExtResource("7_q7vcw")])
-metadata/_custom_type_script = "uid://lcnommejn6jr"
+[node name="DamageIndicatorComponent" type="Node" parent="." unique_id=1927454384]
+script = ExtResource("42_we3hc")
+font_ = SubResource("FontFile_q7vcw")
+font_size_ = 6
+color_ = Color(0.14580292, 0, 0.009967015, 1)
+rise_duration_ = 0.5
+fade_duration_ = 1.0
+metadata/_custom_type_script = "uid://bwo6grccsbtfu"
 
 [node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1032284191]
 script = ExtResource("12_7blul")
@@ -149,6 +224,15 @@ metadata/_custom_type_script = "uid://hgcc0pq50e12"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=702205233]
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_gy426")
+
+[node name="TweenComponent" type="Node" parent="." unique_id=1227916416]
+script = ExtResource("3_5simk")
+metadata/_custom_type_script = "uid://cnahluscj58pv"
+
+[node name="SignalToTweenComponent" type="Node" parent="." unique_id=891645051]
+script = ExtResource("3_n0hmj")
+tweens_ = Array[ExtResource("5_w6yc2")]([SubResource("Resource_q7vcw"), ExtResource("7_q7vcw"), SubResource("Resource_io8sx")])
+metadata/_custom_type_script = "uid://lcnommejn6jr"
 
 [node name="CharacterIntentsComponent" type="Node" parent="." unique_id=2061913600]
 script = ExtResource("5_we08j")
@@ -226,6 +310,7 @@ metadata/_custom_type_script = "uid://bvhg2hkb8gvk8"
 position = Vector2(6, 0)
 
 [node name="EntityDetectorComponent" type="Area2D" parent="." unique_id=137358878]
+visible = false
 script = ExtResource("8_hcars")
 metadata/_custom_type_script = "uid://bpb8e2l7376gm"
 
@@ -233,6 +318,7 @@ metadata/_custom_type_script = "uid://bpb8e2l7376gm"
 shape = SubResource("CircleShape2D_7oewm")
 
 [node name="EntityLOSComponent" type="Node2D" parent="." unique_id=409430018]
+visible = false
 script = ExtResource("10_iqlxx")
 metadata/_custom_type_script = "uid://dhbmi1rn6whh"
 
@@ -310,13 +396,9 @@ drain_rate = 1.0
 threshold = 2.0
 metadata/_custom_type_script = "uid://er3tenwxkt2j"
 
-[node name="ThreatEvaluatorDebugComponent" type="Node" parent="." unique_id=239762038]
-script = ExtResource("19_3vs80")
-metadata/_custom_type_script = "uid://bbekkpx11njnj"
-
-[node name="BrainDebugComponent" type="Node" parent="." unique_id=1684210454]
-script = ExtResource("22_x307b")
-metadata/_custom_type_script = "uid://dyjx130p2s1e6"
+[node name="DamageRecieverComponent" type="Node" parent="." unique_id=1623597486]
+script = ExtResource("41_we3hc")
+metadata/_custom_type_script = "uid://cpkki4ums7wor"
 
 [node name="HealthComponent" type="Node" parent="." unique_id=946884420]
 script = ExtResource("34_dpuba")
@@ -330,10 +412,10 @@ metadata/_custom_type_script = "uid://d0d1dd5vdn4ks"
 script = ExtResource("40_dsdj3")
 metadata/_custom_type_script = "uid://8acsjhbwwkv3"
 
-[node name="DamageRecieverComponent" type="Node" parent="." unique_id=1623597486]
-script = ExtResource("41_we3hc")
-metadata/_custom_type_script = "uid://cpkki4ums7wor"
+[node name="ThreatEvaluatorDebugComponent" type="Node" parent="." unique_id=239762038]
+script = ExtResource("19_3vs80")
+metadata/_custom_type_script = "uid://bbekkpx11njnj"
 
-[node name="DamageIndicatorComponent" type="Node" parent="." unique_id=1927454384]
-script = ExtResource("42_we3hc")
-metadata/_custom_type_script = "uid://bwo6grccsbtfu"
+[node name="BrainDebugComponent" type="Node" parent="." unique_id=1684210454]
+script = ExtResource("22_x307b")
+metadata/_custom_type_script = "uid://dyjx130p2s1e6"

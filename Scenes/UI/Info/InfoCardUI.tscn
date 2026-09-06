@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://dk6khfy84q7wc"]
+
+[ext_resource type="Script" uid="uid://bbgiakqoattwk" path="res://Source/UI/Info/InfoCardUI.cs" id="1_axmyi"]
+
+[sub_resource type="FontVariation" id="FontVariation_axmyi"]
+
+[sub_resource type="FontFile" id="FontFile_d3iy8"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+
+[node name="InfoCardUI" type="VBoxContainer" unique_id=1953515434 node_paths=PackedStringArray("label_title_", "label_data_")]
+size_flags_vertical = 3
+script = ExtResource("1_axmyi")
+label_title_ = NodePath("Name")
+title_font_ = SubResource("FontVariation_axmyi")
+label_data_ = NodePath("Description")
+label_font_ = SubResource("FontFile_d3iy8")
+
+[node name="Name" type="RichTextLabel" parent="." unique_id=2000314950]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Name
+"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Description" type="RichTextLabel" parent="." unique_id=1037429543]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+text = "Description"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -10,11 +10,12 @@ public partial class DeleteOnAreaCollisionComponent : Node
     public override void _Ready()
     {
         if (area2d_ == null) return;
+
         area2d_.AreaEntered += a =>
         {
             this.GetEntity().QueueFree();
         };
-        area2d_.BodyEntered += a =>
+        area2d_.BodyEntered += b =>
         {
             this.GetEntity().QueueFree();
         };

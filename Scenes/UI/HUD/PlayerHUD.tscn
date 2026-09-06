@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://wynm1s6qkdlm"]
+
+[ext_resource type="PackedScene" uid="uid://cutmq780xromc" path="res://Scenes/UI/HUD/HealthBarHUD.tscn" id="1_1pl3s"]
+[ext_resource type="PackedScene" uid="uid://c18bh1coln4wt" path="res://Scenes/UI/HUD/ItemHeldHUD.tscn" id="2_ypl4r"]
+[ext_resource type="PackedScene" uid="uid://dnxmxooyfwgfp" path="res://Scenes/UI/HUD/InteractionsHud.tscn" id="3_8dixr"]
+[ext_resource type="PackedScene" uid="uid://cugod7krol6e" path="res://Scenes/UI/HUD/CurrencyHUD.tscn" id="4_ypl4r"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1469353660]
+
+[node name="Interface" type="Control" parent="." unique_id=2088010827]
+custom_minimum_size = Vector2(320, 180)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+
+[node name="HealthBarHUD" parent="Interface" unique_id=2055633891 instance=ExtResource("1_1pl3s")]
+layout_mode = 1
+
+[node name="ItemHeldHUD" parent="Interface" unique_id=85850289 instance=ExtResource("2_ypl4r")]
+layout_mode = 1
+
+[node name="InteractionsHUD" parent="Interface" unique_id=959886488 instance=ExtResource("3_8dixr")]
+layout_mode = 1
+
+[node name="CurrencyHUD" parent="Interface" unique_id=1730293762 instance=ExtResource("4_ypl4r")]
+layout_mode = 1

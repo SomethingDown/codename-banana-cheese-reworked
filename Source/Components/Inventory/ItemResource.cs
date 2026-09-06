@@ -7,6 +7,7 @@ public partial class ItemResource : Resource
 {
     [Export]public string name;
     [Export]public string description;
+    [Export]public float base_price;
     [Export]public Texture2D icon;
     [Export]public ItemType item_type = ItemType.Other;
     [Export]public PackedScene item_equipped_scene;

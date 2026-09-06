@@ -25,9 +25,3 @@ offset_bottom = -118.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-
-[node name="InteractionDisplayHUD" parent="VBoxContainer" unique_id=351377306 instance=ExtResource("2_03mlo")]
-layout_mode = 2
-
-[node name="InteractionDisplayHUD2" parent="VBoxContainer" unique_id=413899642 instance=ExtResource("2_03mlo")]
-layout_mode = 2

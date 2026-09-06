@@ -18,6 +18,10 @@ public partial class InventoryComponent : Node
 	{
 		return items.Select(i=>i.item_type).Contains(type);
 	}
+	public bool HasItem(ItemResource item_resource)
+	{
+		return items.Contains(item_resource);
+	}
 	public void Add(ItemResource item_resource)
 	{
 		if (items.Contains(item_resource)) return;

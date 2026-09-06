@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://iujrk8xxtyhr"]
+
+[ext_resource type="Script" uid="uid://dm426vg3rdu2i" path="res://Source/UI/Options/LabelOptionUI.cs" id="1_kev7n"]
+[ext_resource type="Script" uid="uid://cdjgwh2w6043x" path="res://Source/UI/Buttons/CenterPivotButtonUI.cs" id="2_kev7n"]
+[ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="3_hfxmy"]
+[ext_resource type="Script" uid="uid://lcnommejn6jr" path="res://Source/Components/Visuals/SignalToTweenComponent.cs" id="4_2j2im"]
+[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="5_xwf44"]
+[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="6_trbm3"]
+
+[sub_resource type="Resource" id="Resource_25b7c"]
+script = ExtResource("6_trbm3")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(1.1, 1.1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_q8o6d"]
+script = ExtResource("6_trbm3")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.1
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_lwmpo"]
+script = ExtResource("6_trbm3")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(1, 1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_28xtn"]
+script = ExtResource("6_trbm3")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_fvn40"]
+script = ExtResource("5_xwf44")
+source_path = NodePath("..")
+signal_name = "mouse_entered"
+tween_resources = Array[ExtResource("6_trbm3")]([SubResource("Resource_25b7c"), SubResource("Resource_q8o6d"), SubResource("Resource_lwmpo"), SubResource("Resource_28xtn")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"
+
+[sub_resource type="Resource" id="Resource_kev7n"]
+script = ExtResource("6_trbm3")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(0.9, 0.9)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_jncee"]
+script = ExtResource("6_trbm3")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.1
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_hfxmy"]
+script = ExtResource("6_trbm3")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(1, 1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_2j2im"]
+script = ExtResource("6_trbm3")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_xwf44"]
+script = ExtResource("5_xwf44")
+source_path = NodePath("..")
+signal_name = "pressed"
+tween_resources = Array[ExtResource("6_trbm3")]([SubResource("Resource_kev7n"), SubResource("Resource_jncee"), SubResource("Resource_hfxmy"), SubResource("Resource_2j2im")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"
+
+[node name="LabelOptionUI" type="HBoxContainer" unique_id=326038425 node_paths=PackedStringArray("button_", "label_")]
+script = ExtResource("1_kev7n")
+button_ = NodePath("Button")
+label_ = NodePath("RichTextLabel")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=489828559]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "[wave]Label[/wave]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=278464990]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+offset_transform_enabled = true
+text = "button"
+icon_alignment = 1
+script = ExtResource("2_kev7n")
+metadata/_custom_type_script = "uid://cdjgwh2w6043x"
+
+[node name="TweenComponent" type="Node" parent="Button" unique_id=661792673]
+script = ExtResource("3_hfxmy")
+metadata/_custom_type_script = "uid://cnahluscj58pv"
+
+[node name="SignalToTweenComponent" type="Node" parent="Button" unique_id=1377726748]
+script = ExtResource("4_2j2im")
+tweens_ = Array[ExtResource("5_xwf44")]([SubResource("Resource_fvn40"), SubResource("Resource_xwf44")])
+metadata/_custom_type_script = "uid://lcnommejn6jr"

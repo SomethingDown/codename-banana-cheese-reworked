@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bpb8e2l7376gm" path="res://Source/Components/Detection/EntityDetectorComponent.cs" id="1_nl5gi"]
 [ext_resource type="Script" uid="uid://wxkui530w5al" path="res://Source/Components/Vitality/DamangeDealerComponent.cs" id="2_82osk"]
 [ext_resource type="Script" uid="uid://yshnsqr83g8k" path="res://Source/Components/Physics/DeleteOnAreaCollisionComponent.cs" id="4_s5lmh"]
+[ext_resource type="Script" uid="uid://dpgeyyjrp37nn" path="res://Source/Components/Lifetime/DeleteTimerComponent.cs" id="5_2dusb"]
 [ext_resource type="Script" uid="uid://bars4ljac0u1f" path="res://Source/Components/Physics/ProjectileComponent.cs" id="5_vdqiw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vdqiw"]
@@ -23,6 +24,7 @@ offset_bottom = 1.0
 color = Color(0.6184456, 0.19060346, 0.19862944, 1)
 
 [node name="EntityDetectorComponent" type="Area2D" parent="." unique_id=1335574557]
+monitorable = false
 script = ExtResource("1_nl5gi")
 metadata/_custom_type_script = "uid://bpb8e2l7376gm"
 
@@ -30,13 +32,15 @@ metadata/_custom_type_script = "uid://bpb8e2l7376gm"
 shape = SubResource("CircleShape2D_vdqiw")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1013861720]
-monitorable = false
+priority = 13
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1656674172]
 shape = SubResource("CircleShape2D_s5lmh")
 
 [node name="DamangeDealerComponent" type="Node" parent="." unique_id=1661927232]
 script = ExtResource("2_82osk")
+max_damage = 30.0
+min_damage = 10.0
 metadata/_custom_type_script = "uid://wxkui530w5al"
 
 [node name="DeleteOnAreaCollisionComponent" type="Node" parent="." unique_id=269436591 node_paths=PackedStringArray("area2d_")]
@@ -48,3 +52,7 @@ metadata/_custom_type_script = "uid://yshnsqr83g8k"
 script = ExtResource("5_vdqiw")
 speed = 140.0
 metadata/_custom_type_script = "uid://bars4ljac0u1f"
+
+[node name="DeleteTimer" type="Node" parent="." unique_id=1143979002]
+script = ExtResource("5_2dusb")
+metadata/_custom_type_script = "uid://dpgeyyjrp37nn"

@@ -1,0 +1,45 @@
+[gd_resource type="Resource" script_class="SignalToTweenResource" format=3 uid="uid://ha2481cjb18i"]
+
+[ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Components/Visuals/SignalToTweenResource.cs" id="1_3cyci"]
+[ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Components/Visuals/TweenResource.cs" id="2_fvvt6"]
+
+[sub_resource type="Resource" id="Resource_65y27"]
+script = ExtResource("2_fvvt6")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(1.1, 1.1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_g0eyn"]
+script = ExtResource("2_fvvt6")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.1
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_lx5w7"]
+script = ExtResource("2_fvvt6")
+node_path = NodePath("..")
+action = "scale"
+value = Vector2(1, 1)
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[sub_resource type="Resource" id="Resource_3acju"]
+script = ExtResource("2_fvvt6")
+node_path = NodePath("..")
+parallel_to_previous = true
+action = "rotation"
+value = 0.0
+duration = 0.1
+metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
+
+[resource]
+script = ExtResource("1_3cyci")
+source_path = NodePath("..")
+signal_name = "mouse_entered"
+tween_resources = Array[ExtResource("2_fvvt6")]([SubResource("Resource_65y27"), SubResource("Resource_g0eyn"), SubResource("Resource_lx5w7"), SubResource("Resource_3acju")])
+metadata/_custom_type_script = "uid://chu18liur6wt6"

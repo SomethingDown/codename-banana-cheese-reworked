@@ -1,6 +1,6 @@
 using Godot;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/streamline__waving_hand_node.svg")]
 public partial class KnockbackOnDamageComponent : Node
 {
     private DamageRecieverComponent damage_reciever_;

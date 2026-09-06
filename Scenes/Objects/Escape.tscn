@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://chacvkh65fvor"]
+
+[ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="1_pbnbe"]
+[ext_resource type="Script" uid="uid://ch7byautpyga" path="res://Source/Components/Interactive/InteractionListeners/RestartSceneInteractionListenerComponent.cs" id="2_6om3c"]
+[ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="2_ijh5l"]
+[ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="3_ijh5l"]
+[ext_resource type="Texture2D" uid="uid://cox8u0daw2kt" path="res://addons/godot-easy-icons/icons/@icons/doorway_exit.svg" id="4_0idsx"]
+[ext_resource type="Script" uid="uid://d1g63tu86plw7" path="res://Source/Components/Visuals/OutlineComponent.cs" id="5_dtkcn"]
+[ext_resource type="Script" uid="uid://727uolqg3b74" path="res://Source/Components/Visuals/SignalToOutlineComponent.cs" id="6_6om3c"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esd16"]
+
+[node name="Escape" type="Node2D" unique_id=24055235]
+
+[node name="RestartSceneInteractionListenerComponent" type="Node" parent="." unique_id=1438305554 node_paths=PackedStringArray("interaction")]
+script = ExtResource("2_6om3c")
+interaction = NodePath("../InteractableComponent/Interaction")
+metadata/_custom_type_script = "uid://ch7byautpyga"
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=863126400]
+script = ExtResource("1_pbnbe")
+metadata/_custom_type_script = "uid://bt6qadveyo2d8"
+
+[node name="Interaction" type="Node" parent="InteractableComponent" unique_id=1924607933]
+script = ExtResource("2_ijh5l")
+label = "Escape"
+metadata/_custom_type_script = "uid://c3pa3ibleap0q"
+
+[node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1188981601]
+script = ExtResource("3_ijh5l")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=2010142787]
+shape = SubResource("CircleShape2D_esd16")
+
+[node name="DoorwayExit" type="Sprite2D" parent="." unique_id=6730143]
+position = Vector2(3, -2)
+texture = ExtResource("4_0idsx")
+
+[node name="OutlineComponent" type="Node" parent="." unique_id=227415361 node_paths=PackedStringArray("visual_")]
+script = ExtResource("5_dtkcn")
+visual_ = NodePath("../DoorwayExit")
+metadata/_custom_type_script = "uid://d1g63tu86plw7"
+
+[node name="SignalToOutlineComponent" type="Node" parent="." unique_id=488902577 node_paths=PackedStringArray("source_")]
+script = ExtResource("6_6om3c")
+source_ = NodePath("../InteractableComponent")
+enable_outline_signal_ = "Selected"
+disable_outline_signal_ = "Unselected"
+metadata/_custom_type_script = "uid://727uolqg3b74"

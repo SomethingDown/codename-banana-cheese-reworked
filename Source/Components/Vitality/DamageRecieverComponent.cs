@@ -1,6 +1,6 @@
 using Godot;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__signal_node.svg")]
 public partial class DamageRecieverComponent : Node
 {
 

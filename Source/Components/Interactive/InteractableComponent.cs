@@ -20,7 +20,6 @@ public partial class InteractableComponent : Node
 
     public void Select()
     {
-        GD.Print("fdsfg");
         EmitSignal(SignalName.Selected);
     }
 

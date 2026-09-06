@@ -14,6 +14,7 @@ region = Rect2(0, 0, 16, 16)
 script = ExtResource("1_lypfa")
 name = "Hack Tool"
 description = "Used to hack into electronics."
+base_price = 80.0
 icon = SubResource("AtlasTexture_00ekw")
 item_equipped_scene = ExtResource("1_m78ol")
 authorizations = Array[ExtResource("1_8rxgl")]([ExtResource("2_8rxgl")])

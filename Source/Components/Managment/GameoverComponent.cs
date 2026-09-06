@@ -4,7 +4,8 @@ using System;
 [GlobalClass]
 public partial class GameoverComponent : Node
 {
-        Action<Event> action = null;
+    [Export] private PackedScene scene_;
+    private Action<Event> action = null;
     public override void _Ready()
     {
         action =  _ =>
@@ -12,7 +13,7 @@ public partial class GameoverComponent : Node
             EventEntityDead e = _ as EventEntityDead;
             if (e == null) return;
 
-            if (e.name.Equals("Player")) GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);            
+            if (e.name.Equals("Player")) GameState.instance.LoadNewLevel(scene_.InstantiateOrNull<Node2D>());        
 
         };
         EventsBus.instance.Subscribe(action);
