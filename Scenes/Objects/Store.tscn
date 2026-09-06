@@ -18,7 +18,7 @@ metadata/_custom_type_script = "uid://bt6qadveyo2d8"
 
 [node name="Interaction" type="Node" parent="InteractableComponent" unique_id=779559951]
 script = ExtResource("2_kf87c")
-label = "Open"
+label = "Open shop"
 metadata/_custom_type_script = "uid://c3pa3ibleap0q"
 
 [node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1715164749]

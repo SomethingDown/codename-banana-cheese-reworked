@@ -31,7 +31,6 @@ public partial class HealthComponent : Node
 
         health_ = Mathf.Max(0,health_ - damage);
         EmitSignal(SignalName.HealthChanged,health_);
-        GD.Print(health_);
         if (health_<=0)
         {
             EventsQueue.instance.Publish(new EventEntityDead(this.GetEntity().Name));

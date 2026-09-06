@@ -18,7 +18,7 @@ public partial class WindowUI : Control
 
     public override void _EnterTree()
     {
-        GetTree().Paused = true;
+        GetTree().Paused = false;
     }
 
     public override void _ExitTree()

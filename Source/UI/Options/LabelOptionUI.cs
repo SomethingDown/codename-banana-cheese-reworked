@@ -38,7 +38,6 @@ public partial class LabelOptionUI : HBoxContainer
         get => label_?.Visible ?? false;
         set
         {
-            GD.Print($"Setter called, value={value}, label_ is null={label_ == null}");
             if (label_ == null) return;
             label_.Visible = !value;
         }

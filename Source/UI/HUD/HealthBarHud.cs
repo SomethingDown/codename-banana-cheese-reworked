@@ -21,6 +21,7 @@ public partial class HealthBarHud : Control
 
     private void OnPlayerChanged(Node player)
     {
+        GD.Print("Player changed: ",player);
         if (health_bar!=null)health_bar.Visible = false;
 
         if (player == null) return;

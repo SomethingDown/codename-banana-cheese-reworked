@@ -13,10 +13,9 @@ public class GameState
 
     public void LoadNewLevel(Node2D level)
     {
-        GD.Print(level_container);
         if (level == null) return;
 
-        level_container?.GetChildren().ToList().ForEach(l=>{if(l is not IAmLevelContainer)l.QueueFree();});//Might cause issues so consider changingt to RemoveChild...
+        level_container?.GetChildren().ToList().ForEach(l=>{if(l is not IAmLevelContainer){level_container.RemoveChild(l);l.QueueFree();}});//Might cause issues so consider changingt to RemoveChild...
         level_container?.AddChild(level);
         LevelChanged?.Invoke(level);
     }

@@ -17,9 +17,14 @@ public partial class HeistStarter : Node
             if (b==false) return;
 
             HeistManager.instance.SetCurrentHeist(heist_selector.selected_heist);
-            GameState.instance.LoadNewLevel(heist_selector.selected_heist.scene.Instantiate<Node2D>());
+            AsyncUtils.InvokeNextFrame(this,()=>{
+                GameState.instance.LoadNewLevel(heist_selector.selected_heist.scene.Instantiate<Node2D>());
+                WindowManager.instance.UnloadNewWindow();
+            });
+            
         };
     }
+
 
 
 }

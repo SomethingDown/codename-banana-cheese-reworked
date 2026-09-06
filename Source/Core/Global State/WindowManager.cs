@@ -15,13 +15,20 @@ public class WindowManager
 
     public void LoadNewWindow(Control window)
     {
-        GD.Print(window_container);
         if (window == null || windowui_ == null) return;
 
         window_container?.GetChildren().ToList().ForEach(l=>{if(l is not IAmWindowContainer)window_container.RemoveChild(l);});
         window_container?.AddChild(windowui_);
         windowui_.content = window;
         WindowChanged?.Invoke(window);
+    }
+
+    public void UnloadNewWindow()
+    {
+        if (windowui_ == null) return;
+
+        window_container?.GetChildren().ToList().ForEach(l=>{if(l is not IAmWindowContainer)window_container.RemoveChild(l);});
+        WindowChanged?.Invoke(null);
     }
     
     public void SubscribeWindowContainer(CanvasLayer canvas_layer)

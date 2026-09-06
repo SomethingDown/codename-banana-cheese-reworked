@@ -53,7 +53,7 @@ public partial class ItemSelectorUI : Node
 
         item_option.Pressed += () =>
         {
-            item_selector_.SelectAt(idx);GD.Print(item.name);
+            item_selector_.SelectAt(idx);
         };
 
         items_container.AddChild(item_option);

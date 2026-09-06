@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://c25sahy0qmwns"]
+
+[ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="2_018ky"]
+[ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="2_q7roe"]
+[ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="3_igfgw"]
+[ext_resource type="Script" uid="uid://ctdvpr8bsb7hb" path="res://Source/Components/Interactive/InteractionListeners/InstanceWindowedSceneInteractionListenerComponent.cs" id="4_w87ab"]
+[ext_resource type="PackedScene" uid="uid://by2o1qprok8uf" path="res://Scenes/UI/Window/WindowContent/StartHeist.tscn" id="5_xke5u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esd16"]
+
+[node name="HiestBoard" type="Node2D" unique_id=749258439]
+
+[node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1082150325]
+script = ExtResource("3_igfgw")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=121308873]
+shape = SubResource("CircleShape2D_esd16")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=342425951]
+script = ExtResource("2_q7roe")
+metadata/_custom_type_script = "uid://bt6qadveyo2d8"
+
+[node name="Interaction" type="Node" parent="InteractableComponent" unique_id=972449407]
+script = ExtResource("2_018ky")
+label = "Open heist board"
+metadata/_custom_type_script = "uid://c3pa3ibleap0q"
+
+[node name="InstanceWindowedSceneInteractionListenerComponent" type="Node" parent="." unique_id=843740382 node_paths=PackedStringArray("interaction")]
+script = ExtResource("4_w87ab")
+scene_scene_ = ExtResource("5_xke5u")
+interaction = NodePath("../InteractableComponent/Interaction")
+metadata/_custom_type_script = "uid://ctdvpr8bsb7hb"

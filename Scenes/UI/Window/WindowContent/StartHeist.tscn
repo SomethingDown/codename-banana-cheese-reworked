@@ -26,10 +26,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-current_tab = 1
+current_tab = 0
 
 [node name="Heist" type="HBoxContainer" parent="TabContainer" unique_id=206032437]
-visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -51,6 +50,7 @@ size_flags_stretch_ratio = 4.0
 layout_mode = 2
 
 [node name="Accept" type="Control" parent="TabContainer" unique_id=845383887]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 

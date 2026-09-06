@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://wynm1s6qkdlm" path="res://Scenes/UI/HUD/PlayerHUD.tscn" id="1_dfwoq"]
 [ext_resource type="Script" uid="uid://ibxuajmlmuqn" path="res://Source/Components/Gameplay/IAmLevelContainer.cs" id="2_c6dyv"]
-[ext_resource type="Script" uid="uid://djt0xt3lp3k0f" path="res://Source/Components/Debug/EventsDebugComponent.cs" id="2_cyew3"]
 [ext_resource type="Script" uid="uid://dvdttjai2nnlr" path="res://Source/Components/Gameplay/IAmWindowContainer.cs" id="2_ushg2"]
 [ext_resource type="Script" uid="uid://di0gik1l4ld6y" path="res://Source/Components/Managment/EventsBusUpdaterComponent.cs" id="3_y4a8c"]
+[ext_resource type="PackedScene" uid="uid://di0xo1fdxrv4i" path="res://Scenes/Game/MainMenuLevel.tscn" id="4_ushg2"]
 
 [node name="Main" type="Node2D" unique_id=549649426]
 
@@ -25,10 +25,8 @@ process_mode = 3
 script = ExtResource("2_c6dyv")
 metadata/_custom_type_script = "uid://ibxuajmlmuqn"
 
+[node name="MainMenuLevel" parent="CurrentLevelContainer" unique_id=208961292 instance=ExtResource("4_ushg2")]
+
 [node name="EventsBusUpdaterComponent" type="Node" parent="." unique_id=1303621262]
 script = ExtResource("3_y4a8c")
 metadata/_custom_type_script = "uid://di0gik1l4ld6y"
-
-[node name="EventsDebugComponent" type="Node" parent="." unique_id=1298179589]
-script = ExtResource("2_cyew3")
-metadata/_custom_type_script = "uid://djt0xt3lp3k0f"
