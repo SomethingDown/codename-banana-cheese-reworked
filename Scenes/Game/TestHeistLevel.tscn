@@ -71,4 +71,4 @@ position = Vector2(63, 19)
 position = Vector2(259, 98)
 
 [node name="Escape" parent="YSort" unique_id=24055235 instance=ExtResource("6_erwvk")]
-position = Vector2(268, 170)
+position = Vector2(217, 24)

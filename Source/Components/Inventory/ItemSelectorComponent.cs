@@ -22,6 +22,13 @@ public partial class ItemSelectorComponent : Node
         inventory_.ItemsChanged += OnItemsChanged;
     }
 
+    public override void _ExitTree()
+    {
+        if (inventory_ == null) return;
+        inventory_.ItemsChanged -= OnItemsChanged;
+    }
+
+
     public void SelectAt(int index)
     {
         if (inventory_ == null) return;

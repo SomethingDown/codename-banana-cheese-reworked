@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://hw7ujh11w0u5"]
+
+[ext_resource type="PackedScene" uid="uid://dk6khfy84q7wc" path="res://Scenes/UI/Info/InfoCardUI.tscn" id="1_t46mb"]
+[ext_resource type="PackedScene" uid="uid://cldjrco5qixuo" path="res://Scenes/UI/Options/LabelOptionUI.tscn" id="2_bntvn"]
+[ext_resource type="Script" uid="uid://dfnsh2hxr4owg" path="res://Source/Components/UI/Heist/HeistOverviewDisplayUIComponent.cs" id="3_725l3"]
+[ext_resource type="PackedScene" uid="uid://fyuai6gw3sod" path="res://Scenes/Game/PreparationLevel.tscn" id="5_8oafy"]
+[ext_resource type="Script" uid="uid://chi7g6wjnh4bw" path="res://Source/Components/Transition/TransitionListeners/LevelTransitionListenerComponent.cs" id="6_8oafy"]
+[ext_resource type="Script" uid="uid://bbhtbj68i1ksl" path="res://Source/Components/Transition/TransitionTimerComponent.cs" id="6_fvit2"]
+[ext_resource type="Script" uid="uid://dul7m4pew3po2" path="res://Source/Components/Transition/TransitionListeners/WindowUnloadTransitionComponent.cs" id="7_8oafy"]
+[ext_resource type="Script" uid="uid://bq6cqtkto2yuy" path="res://Source/Components/Transition/TransitionListeners/LaunchLastHeistTransitionListenerComponent.cs" id="8_fvit2"]
+
+[node name="Control" type="Control" unique_id=200799330]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=862933370]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+
+[node name="InfoContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=2059642767]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeInfo" parent="HBoxContainer/InfoContainer" unique_id=1953515434 instance=ExtResource("1_t46mb")]
+layout_mode = 2
+title = "Time elapsed"
+data = "00:00"
+
+[node name="KillsInfo" parent="HBoxContainer/InfoContainer" unique_id=810864968 instance=ExtResource("1_t46mb")]
+layout_mode = 2
+title = "Actors killed"
+data = "0"
+
+[node name="CurrenctInfo" parent="HBoxContainer/InfoContainer" unique_id=765364383 instance=ExtResource("1_t46mb")]
+layout_mode = 2
+title = "Currency obtained"
+data = "10.99$"
+
+[node name="OptionsContainer" type="VBoxContainer" parent="HBoxContainer" unique_id=1692110910]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Status" parent="HBoxContainer/OptionsContainer" unique_id=1391648349 instance=ExtResource("1_t46mb")]
+layout_mode = 2
+size_flags_vertical = 1
+title = "Status"
+data = "Escaped"
+
+[node name="Replay" parent="HBoxContainer/OptionsContainer" unique_id=399929310 instance=ExtResource("2_bntvn")]
+layout_mode = 2
+size_flags_vertical = 3
+button_text = "Replay"
+is_label_invisible_ = true
+
+[node name="Back to preparation" parent="HBoxContainer/OptionsContainer" unique_id=841049305 instance=ExtResource("2_bntvn")]
+layout_mode = 2
+size_flags_vertical = 3
+button_text = "Return to preparation"
+is_label_invisible_ = true
+
+[node name="HeistOverviewDisplayUI" type="Node" parent="." unique_id=2074057058 node_paths=PackedStringArray("time_info_", "kills_info", "currency_info", "status_info")]
+script = ExtResource("3_725l3")
+time_info_ = NodePath("../HBoxContainer/InfoContainer/TimeInfo")
+kills_info = NodePath("../HBoxContainer/InfoContainer/KillsInfo")
+currency_info = NodePath("../HBoxContainer/InfoContainer/CurrenctInfo")
+status_info = NodePath("../HBoxContainer/OptionsContainer/Status")
+
+[node name="BackToPreparation" type="Node" parent="." unique_id=871026610]
+
+[node name="TransitionTimerComponent" type="Node" parent="BackToPreparation" unique_id=1300150731 node_paths=PackedStringArray("source_")]
+script = ExtResource("6_fvit2")
+source_ = NodePath("../../HBoxContainer/OptionsContainer/Back to preparation")
+signal_name_ = "Pressed"
+time_ = 0.1
+metadata/_custom_type_script = "uid://bbhtbj68i1ksl"
+
+[node name="LevelTransitionListenerComponent" type="Node" parent="BackToPreparation" unique_id=977472472 node_paths=PackedStringArray("transision_timer_")]
+script = ExtResource("6_8oafy")
+scene_ = ExtResource("5_8oafy")
+transision_timer_ = NodePath("../TransitionTimerComponent")
+metadata/_custom_type_script = "uid://chi7g6wjnh4bw"
+
+[node name="WindowUnloadTransitionComponent" type="Node" parent="BackToPreparation" unique_id=727901101 node_paths=PackedStringArray("transision_timer_")]
+script = ExtResource("7_8oafy")
+transision_timer_ = NodePath("../TransitionTimerComponent")
+metadata/_custom_type_script = "uid://dul7m4pew3po2"
+
+[node name="Replay" type="Node" parent="." unique_id=296834054]
+
+[node name="TransitionTimerComponent" type="Node" parent="Replay" unique_id=1894822962 node_paths=PackedStringArray("source_")]
+script = ExtResource("6_fvit2")
+source_ = NodePath("../../HBoxContainer/OptionsContainer/Replay")
+signal_name_ = "Pressed"
+time_ = 0.1
+metadata/_custom_type_script = "uid://bbhtbj68i1ksl"
+
+[node name="LaunchLastHeistTransitionListenerComponent" type="Node" parent="Replay" unique_id=1205703316 node_paths=PackedStringArray("transision_timer_")]
+script = ExtResource("8_fvit2")
+transision_timer_ = NodePath("../TransitionTimerComponent")
+metadata/_custom_type_script = "uid://bq6cqtkto2yuy"

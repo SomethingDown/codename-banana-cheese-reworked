@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://b34vwvsafma2g" path="res://Source/Components/Managment/Managers/LevelManagerComponent.cs" id="8_02r4d"]
 [ext_resource type="Script" uid="uid://ctetpu5wp0px" path="res://Source/Components/Managment/Managers/PlayerManagerComponent.cs" id="9_ol3yi"]
 [ext_resource type="Script" uid="uid://c53bvymgope1c" path="res://Source/Components/Managment/Managers/HeistManagerComponent.cs" id="10_d6h6d"]
+[ext_resource type="PackedScene" uid="uid://hw7ujh11w0u5" path="res://Scenes/UI/Window/WindowContent/HeistOverview.tscn" id="11_cad5q"]
 [ext_resource type="Script" uid="uid://bh1dsx5rleqsh" path="res://Source/Components/Gameplay/HeistStatsTrackingComponent.cs" id="11_d6h6d"]
 
 [node name="Main" type="Node2D" unique_id=549649426]
@@ -55,6 +56,7 @@ metadata/_custom_type_script = "uid://ctetpu5wp0px"
 
 [node name="HeistManagerComponent" type="Node" parent="." unique_id=172166283]
 script = ExtResource("10_d6h6d")
+overview_scene_ = ExtResource("11_cad5q")
 metadata/_custom_type_script = "uid://c53bvymgope1c"
 
 [node name="HeistStatsTrackingComponent" type="Node" parent="." unique_id=1465639657]

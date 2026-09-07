@@ -2,39 +2,24 @@
 
 [ext_resource type="Script" uid="uid://bbgiakqoattwk" path="res://Source/UI/Info/InfoCardUI.cs" id="1_axmyi"]
 
-[sub_resource type="FontVariation" id="FontVariation_axmyi"]
-
-[sub_resource type="FontFile" id="FontFile_d3iy8"]
-subpixel_positioning = 0
-msdf_pixel_range = 14
-msdf_size = 128
-cache/0/variation_coordinates = {}
-cache/0/face_index = 0
-cache/0/embolden = 0.0
-cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
-cache/0/spacing_top = 0
-cache/0/spacing_bottom = 0
-cache/0/spacing_space = 0
-cache/0/spacing_glyph = 0
-cache/0/baseline_offset = 0.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
-
 [node name="InfoCardUI" type="VBoxContainer" unique_id=1953515434 node_paths=PackedStringArray("label_title_", "label_data_")]
+offset_right = 318.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_axmyi")
+title = "Title"
+data = "Description"
+title_color = Color(0.73333335, 0.21960784, 0.4509804, 1)
+data_color = Color(0.2109654, 0.030602748, 0.113253675, 1)
 label_title_ = NodePath("Name")
-title_font_ = SubResource("FontVariation_axmyi")
 label_data_ = NodePath("Description")
-label_font_ = SubResource("FontFile_d3iy8")
 
 [node name="Name" type="RichTextLabel" parent="." unique_id=2000314950]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_colors/default_color = Color(1, 1, 1, 1)
 bbcode_enabled = true
 text = "Name
 "

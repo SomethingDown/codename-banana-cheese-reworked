@@ -215,13 +215,14 @@ public record EventHeistLaunchRequested : Event
     
 }
 
+public enum HeistEndState{Fail,Success};
 
 public record EventHeistEndRequested : Event
 {
-
-    public EventHeistEndRequested()
+    public HeistEndState state;
+    public EventHeistEndRequested(HeistEndState state)
     {
-
+        this.state = state;
     }
     
 }
@@ -239,7 +240,11 @@ public record EventHeistLaunched : Event
 
 public record EventHeistEnded : Event
 {
-    
+    public HeistEndState state;
+    public EventHeistEnded(HeistEndState state)
+    {
+        this.state = state;
+    }
 }
 
 public record EventHeistResults : Event

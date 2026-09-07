@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://di0xo1fdxrv4i"]
 
 [ext_resource type="PackedScene" uid="uid://cldjrco5qixuo" path="res://Scenes/UI/Options/LabelOptionUI.tscn" id="1_d7j6u"]
-[ext_resource type="Script" uid="uid://m8ts2ayd1fw" path="res://Source/Components/Transition/TransitionListeners/SceneTransitionListenerComponent.cs" id="2_r14hf"]
+[ext_resource type="Script" uid="uid://chi7g6wjnh4bw" path="res://Source/Components/Transition/TransitionListeners/LevelTransitionListenerComponent.cs" id="3_d7j6u"]
 [ext_resource type="PackedScene" uid="uid://fyuai6gw3sod" path="res://Scenes/Game/PreparationLevel.tscn" id="3_kka78"]
 [ext_resource type="Script" uid="uid://bbhtbj68i1ksl" path="res://Source/Components/Transition/TransitionTimerComponent.cs" id="4_ul1yj"]
 
@@ -17,15 +17,15 @@ offset_bottom = 109.0
 button_text = "Start"
 is_label_invisible_ = true
 
-[node name="SceneTransitionListenerComponent" type="Node" parent="." unique_id=430818512 node_paths=PackedStringArray("transision_timer_")]
-script = ExtResource("2_r14hf")
-scene_ = ExtResource("3_kka78")
-transision_timer_ = NodePath("../TransitionTimerComponent")
-metadata/_custom_type_script = "uid://m8ts2ayd1fw"
-
 [node name="TransitionTimerComponent" type="Node" parent="." unique_id=2043471692 node_paths=PackedStringArray("source_")]
 script = ExtResource("4_ul1yj")
 source_ = NodePath("../CanvasLayer/LabelOptionUI")
 signal_name_ = "Pressed"
 time_ = 0.2
 metadata/_custom_type_script = "uid://bbhtbj68i1ksl"
+
+[node name="LevelTransitionListenerComponent" type="Node" parent="." unique_id=1988163125 node_paths=PackedStringArray("transision_timer_")]
+script = ExtResource("3_d7j6u")
+scene_ = ExtResource("3_kka78")
+transision_timer_ = NodePath("../TransitionTimerComponent")
+metadata/_custom_type_script = "uid://chi7g6wjnh4bw"

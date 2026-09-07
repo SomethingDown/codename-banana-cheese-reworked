@@ -33,4 +33,9 @@ public partial class InventoryComponent : Node
 		items.Remove(item_resource);
 		EmitSignal(SignalName.ItemsChanged);
 	}
+	public void Clear()
+	{
+		items.Clear();
+		EmitSignal(SignalName.ItemsChanged);
+	}
 }

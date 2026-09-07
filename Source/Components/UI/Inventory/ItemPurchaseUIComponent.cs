@@ -32,6 +32,8 @@ public partial class ItemPurchaseUIComponent : Node
             CurrencyComponent currency = PlayerState.instance.banked_currency_component;
             if (currency == null) return;
 
+            if (inventory.HasItem(item)) return;
+
             if (!currency.TrySpend(item.base_price)) return;
 
             inventory.Add(item);

@@ -7,7 +7,7 @@ public partial class HeistStatsTrackingComponent : Node
 {
     public Dictionary<ulong,int> kills_dictionary = new Dictionary<ulong, int>();
     public Dictionary<ulong,float> currency_dictionary = new Dictionary<ulong, float>();
-    public ulong? captured_player_id = null;
+    public ulong captured_player_id = 0;
     public HeistResource current_heist = null;
     public float currency;
     public DateTime start_time;
@@ -44,7 +44,7 @@ public partial class HeistStatsTrackingComponent : Node
                 break;
 
             case EventHeistEnded e_e:
-                OnHeistEnded();
+                OnHeistEnded(e_e.state);
                 break;
 
             default:
@@ -67,18 +67,22 @@ public partial class HeistStatsTrackingComponent : Node
         current_heist = res;
     }
 
-    public void OnHeistEnded()
+    public void OnHeistEnded(HeistEndState state)
     {
+        Node player = GodotObject.InstanceFromId(captured_player_id) as Node;
+        if (player == null) return;
+        
         end_time = DateTime.Now;
-        currency = PlayerState.instance.player_entity.GetComponentInEntity<CurrencyComponent>().GetCurrency();
 
         HeistResultResource results = new HeistResultResource
         {
             heist = current_heist,
             start_time = start_time,
             end_time = end_time,
-            currency = currency_dictionary.ContainsKey((ulong)captured_player_id)?currency_dictionary[(ulong)captured_player_id]:0,
-            kills = kills_dictionary.ContainsKey((ulong)captured_player_id)?kills_dictionary[(ulong)captured_player_id]:0,
+            currency = currency_dictionary.ContainsKey(captured_player_id)?currency_dictionary[captured_player_id]:0,
+            kills = kills_dictionary.ContainsKey(captured_player_id)?kills_dictionary[captured_player_id]:0,
+            inventory_used = PlayerState.instance.transfer_Inventory_component.Duplicate() as InventoryComponent,
+            heist_end_state = state
         };
         EventsQueue.instance.Publish(new EventHeistResults(results));
         Reset();
@@ -104,7 +108,7 @@ public partial class HeistStatsTrackingComponent : Node
     {
         kills_dictionary.Clear();
         currency_dictionary.Clear();
-        captured_player_id = null;
+        captured_player_id = 0;
         current_heist = null;
         currency = 0.0f;
     }

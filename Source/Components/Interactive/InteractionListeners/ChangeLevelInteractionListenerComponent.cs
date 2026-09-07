@@ -13,7 +13,7 @@ public partial class ChangeLevelInteractionListenerComponent : InteractionListen
         if (level_2d == null) return;
 
         // EventsQueue.instance.Publish(new EventLevelLoadRequest(level_2d));
-        EventsQueue.instance.Publish(new EventHeistEndRequested());
+        EventsQueue.instance.Publish(new EventHeistEndRequested(HeistEndState.Success));
     }
 
 }

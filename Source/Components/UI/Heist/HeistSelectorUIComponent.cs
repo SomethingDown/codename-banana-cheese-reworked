@@ -28,7 +28,7 @@ public partial class HeistSelectorUIComponent : Node
 
         EventsBus.instance.Subscribe(OnEvent);
 
-        OnUnlockedHeists( HeistState.instance.unlocked_heists);
+        OnUnlockedHeists( HeistState.instance.GetUnlockedHeists());
     }
 
     public void OnEvent(Event e)
