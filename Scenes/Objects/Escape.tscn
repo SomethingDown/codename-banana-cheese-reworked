@@ -1,8 +1,9 @@
 [gd_scene format=3 uid="uid://chacvkh65fvor"]
 
+[ext_resource type="Script" uid="uid://3ywt171qrh5k" path="res://Source/Components/Interactive/InteractionListeners/ChangeLevelInteractionListenerComponent.cs" id="1_he5xu"]
 [ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="1_pbnbe"]
-[ext_resource type="Script" uid="uid://ch7byautpyga" path="res://Source/Components/Interactive/InteractionListeners/RestartSceneInteractionListenerComponent.cs" id="2_6om3c"]
 [ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="2_ijh5l"]
+[ext_resource type="PackedScene" uid="uid://di0xo1fdxrv4i" path="res://Scenes/Game/MainMenuLevel.tscn" id="2_mqdth"]
 [ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="3_ijh5l"]
 [ext_resource type="Texture2D" uid="uid://cox8u0daw2kt" path="res://addons/godot-easy-icons/icons/@icons/doorway_exit.svg" id="4_0idsx"]
 [ext_resource type="Script" uid="uid://d1g63tu86plw7" path="res://Source/Components/Visuals/OutlineComponent.cs" id="5_dtkcn"]
@@ -12,10 +13,11 @@
 
 [node name="Escape" type="Node2D" unique_id=24055235]
 
-[node name="RestartSceneInteractionListenerComponent" type="Node" parent="." unique_id=1438305554 node_paths=PackedStringArray("interaction")]
-script = ExtResource("2_6om3c")
+[node name="ChangeLevelInteractionListenerComponent" type="Node" parent="." unique_id=988811750 node_paths=PackedStringArray("interaction")]
+script = ExtResource("1_he5xu")
+scene_ = ExtResource("2_mqdth")
 interaction = NodePath("../InteractableComponent/Interaction")
-metadata/_custom_type_script = "uid://ch7byautpyga"
+metadata/_custom_type_script = "uid://3ywt171qrh5k"
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=863126400]
 script = ExtResource("1_pbnbe")

@@ -8,11 +8,13 @@
 [ext_resource type="Script" uid="uid://k8gges7taw3t" path="res://Source/Components/Managment/Managers/WindowManagerComponent.cs" id="6_5k2w5"]
 [ext_resource type="Script" uid="uid://djt0xt3lp3k0f" path="res://Source/Components/Debug/EventsDebugComponent.cs" id="6_ushg2"]
 [ext_resource type="Script" uid="uid://b34vwvsafma2g" path="res://Source/Components/Managment/Managers/LevelManagerComponent.cs" id="8_02r4d"]
+[ext_resource type="Script" uid="uid://ctetpu5wp0px" path="res://Source/Components/Managment/Managers/PlayerManagerComponent.cs" id="9_ol3yi"]
+[ext_resource type="Script" uid="uid://c53bvymgope1c" path="res://Source/Components/Managment/Managers/HeistManagerComponent.cs" id="10_d6h6d"]
 
 [node name="Main" type="Node2D" unique_id=549649426]
+process_mode = 3
 
 [node name="Menu" type="CanvasLayer" parent="." unique_id=364623328]
-process_mode = 3
 layer = 2
 
 [node name="IAmWindowContainer" type="Node" parent="Menu" unique_id=1108074165]
@@ -20,9 +22,9 @@ script = ExtResource("2_ushg2")
 metadata/_custom_type_script = "uid://dvdttjai2nnlr"
 
 [node name="HUD" parent="." unique_id=1469353660 instance=ExtResource("1_dfwoq")]
-process_mode = 3
 
 [node name="CurrentLevelContainer" type="Node2D" parent="." unique_id=2142684475]
+process_mode = 1
 
 [node name="IAmLevelContainer" type="Node" parent="CurrentLevelContainer" unique_id=1940367907]
 script = ExtResource("2_c6dyv")
@@ -45,3 +47,11 @@ metadata/_custom_type_script = "uid://k8gges7taw3t"
 [node name="LevelManagerComponent" type="Node" parent="." unique_id=851612055]
 script = ExtResource("8_02r4d")
 metadata/_custom_type_script = "uid://b34vwvsafma2g"
+
+[node name="PlayerManagerComponent" type="Node" parent="." unique_id=415021768]
+script = ExtResource("9_ol3yi")
+metadata/_custom_type_script = "uid://ctetpu5wp0px"
+
+[node name="HeistManagerComponent" type="Node" parent="." unique_id=172166283]
+script = ExtResource("10_d6h6d")
+metadata/_custom_type_script = "uid://c53bvymgope1c"

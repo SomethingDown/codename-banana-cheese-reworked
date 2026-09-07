@@ -8,12 +8,12 @@ public partial class IAmPlayerComponent : Node
     {
         Node entity = this.GetEntity();
         if (entity == null) return;
-        PlayerState.instance.SubscribePlayer(entity);
+        EventsQueue.instance.Publish(new EventPlayerSubscribeRequest(entity));
     }
 
     public override void _ExitTree()
     {
-        PlayerState.instance.UnsubscribePlayer();
+        EventsQueue.instance.Publish(new EventPlayerUnsubscribeRequest());
     }
 
 

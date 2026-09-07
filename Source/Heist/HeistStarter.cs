@@ -17,7 +17,7 @@ public partial class HeistStarter : Node
         heist_accept_checker_.HeistRequestAccepted += () =>
         {
             PlayerState.instance.transfer_Inventory_component = transfer_inventory_;
-            HeistManager.instance.SetCurrentHeist(heist_selector_.selected_heist);
+            HeistState.instance.selected_heist = heist_selector_.selected_heist;
             AsyncUtils.InvokeNextFrame(()=>{
                 
                 Node2D level = heist_selector_.selected_heist.scene.Instantiate<Node2D>();

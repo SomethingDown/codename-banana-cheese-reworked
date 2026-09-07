@@ -14,11 +14,13 @@ public class EventsBus
     public void Subscribe(Action<Event> callback)
     {
         observer_callbacks.Add(callback);
+        GD.Print("Subscribed: ",callback);
     }
 
     public void Unsubscribe(Action<Event> callback)
     {
         observer_callbacks.Remove(callback);
+        GD.Print("Unubscribed: ",callback);
     }
 
     public void Update()
@@ -29,11 +31,13 @@ public class EventsBus
 
     private void Resolve(Event event_)
     {
-        observer_callbacks.ForEach(c=>
+        var callbacks_snapshot = observer_callbacks.ToArray();
+
+        foreach (var c in callbacks_snapshot)
         {
-            try {c.Invoke(event_);}
-            catch(System.Exception e){GD.PrintErr($"Event observer threw: {e}");}
-        });
+            try { c.Invoke(event_); }
+            catch (System.Exception e) { GD.PrintErr($"Event observer threw: {e}"); }
+        }
     }
 
 }

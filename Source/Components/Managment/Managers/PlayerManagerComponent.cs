@@ -31,7 +31,6 @@ public partial class PlayerManagerComponent : Node
         if (entity == null) return;
 
         PlayerState.instance.player_entity = entity;
-        PlayerState.instance.banked_inventory_component.Add(GD.Load<ItemResource>("res://Resources/Items/DrillResource.tres"));
         EventsQueue.instance.Publish(new EventPlayerChanged(entity));
     }
 

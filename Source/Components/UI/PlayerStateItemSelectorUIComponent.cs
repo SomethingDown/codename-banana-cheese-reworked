@@ -26,6 +26,12 @@ public partial class PlayerStateItemSelectorUIComponent : Node
         OnItemsChanged();
     }
 
+    public override void _ExitTree()
+    {
+        inventory_.ItemsChanged -= OnItemsChanged;
+    }
+
+
 
     private void OnItemsChanged()
     {
@@ -48,12 +54,17 @@ public partial class PlayerStateItemSelectorUIComponent : Node
 
         if (item_option == null) return;
 
+        if (items_container == null) return;
+        
+        if (!GodotObject.IsInstanceValid(items_container)) return; 
+
         item_option.TextureNormal = item.icon;
 
         item_option.Pressed += () =>
         {
             item_selector_.SelectAt(idx);
         };
+
 
         items_container.AddChild(item_option);
     }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 [GlobalClass]
 public partial class HeistSelectorUIComponent : Node
@@ -22,15 +23,30 @@ public partial class HeistSelectorUIComponent : Node
         if (heist_selector_component_ == null) return;
 
         HeistResource hr = GD.Load<HeistResource>("res://Resources/Heists/TestHeist.tres");
-        HeistManager.instance.AddHeist(hr);
-        HeistManager.instance.UnlockHeist(hr);
-        HeistManager.instance.HeistsUnlocked += OnUnlockedHeists; 
-        OnUnlockedHeists( HeistManager.instance.GetUnlockedHeists());
+        EventsQueue.instance.Publish(new EventHeistAddRequest(hr));
+        EventsQueue.instance.Publish(new EventHeistUnlockRequest(hr));
+
+        EventsBus.instance.Subscribe(OnEvent);
+
+        OnUnlockedHeists( HeistState.instance.unlocked_heists);
+    }
+
+    public void OnEvent(Event e)
+    {
+        switch (e)
+        {
+            case EventHeistsUnlocked h_u:
+                OnUnlockedHeists(h_u.unlocked_heists);
+                break;
+
+            default:
+                break;
+        }
     }
 
     public override void _ExitTree()
     {
-        HeistManager.instance.HeistsUnlocked -= OnUnlockedHeists; 
+        EventsBus.instance.Unsubscribe(OnEvent);
     }
 
 

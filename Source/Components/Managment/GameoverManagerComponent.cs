@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class GameoverComponent : Node
+public partial class GameoverManagerComponent : Node
 {
     [Export] private PackedScene scene_;
     private Action<Event> action = null;
