@@ -25,7 +25,7 @@
 [ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Resources/AuthorizationResource.cs" id="26_mc0oj"]
 [ext_resource type="Resource" uid="uid://5ngs7dhtas7u" path="res://Resources/Authorizations/BreachAuthResource.tres" id="27_fxftb"]
 [ext_resource type="Script" uid="uid://cb2sw7ojt5leh" path="res://Source/Components/Debug/HealthDebugComponnet.cs" id="28_fxftb"]
-[ext_resource type="Script" uid="uid://cu7xy2fly1g2k" path="res://Source/Components/Gameplay/IAmPlayerComponent.cs" id="29_spibu"]
+[ext_resource type="Script" uid="uid://cu7xy2fly1g2k" path="res://Source/Components/Gameplay/Flaggers/IAmPlayerComponent.cs" id="29_spibu"]
 [ext_resource type="Script" uid="uid://d0d1dd5vdn4ks" path="res://Source/Components/Vitality/DeleteOnDeathComponent.cs" id="30_2n8gu"]
 [ext_resource type="Script" uid="uid://cpkki4ums7wor" path="res://Source/Components/Vitality/DamageRecieverComponent.cs" id="30_h1o3h"]
 [ext_resource type="Script" uid="uid://di377n0x7ceig" path="res://Source/Components/Interactive/InteractionSelectorComponent.cs" id="33_ynkr0"]

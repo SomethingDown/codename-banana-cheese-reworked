@@ -8,12 +8,12 @@ public partial class IAmLevelContainer : Node
     {
         Node2D entity = this.GetEntity() as Node2D;
         if (entity == null) return;
-        GameState.instance.SubscribeLevelContainer(entity);
+        EventsQueue.instance.Publish(new EventLevelContainerRequest(entity));
     }
 
     public override void _ExitTree()
     {
-        GameState.instance.UnsubscribeLevelContainer();
+        EventsQueue.instance.Publish(new EventLevelContainerRequest(null));
     }
 
 }

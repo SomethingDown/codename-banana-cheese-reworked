@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Linq;
+using System.Runtime.Serialization;
 
 public partial class WindowUI : Control
 {
@@ -15,15 +16,30 @@ public partial class WindowUI : Control
             panel_.AddChild(value);
         }
     }
+    [Export] private LabelOptionUI exit_option_;
+
 
     public override void _EnterTree()
     {
         GetTree().Paused = false;
+
+        if (exit_option_ == null) return;
+
+        exit_option_.Pressed += OnExitButtonPressed;
     }
 
     public override void _ExitTree()
     {
         GetTree().Paused = false;
+
+        if (exit_option_ == null) return;
+        
+        exit_option_.Pressed -= OnExitButtonPressed;
+    }
+
+    public void OnExitButtonPressed()
+    {
+        EventsQueue.instance.Publish(new EventWindowUnloadRequest());
     }
 
 

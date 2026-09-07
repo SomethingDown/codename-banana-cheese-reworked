@@ -80,14 +80,14 @@ public partial class UseWeaponDecision : Decision
     {
         intents_component.is_started_using = true;
 
-        this.InvokeNextFrame(()=>{intents_component.is_started_using = false;});
+        AsyncUtils.InvokeNextFrame(()=>{intents_component.is_started_using = false;});
     }
 
     public override void Exit()
     {
         intents_component.target_looking_rad = null;
         intents_component.is_stopped_using = true;
-        this.InvokeNextFrame(()=>{intents_component.is_stopped_using = false;});
+        AsyncUtils.InvokeNextFrame(()=>{intents_component.is_stopped_using = false;});
 
 
     }

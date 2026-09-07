@@ -8,11 +8,11 @@ public partial class IAmWindowContainer : Node
     {
         CanvasLayer entity = this.GetEntity() as CanvasLayer;
         if (entity == null) return;
-        WindowManager.instance.SubscribeWindowContainer(entity);
+        EventsQueue.instance.Publish(new EventWindowContainerRequest(entity));
     }
 
     public override void _ExitTree()
     {
-        WindowManager.instance.UnsubscribeWindowContainer();
+        EventsQueue.instance.Publish(new EventWindowContainerRequest(null));
     }
 }

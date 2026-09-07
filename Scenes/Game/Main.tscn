@@ -1,10 +1,13 @@
 [gd_scene format=3 uid="uid://b4c6qffrioh4t"]
 
 [ext_resource type="PackedScene" uid="uid://wynm1s6qkdlm" path="res://Scenes/UI/HUD/PlayerHUD.tscn" id="1_dfwoq"]
-[ext_resource type="Script" uid="uid://ibxuajmlmuqn" path="res://Source/Components/Gameplay/IAmLevelContainer.cs" id="2_c6dyv"]
-[ext_resource type="Script" uid="uid://dvdttjai2nnlr" path="res://Source/Components/Gameplay/IAmWindowContainer.cs" id="2_ushg2"]
+[ext_resource type="Script" uid="uid://ibxuajmlmuqn" path="res://Source/Components/Gameplay/Flaggers/IAmLevelContainer.cs" id="2_c6dyv"]
+[ext_resource type="Script" uid="uid://dvdttjai2nnlr" path="res://Source/Components/Gameplay/Flaggers/IAmWindowContainer.cs" id="2_ushg2"]
 [ext_resource type="Script" uid="uid://di0gik1l4ld6y" path="res://Source/Components/Managment/EventsBusUpdaterComponent.cs" id="3_y4a8c"]
 [ext_resource type="PackedScene" uid="uid://di0xo1fdxrv4i" path="res://Scenes/Game/MainMenuLevel.tscn" id="4_ushg2"]
+[ext_resource type="Script" uid="uid://k8gges7taw3t" path="res://Source/Components/Managment/Managers/WindowManagerComponent.cs" id="6_5k2w5"]
+[ext_resource type="Script" uid="uid://djt0xt3lp3k0f" path="res://Source/Components/Debug/EventsDebugComponent.cs" id="6_ushg2"]
+[ext_resource type="Script" uid="uid://b34vwvsafma2g" path="res://Source/Components/Managment/Managers/LevelManagerComponent.cs" id="8_02r4d"]
 
 [node name="Main" type="Node2D" unique_id=549649426]
 
@@ -30,3 +33,15 @@ metadata/_custom_type_script = "uid://ibxuajmlmuqn"
 [node name="EventsBusUpdaterComponent" type="Node" parent="." unique_id=1303621262]
 script = ExtResource("3_y4a8c")
 metadata/_custom_type_script = "uid://di0gik1l4ld6y"
+
+[node name="EventsDebugComponent" type="Node" parent="." unique_id=1961695616]
+script = ExtResource("6_ushg2")
+metadata/_custom_type_script = "uid://djt0xt3lp3k0f"
+
+[node name="WindowManagerComponent" type="Node" parent="." unique_id=1812856443]
+script = ExtResource("6_5k2w5")
+metadata/_custom_type_script = "uid://k8gges7taw3t"
+
+[node name="LevelManagerComponent" type="Node" parent="." unique_id=851612055]
+script = ExtResource("8_02r4d")
+metadata/_custom_type_script = "uid://b34vwvsafma2g"

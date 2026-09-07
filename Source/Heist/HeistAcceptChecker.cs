@@ -4,7 +4,9 @@ using System;
 [GlobalClass]
 public partial class HeistAcceptChecker : Node
 {
-    [Signal] public delegate void HeistRequestCheckedEventHandler(bool state);
+    [Signal] public delegate void HeistRequestAcceptedEventHandler();
+    [Signal] public delegate void HeistRequestUnacceptedEventHandler();
+
     [Export] private HeistSelectorComponent heist_selector_;
     [Export] private LabelOptionUI option_;
     public override void _Ready()
@@ -16,10 +18,10 @@ public partial class HeistAcceptChecker : Node
         {
             if (heist_selector_.selected_heist == null)
             {
-                EmitSignal(SignalName.HeistRequestChecked,false);
+                EmitSignal(SignalName.HeistRequestUnaccepted);
                 return;
             }
-            EmitSignal(SignalName.HeistRequestChecked,true);
+            EmitSignal(SignalName.HeistRequestAccepted);
         };
     }
 

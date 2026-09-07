@@ -14,15 +14,17 @@ public partial class HeistStarter : Node
         if (heist_accept_checker_ == null) return;
         if (heist_selector_ == null) return;
 
-        heist_accept_checker_.HeistRequestChecked += b =>
+        heist_accept_checker_.HeistRequestAccepted += () =>
         {
-            GD.Print(b);
-            if (b==false) return;
             PlayerState.instance.transfer_Inventory_component = transfer_inventory_;
             HeistManager.instance.SetCurrentHeist(heist_selector_.selected_heist);
-            AsyncUtils.InvokeNextFrame(this,()=>{
-                GameState.instance.LoadNewLevel(heist_selector_.selected_heist.scene.Instantiate<Node2D>());
-                WindowManager.instance.UnloadNewWindow();
+            AsyncUtils.InvokeNextFrame(()=>{
+                
+                Node2D level = heist_selector_.selected_heist.scene.Instantiate<Node2D>();
+                if (level == null )return;
+
+                EventsQueue.instance.Publish(new EventLevelLoadRequest(level));
+                EventsQueue.instance.Publish(new EventWindowUnloadRequest());
             });
             
         };

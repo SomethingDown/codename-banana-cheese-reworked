@@ -11,9 +11,9 @@ public partial class SceneTransitionListenerComponent : Node
     {
         transision_timer_.Ended += ()=>
         {
-            Node2D scene = scene_.Instantiate<Node2D>();
-            if (scene == null) return;
-            GameState.instance.LoadNewLevel(scene);
+            Node2D node_2d = scene_.Instantiate<Node2D>();
+            if (node_2d == null) return;
+            EventsQueue.instance.Publish(new EventLevelLoadRequest(node_2d));
         };
     }
 

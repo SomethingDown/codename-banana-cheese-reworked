@@ -125,7 +125,7 @@ layout_mode = 2
 button_text = "Begin..."
 is_label_invisible_ = true
 
-[node name="Heist" type="Node2D" parent="." unique_id=48846270]
+[node name="Heist" type="Node" parent="." unique_id=211887240]
 
 [node name="HeistSelectorUI" type="Node" parent="Heist" unique_id=754855266 node_paths=PackedStringArray("heists_container_")]
 script = ExtResource("2_vqnvc")
@@ -142,9 +142,9 @@ script = ExtResource("5_4ks6k")
 info_card_ = NodePath("../../TabContainer/Heist/VBoxContainer2/InfoCardUI")
 metadata/_custom_type_script = "uid://b1ycqnqsyir33"
 
-[node name="Inventory" type="Node2D" parent="." unique_id=1659186299]
+[node name="Inventory" type="Node" parent="." unique_id=1060164246]
 
-[node name="Transfer" type="Node2D" parent="Inventory" unique_id=320973397]
+[node name="Transfer" type="Node" parent="Inventory" unique_id=1613304250]
 
 [node name="InventoryDisplayerUI" type="Node" parent="Inventory/Transfer" unique_id=847442323 node_paths=PackedStringArray("items_container")]
 script = ExtResource("8_blge2")
@@ -156,7 +156,7 @@ metadata/_custom_type_script = "uid://dut14qkabc4fd"
 script = ExtResource("7_6cch6")
 metadata/_custom_type_script = "uid://bgx6j4m6rux5q"
 
-[node name="Selection" type="Node2D" parent="Inventory" unique_id=1430031192]
+[node name="Selection" type="Node" parent="Inventory" unique_id=150267288]
 
 [node name="PlayerStateItemSelectorUI" type="Node" parent="Inventory/Selection" unique_id=1482375916 node_paths=PackedStringArray("items_container")]
 script = ExtResource("14_byxp0")
@@ -181,7 +181,7 @@ destination_inventory_ = NodePath("../Transfer/InventoryComponent")
 option_button_ = NodePath("../../TabContainer/Inventory/Info/LabelOptionUI")
 metadata/_custom_type_script = "uid://cby38u416iv5c"
 
-[node name="Accept" type="Node2D" parent="." unique_id=1560332122]
+[node name="Accept" type="Node" parent="." unique_id=748761496]
 
 [node name="HeistStarter" type="Node" parent="Accept" unique_id=2047359220 node_paths=PackedStringArray("heist_accept_checker_", "heist_selector_", "transfer_inventory_")]
 script = ExtResource("7_n8p28")

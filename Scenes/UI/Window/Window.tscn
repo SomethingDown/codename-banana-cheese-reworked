@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://foaoxi142lr2" path="res://Source/UI/Window/WindowUI.cs" id="1_lpe61"]
 [ext_resource type="PackedScene" uid="uid://cldjrco5qixuo" path="res://Scenes/UI/Options/LabelOptionUI.tscn" id="3_lpe61"]
-[ext_resource type="Script" uid="uid://dfqmmnxwv48hb" path="res://Source/Components/Lifetime/SignalToRemoveSelfComponent.cs" id="3_rnqvg"]
 
-[node name="Control" type="Control" unique_id=794959986 node_paths=PackedStringArray("panel_")]
+[node name="Control" type="Control" unique_id=794959986 node_paths=PackedStringArray("panel_", "exit_option_")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,6 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_lpe61")
 panel_ = NodePath("VBoxContainer/ScrollContainer/Panel")
+exit_option_ = NodePath("VBoxContainer/LabelOptionUI")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=726111168]
 layout_mode = 1
@@ -34,12 +34,6 @@ size_flags_vertical = 3
 
 [node name="LabelOptionUI" parent="VBoxContainer" unique_id=399929310 instance=ExtResource("3_lpe61")]
 layout_mode = 2
+alignment = 2
 button_text = "Exit"
 is_label_invisible_ = true
-
-[node name="SignalToRemoveSelfComponent" type="Node" parent="." unique_id=1751964077 node_paths=PackedStringArray("source_", "node_")]
-script = ExtResource("3_rnqvg")
-source_ = NodePath("../VBoxContainer/LabelOptionUI")
-signal_name_ = "Pressed"
-node_ = NodePath("..")
-metadata/_custom_type_script = "uid://dfqmmnxwv48hb"

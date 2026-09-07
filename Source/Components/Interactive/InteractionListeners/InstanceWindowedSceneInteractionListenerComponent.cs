@@ -15,8 +15,11 @@ public partial class InstanceWindowedSceneInteractionListenerComponent : Interac
 
     public override void OnInteractionInitiated(Node entity)
     {
-        if (scene_scene_ == null) return;
-        WindowManager.instance.LoadNewWindow(scene_scene_.Instantiate<Control>());
+        Control window = scene_scene_.Instantiate<Control>();
+
+        if (window == null) return;
+
+        EventsQueue.instance.Publish(new EventWindowLoadRequest(window));
     }
 
 

@@ -13,7 +13,8 @@ public partial class GameoverComponent : Node
             EventEntityDead e = _ as EventEntityDead;
             if (e == null) return;
 
-            if (e.name.Equals("Player")) GameState.instance.LoadNewLevel(scene_.InstantiateOrNull<Node2D>());        
+            if (e.name.Equals("Player")) 
+                EventsQueue.instance.Publish(new EventLevelContainerRequest(scene_.Instantiate<Node2D>()));
 
         };
         EventsBus.instance.Subscribe(action);
