@@ -10,13 +10,14 @@ public partial class UseShoot : Node, IUse
     [Export] public PackedScene projectile_scene;
     [Export] public float cooldown;
     [Export] public Marker2D muzzle;
-
+    public ulong user_id;
     private float cooldown_time_=0.0f; 
     private bool is_shooting_;
 
 
     public bool UseInitiaited(Node user)
     {
+        if (GodotObject.IsInstanceValid(user)) user_id = user.GetInstanceId();
         is_shooting_ = true;
         return false;
     }
@@ -35,19 +36,21 @@ public partial class UseShoot : Node, IUse
         if (cooldown_time_ < cooldown) return;
         if (is_shooting_)
         {
-            Shoot();
+            Shoot(user_id);
             cooldown_time_ = 0.0f;
 
         }
     }
 
-    private void Shoot()
+    private void Shoot(ulong user_id)
     {
         Node2D projectile = projectile_scene.Instantiate() as Node2D;
         if(projectile == null) return;
 
         projectile.GlobalRotation = muzzle.GlobalRotation; 
         projectile.GlobalPosition = muzzle.GlobalPosition;
+        DamangeDealerComponent p_c = projectile.GetComponentInEntity<DamangeDealerComponent>();
+        if (p_c != null) p_c.source_id = user_id;
         GetTree().CurrentScene.AddChild(projectile);
         EmitSignal(SignalName.Shot);
     }

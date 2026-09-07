@@ -19,6 +19,7 @@ public partial class CurrencyComponent : Node
         {
             currency_val_=value;
             EmitSignal(SignalName.CurrencyChanged,currency_val_);
+            if (GodotObject.IsInstanceValid(this.GetEntity())) EventsQueue.instance.Publish(new EventEntityCurrencyChanged(this.GetEntity().GetInstanceId(),value));
         }
     }
 

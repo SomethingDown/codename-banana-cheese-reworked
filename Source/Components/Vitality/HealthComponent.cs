@@ -18,22 +18,22 @@ public partial class HealthComponent : Node
         if (damage_reciever_component_==null) return;
 
         health_ = max_health;
-        damage_reciever_component_.Damaged += (d, i_v) =>
+        damage_reciever_component_.Damaged += (d, i_v,source_id) =>
         {
-            Damage(d);
+            Damage(d,source_id);
         };
     }
 
 
-    public void Damage(float damage)
+    public void Damage(float damage,ulong source_id)
     {
-        if (damage<=0 || is_immortal) return;
+        if (damage<=0 || health_ <= 0 || is_immortal) return;
 
         health_ = Mathf.Max(0,health_ - damage);
         EmitSignal(SignalName.HealthChanged,health_);
         if (health_<=0)
         {
-            EventsQueue.instance.Publish(new EventEntityDead(this.GetEntity().Name));
+            EventsQueue.instance.Publish(new EventEntityDead(this.GetEntity().GetInstanceId(),source_id));
             EmitSignal(SignalName.HealthDepleted);
         }
     }

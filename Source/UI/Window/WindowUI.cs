@@ -5,7 +5,6 @@ using System.Runtime.Serialization;
 
 public partial class WindowUI : Control
 {
-    [Export] private Control panel_;
     [Export] public Node content
     {
         get => panel_.GetChildren().FirstOrDefault();
@@ -16,7 +15,14 @@ public partial class WindowUI : Control
             panel_.AddChild(value);
         }
     }
+    [Export] public bool is_exit_option_hidden
+    {
+        get => !exit_option_.Visible;
+        set => exit_option_.Visible = !value;
+    }
+    
     [Export] private LabelOptionUI exit_option_;
+    [Export] private Control panel_;
 
 
     public override void _EnterTree()

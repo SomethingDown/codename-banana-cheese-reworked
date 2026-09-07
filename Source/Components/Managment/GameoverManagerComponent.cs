@@ -13,8 +13,10 @@ public partial class GameoverManagerComponent : Node
             EventEntityDead e = _ as EventEntityDead;
             if (e == null) return;
 
-            if (e.name.Equals("Player")) 
-                EventsQueue.instance.Publish(new EventLevelContainerRequest(scene_.Instantiate<Node2D>()));
+            GD.Print(e.entity_id," ",e.killer_id);
+
+            // if (e.) 
+            //     EventsQueue.instance.Publish(new EventLevelContainerRequest(scene_.Instantiate<Node2D>()));
 
         };
         EventsBus.instance.Subscribe(action);

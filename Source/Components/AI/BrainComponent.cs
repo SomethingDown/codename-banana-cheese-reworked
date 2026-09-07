@@ -5,11 +5,18 @@ using System.Linq;
 public partial class BrainComponent : Node
 {
     [Signal] public delegate void DecisionChangedEventHandler(Decision decision); 
+    [Export] public bool enabled = true; 
     private Decision prefered_decision_ ;
     private float prefered_decision_score_ ;
 
     public override void _Process(double delta)
     {
+        if (!enabled)
+        {
+            if (prefered_decision_!=null) { prefered_decision_?.Exit(); prefered_decision_ = null ;}
+            return;
+        }
+
         Decision new_prefered_decision_ = null;
         float new_prefered_decision_score_ = 0.0f;
         GetChildren().ToList().ForEach(n =>

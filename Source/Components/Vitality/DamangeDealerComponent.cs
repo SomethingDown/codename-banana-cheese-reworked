@@ -10,6 +10,7 @@ public partial class DamangeDealerComponent : Node
     [Export] public float cooldown = 0.5f;
     [Export] public float max_damage = 10.0f;
     [Export] public float min_damage = 9.0f;
+    public ulong source_id;
     private EntityDetectorComponent entity_detector_;
     private ProjectileComponent projectile_component_;
     private Dictionary<DamageRecieverComponent,float> damage_reciever_component_cooldowns_ = new Dictionary<DamageRecieverComponent, float>();
@@ -60,7 +61,7 @@ public partial class DamangeDealerComponent : Node
     {
         Vector2 impact_velocity = projectile_component_==null?Vector2.Zero:projectile_component_.velocity;
         double damage = Math.Round(min_damage + random_.NextSingle()*(max_damage - min_damage),3);
-        damage_reciever.Damage((float)damage,impact_velocity);
+        damage_reciever.Damage((float)damage,impact_velocity,source_id);
     }
 
 }

@@ -15,7 +15,7 @@ public partial class KnockbackOnDamageComponent : Node
         Node2D entity = this.GetEntity() as Node2D;
         if(entity == null) return;
 
-        damage_reciever_.Damaged += (d, i_v) =>
+        damage_reciever_.Damaged += (d, i_v,s_id) =>
         {
             tween_?.Kill();
             tween_ = CreateTween();

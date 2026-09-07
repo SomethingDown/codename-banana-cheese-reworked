@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using System.Linq;
 
 [GlobalClass]
 public partial class HeistStarter : Node
@@ -16,20 +15,7 @@ public partial class HeistStarter : Node
 
         heist_accept_checker_.HeistRequestAccepted += () =>
         {
-            PlayerState.instance.transfer_Inventory_component = transfer_inventory_;
-            HeistState.instance.selected_heist = heist_selector_.selected_heist;
-            AsyncUtils.InvokeNextFrame(()=>{
-                
-                Node2D level = heist_selector_.selected_heist.scene.Instantiate<Node2D>();
-                if (level == null )return;
-
-                EventsQueue.instance.Publish(new EventLevelLoadRequest(level));
-                EventsQueue.instance.Publish(new EventWindowUnloadRequest());
-            });
-            
+            EventsQueue.instance.Publish(new EventHeistLaunchRequested(heist_selector_.selected_heist, transfer_inventory_));
         };
     }
-
-
-
 }

@@ -40,6 +40,7 @@
 [ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="27_ji2ae"]
 [ext_resource type="Script" uid="uid://dui6fhdnjnsvc" path="res://Source/Components/Vitality/HealthComponent.cs" id="34_dpuba"]
 [ext_resource type="Script" uid="uid://dm8pem0le2ymo" path="res://Source/Components/UI/Vitality/HealthVisualUIComponent.cs" id="35_31vux"]
+[ext_resource type="Script" uid="uid://cwk0755gqfbmu" path="res://Source/Components/Vitality/DisableBrainOnDeathComponent.cs" id="37_jjcjf"]
 [ext_resource type="Script" uid="uid://8acsjhbwwkv3" path="res://Source/Components/Physics/KnockbackOnDamageComponent.cs" id="40_dsdj3"]
 [ext_resource type="Script" uid="uid://cpkki4ums7wor" path="res://Source/Components/Vitality/DamageRecieverComponent.cs" id="41_we3hc"]
 [ext_resource type="Script" uid="uid://bwo6grccsbtfu" path="res://Source/Components/Visuals/DamageIndicatorComponent.cs" id="42_we3hc"]
@@ -70,6 +71,9 @@ animations = [{
 }]
 
 [sub_resource type="FontFile" id="FontFile_q7vcw"]
+subpixel_positioning = 0
+msdf_pixel_range = 14
+msdf_size = 128
 cache/0/variation_coordinates = {}
 cache/0/face_index = 0
 cache/0/embolden = 0.0
@@ -385,6 +389,10 @@ script = ExtResource("15_abgwp")
 authorizations = Array[ExtResource("16_g3jgu")]([ExtResource("17_3vs80")])
 metadata/_custom_type_script = "uid://c6wrgm0vfcok2"
 
+[node name="DisableBrainOnDeathComponent" type="Node" parent="." unique_id=1044361994]
+script = ExtResource("37_jjcjf")
+metadata/_custom_type_script = "uid://cwk0755gqfbmu"
+
 [node name="ThreatEvaluatorComponent" type="Node" parent="." unique_id=691330631]
 script = ExtResource("18_g3jgu")
 metadata/_custom_type_script = "uid://c0h7a686qgghg"
@@ -403,10 +411,6 @@ metadata/_custom_type_script = "uid://cpkki4ums7wor"
 [node name="HealthComponent" type="Node" parent="." unique_id=946884420]
 script = ExtResource("34_dpuba")
 metadata/_custom_type_script = "uid://dui6fhdnjnsvc"
-
-[node name="DeleteOnDeathComponent" type="Node" parent="." unique_id=1870448812]
-script = ExtResource("22_knnuf")
-metadata/_custom_type_script = "uid://d0d1dd5vdn4ks"
 
 [node name="KnockbackOnDamageComponent" type="Node" parent="." unique_id=1176480069]
 script = ExtResource("40_dsdj3")

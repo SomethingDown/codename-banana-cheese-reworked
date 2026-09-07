@@ -6,6 +6,7 @@ using System.Linq;
 public partial class InstanceWindowedSceneInteractionListenerComponent : InteractionListenerComponent
 {
     [Export] private PackedScene scene_scene_;
+    [Export] private bool is_exit_button_hidden;
 
 
     public override void _Ready()
@@ -19,7 +20,7 @@ public partial class InstanceWindowedSceneInteractionListenerComponent : Interac
 
         if (window == null) return;
 
-        EventsQueue.instance.Publish(new EventWindowLoadRequest(window));
+        EventsQueue.instance.Publish(new EventWindowLoadRequest(window,is_exit_button_hidden));
     }
 
 

@@ -23,7 +23,7 @@ public partial class WindowManagerComponent : Node
     {
         if (e is EventWindowLoadRequest window_load_event)
         {
-            LoadNewWindow(window_load_event.content);
+            LoadNewWindow(window_load_event.content,window_load_event.is_exit_button_hidden);
         }
         else if (e is EventWindowUnloadRequest window_unload_event)
         {
@@ -37,13 +37,14 @@ public partial class WindowManagerComponent : Node
     }
 
 
-    private void LoadNewWindow(Control window)
+    private void LoadNewWindow(Control window,bool is_exit_button_hidden)
     {
         windowui_ = windowui_scene_.Instantiate<WindowUI>();
 
         if (window == null || windowui_ == null) return;
         UnloadWindow();
         window_container?.AddChild(windowui_);
+        windowui_.is_exit_option_hidden = is_exit_button_hidden;
         windowui_.content = window;
         EventsQueue.instance.Publish(new EventWindowChanged(window));
 

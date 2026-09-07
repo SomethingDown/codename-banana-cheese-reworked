@@ -19,11 +19,25 @@ public record EventMessage : Event
 
 public record EventEntityDead : Event
 {
-    public string name { get; private set; }
+    public ulong entity_id { get; private set; }
+    public ulong killer_id { get; private set; }
 
-    public EventEntityDead(string name)
+    public EventEntityDead(ulong entity_id,ulong killer_id)
     {
-        this.name = name;
+        this.entity_id = entity_id;
+        this.killer_id = killer_id;
+    }
+}
+
+public record EventEntityCurrencyChanged : Event
+{
+    public ulong id { get; private set; }
+    public float currency { get; private set; }
+
+    public EventEntityCurrencyChanged(ulong id, float currency)
+    {
+        this.id = id;
+        this.currency = currency;
     }
 }
 
@@ -40,10 +54,16 @@ public record EventEntitySpawned : Event
 public record EventWindowLoadRequest : Event
 {
     public Control content { get; private set; }
+    public bool is_exit_button_hidden {get; private set;} = true;
 
     public EventWindowLoadRequest(Control content)
     {
         this.content = content;
+    }
+    public EventWindowLoadRequest(Control content,bool is_exit_button_hidden)
+    {
+        this.content = content;
+        this.is_exit_button_hidden = is_exit_button_hidden;
     }
 }
 
@@ -174,4 +194,60 @@ public record EventPlayerChanged : Event
 {
     public Node entity { get; private set; }
     public EventPlayerChanged(Node entity) { this.entity = entity; }
+}
+
+public record EventGameover : Event
+{
+    public HeistResultResource heist_result {get; private set;}
+    public EventGameover(HeistResultResource heist_result) { this.heist_result = heist_result; }
+}
+
+public record EventHeistLaunchRequested : Event
+{
+    public HeistResource heist { get; private set; }
+    public InventoryComponent transfer_inventory { get; private set; }
+
+    public EventHeistLaunchRequested(HeistResource heist, InventoryComponent transfer_inventory)
+    {
+        this.heist = heist;
+        this.transfer_inventory = transfer_inventory;
+    }
+    
+}
+
+
+public record EventHeistEndRequested : Event
+{
+
+    public EventHeistEndRequested()
+    {
+
+    }
+    
+}
+
+public record EventHeistLaunched : Event
+{
+    public HeistResource heist { get; private set; }
+
+    public EventHeistLaunched(HeistResource heist )
+    {
+        this.heist = heist;
+    }
+    
+}
+
+public record EventHeistEnded : Event
+{
+    
+}
+
+public record EventHeistResults : Event
+{
+    public HeistResultResource heist_results;
+
+    public EventHeistResults(HeistResultResource heist_results)
+    {
+        this.heist_results = heist_results;
+    }
 }
