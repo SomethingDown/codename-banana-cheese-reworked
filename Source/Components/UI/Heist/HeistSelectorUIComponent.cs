@@ -5,7 +5,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__paintbrush_node.svg")]
 public partial class HeistSelectorUIComponent : Node
 {
 
@@ -22,7 +22,7 @@ public partial class HeistSelectorUIComponent : Node
         heist_selector_component_ = this.GetComponent<HeistSelectorComponent>();
         if (heist_selector_component_ == null) return;
 
-        HeistResource hr = GD.Load<HeistResource>("res://Resources/Heists/TestHeist.tres");
+        HeistResource hr = GD.Load<HeistResource>("res://Resources/Heists/TrainingHeist.tres");
         EventsQueue.instance.Publish(new EventHeistAddRequest(hr));
         EventsQueue.instance.Publish(new EventHeistUnlockRequest(hr));
 

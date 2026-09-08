@@ -99,16 +99,8 @@ public partial class HeistManagerComponent : Node
         Control overview = overview_scene_.Instantiate<Control>();
         if (overview==null) return;
 
-        if (results.heist_end_state == HeistEndState.Success)
-        {
-            PlayerState.instance.banked_currency_component.AddCurrency(results.currency);
-        }
-        else if (results.heist_end_state == HeistEndState.Fail)
-        {
-            PlayerState.instance.transfer_Inventory_component.items.ToList().ForEach(PlayerState.instance.banked_inventory_component.Remove);
-        }   
-        PlayerState.instance.transfer_Inventory_component.Clear();
         HeistState.instance.selected_heist = null;
+        
         EventsQueue.instance.Publish(new EventWindowLoadRequest(overview));
     }
 

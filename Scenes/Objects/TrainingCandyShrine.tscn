@@ -1,0 +1,150 @@
+[gd_scene format=3 uid="uid://tvvmw8dt28yn"]
+
+[ext_resource type="Texture2D" uid="uid://ckik2y1e6sf5o" path="res://Assets/Spreadsheets/Objects spreadsheet.png" id="1_0stxx"]
+[ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="2_fvxlv"]
+[ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="3_lue0c"]
+[ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="4_uq7vh"]
+[ext_resource type="Script" uid="uid://cprmb6g8gvcrq" path="res://Source/Components/Interactive/InteractionListeners/ObjectiveInteractionListenerComponent.cs" id="5_ilqea"]
+[ext_resource type="Resource" uid="uid://btckmoks3n0al" path="res://Resources/Objectives/TrainingCandyObjective.tres" id="6_5hj83"]
+[ext_resource type="Script" uid="uid://d1g63tu86plw7" path="res://Source/Components/Visuals/OutlineComponent.cs" id="7_lue0c"]
+[ext_resource type="Script" uid="uid://727uolqg3b74" path="res://Source/Components/Visuals/SignalToOutlineComponent.cs" id="8_uq7vh"]
+[ext_resource type="Script" uid="uid://tye6jmwwdjk0" path="res://Source/Components/Visuals/SignalToAnimationComponent.cs" id="9_ilqea"]
+[ext_resource type="Script" uid="uid://cb3ne1gdfuk76" path="res://Source/Resources/SignalToAnimationResource.cs" id="10_5hj83"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ilqea"]
+atlas = ExtResource("1_0stxx")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hj83"]
+atlas = ExtResource("1_0stxx")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_esd16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ilqea")
+}],
+"loop": 1,
+"name": &"Collected",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hj83")
+}],
+"loop": 1,
+"name": &"Defaule",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_lue0c"]
+resource_name = "Collected"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Collected"]
+}
+
+[sub_resource type="Animation" id="Animation_uq7vh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Defaule"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ilqea"]
+_data = {
+&"Collected": SubResource("Animation_lue0c"),
+&"RESET": SubResource("Animation_uq7vh")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3iy8"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esd16"]
+
+[sub_resource type="Resource" id="Resource_esd16"]
+script = ExtResource("10_5hj83")
+source_path = NodePath("../ObjectiveInteractionListenerComponent")
+signal_name = "Collected"
+animation_player_path = NodePath("../Graphics/AnimationPlayer")
+animation_name = "Collected"
+metadata/_custom_type_script = "uid://cb3ne1gdfuk76"
+
+[node name="TrainingCandyShrine" type="Node2D" unique_id=50312345]
+
+[node name="Graphics" type="Node2D" parent="." unique_id=127232524]
+position = Vector2(0, -8)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1550688527]
+sprite_frames = SubResource("SpriteFrames_esd16")
+animation = &"Defaule"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics" unique_id=1363721627]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_ilqea")
+
+[node name="Collision" type="Node2D" parent="." unique_id=111381296]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collision" unique_id=21807271]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D" unique_id=562301056]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_d3iy8")
+
+[node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1036357053]
+position = Vector2(0, -8)
+script = ExtResource("2_fvxlv")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=95704407]
+shape = SubResource("CircleShape2D_esd16")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=1955504833]
+script = ExtResource("3_lue0c")
+metadata/_custom_type_script = "uid://bt6qadveyo2d8"
+
+[node name="Interaction" type="Node" parent="InteractableComponent" unique_id=989130701]
+script = ExtResource("4_uq7vh")
+label = "Steal the shrine"
+metadata/_custom_type_script = "uid://c3pa3ibleap0q"
+
+[node name="ObjectiveInteractionListenerComponent" type="Node" parent="." unique_id=1414678492 node_paths=PackedStringArray("interaction")]
+script = ExtResource("5_ilqea")
+objective_ = ExtResource("6_5hj83")
+interaction = NodePath("../InteractableComponent/Interaction")
+metadata/_custom_type_script = "uid://cprmb6g8gvcrq"
+
+[node name="OutlineComponent" type="Node" parent="." unique_id=839195719 node_paths=PackedStringArray("visual_")]
+script = ExtResource("7_lue0c")
+visual_ = NodePath("../Graphics/AnimatedSprite2D")
+metadata/_custom_type_script = "uid://d1g63tu86plw7"
+
+[node name="SignalToOutlineComponent" type="Node" parent="." unique_id=870074439 node_paths=PackedStringArray("source_")]
+script = ExtResource("8_uq7vh")
+source_ = NodePath("../InteractableComponent")
+enable_outline_signal_ = "Selected"
+disable_outline_signal_ = "Unselected"
+metadata/_custom_type_script = "uid://727uolqg3b74"
+
+[node name="SignalToAnimationComponent" type="Node" parent="." unique_id=1659218600]
+script = ExtResource("9_ilqea")
+signals_to_animations_ = Array[ExtResource("10_5hj83")]([SubResource("Resource_esd16")])
+metadata/_custom_type_script = "uid://tye6jmwwdjk0"

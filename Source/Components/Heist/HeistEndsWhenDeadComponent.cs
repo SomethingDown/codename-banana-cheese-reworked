@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__skull_node.svg")]
 public partial class HeistEndsWhenDeadComponent : Node
 {
     private HealthComponent health_component_;

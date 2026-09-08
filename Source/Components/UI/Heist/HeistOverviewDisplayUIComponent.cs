@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__paintbrush_node.svg")]
 public partial class HeistOverviewDisplayUIComponent : Node
 {
     [Export] private InfoCardUI time_info_;
@@ -34,7 +34,7 @@ public partial class HeistOverviewDisplayUIComponent : Node
         }
         if (status_info != null)
         {
-            status_info.data = $"{results.heist_end_state}";
+            status_info.data = $"{results.end_result}";
         }
     }
 

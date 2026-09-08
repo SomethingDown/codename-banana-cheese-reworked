@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__paintbrush_node.svg")]
 public partial class ItemTransferUIComponent : Node
 {
     [Export] private ItemSelectorComponent source_selector_;

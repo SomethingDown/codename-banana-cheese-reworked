@@ -82,10 +82,10 @@ public partial class HeistStatsTrackingComponent : Node
             currency = currency_dictionary.ContainsKey(captured_player_id)?currency_dictionary[captured_player_id]:0,
             kills = kills_dictionary.ContainsKey(captured_player_id)?kills_dictionary[captured_player_id]:0,
             inventory_used = PlayerState.instance.transfer_Inventory_component.Duplicate() as InventoryComponent,
-            heist_end_state = state
+            end_result = state
         };
-        EventsQueue.instance.Publish(new EventHeistResults(results));
         Reset();
+        EventsQueue.instance.Publish(new EventHeistResults(results));
     }
 
     public void OnDead(EventEntityDead e_d)

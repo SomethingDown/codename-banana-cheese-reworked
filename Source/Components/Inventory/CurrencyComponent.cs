@@ -8,7 +8,7 @@ public partial class CurrencyComponent : Node
     [Signal] public delegate void CurrencyAddFailedEventHandler(float value);
     [Signal] public delegate void CurrencyChangedEventHandler(float value);
 
-    [Export] public float initial_currency = 5.0f;
+    [Export] public float initial_currency = 35.0f;
 
     private float currency_val_ = 100;
 

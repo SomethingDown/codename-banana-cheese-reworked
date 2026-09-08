@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__paintbrush_node.svg")]
 public partial class PlayerGlobalCurrencyInfoCardUIComponent : Node
 {
     [Export] private InfoCardUI infocard_;

@@ -65,6 +65,8 @@ height = 23.255814
 radius = 25.079872
 
 [node name="Player" type="CharacterBody2D" unique_id=29278974]
+platform_on_leave = 2
+safe_margin = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=673502319]
 position = Vector2(0, -2)

@@ -178,6 +178,8 @@ metadata/_custom_type_script = "uid://chu18liur6wt6"
 radius = 119.03781
 
 [node name="NPC" type="CharacterBody2D" unique_id=1367578280]
+platform_on_leave = 2
+safe_margin = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2043076090]
 position = Vector2(0, -3)

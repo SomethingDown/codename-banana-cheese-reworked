@@ -52,8 +52,6 @@ public partial class WindowManagerComponent : Node
 
     private void UnloadWindow()
     {
-        if (windowui_ == null) return;
-
         window_container?.GetChildren().ToList().ForEach(l=>{if(l is not IAmWindowContainer)if(!l.IsQueuedForDeletion())l.QueueFree();});
         EventsQueue.instance.Publish(new EventWindowChanged(null));
     }

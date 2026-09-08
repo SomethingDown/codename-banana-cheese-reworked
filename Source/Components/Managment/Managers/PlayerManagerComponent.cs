@@ -18,15 +18,19 @@ public partial class PlayerManagerComponent : Node
     {
         if (e is EventPlayerSubscribeRequest subscribe_event)
         {
-            SubscribePlayer(subscribe_event.entity);
+            OnSubscribePlayer(subscribe_event.entity);
         }
         else if (e is EventPlayerUnsubscribeRequest)
         {
-            UnsubscribePlayer();
+            OnUnsubscribePlayer();
+        }
+        else if (e is EventHeistResults results_event)
+        {
+            OnHeistResults(results_event.heist_results);
         }
     }
 
-    public void SubscribePlayer(Node entity)
+    public void OnSubscribePlayer(Node entity)
     {
         if (entity == null) return;
 
@@ -34,9 +38,28 @@ public partial class PlayerManagerComponent : Node
         EventsQueue.instance.Publish(new EventPlayerChanged(entity));
     }
 
-    public void UnsubscribePlayer()
+    public void OnUnsubscribePlayer()
     {
         PlayerState.instance.player_entity = null;
         EventsQueue.instance.Publish(new EventPlayerChanged(null));
     }
+
+    public void OnHeistResults(HeistResultResource heist_result)
+    {
+        switch (heist_result.end_result)
+        {
+            case HeistEndState.Success:
+                PlayerState.instance.banked_currency_component.AddCurrency(heist_result.currency);
+                break;
+            case HeistEndState.Fail:
+                heist_result.inventory_used.items.ToList().ForEach(
+                    PlayerState.instance.banked_inventory_component.Remove
+                );
+                break;
+            default:
+                break;
+        }
+        PlayerState.instance.transfer_Inventory_component.Clear();
+    }
+
 }

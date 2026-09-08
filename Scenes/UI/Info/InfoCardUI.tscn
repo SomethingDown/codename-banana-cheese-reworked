@@ -10,8 +10,6 @@ size_flags_vertical = 3
 script = ExtResource("1_axmyi")
 title = "Title"
 data = "Description"
-title_color = Color(0.73333335, 0.21960784, 0.4509804, 1)
-data_color = Color(0.2109654, 0.030602748, 0.113253675, 1)
 label_title_ = NodePath("Name")
 label_data_ = NodePath("Description")
 
@@ -31,6 +29,7 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
+bbcode_enabled = true
 text = "Description"
 fit_content = true
 horizontal_alignment = 1

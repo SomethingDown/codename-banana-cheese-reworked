@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://wynm1s6qkdlm" path="res://Scenes/UI/HUD/PlayerHUD.tscn" id="1_dfwoq"]
 [ext_resource type="Script" uid="uid://ibxuajmlmuqn" path="res://Source/Components/Gameplay/Flaggers/IAmLevelContainer.cs" id="2_c6dyv"]
 [ext_resource type="Script" uid="uid://dvdttjai2nnlr" path="res://Source/Components/Gameplay/Flaggers/IAmWindowContainer.cs" id="2_ushg2"]
+[ext_resource type="PackedScene" uid="uid://b52femw7w3i2u" path="res://Scenes/UI/HUD/NotificationHUD.tscn" id="3_himfo"]
 [ext_resource type="Script" uid="uid://di0gik1l4ld6y" path="res://Source/Components/Managment/EventsBusUpdaterComponent.cs" id="3_y4a8c"]
 [ext_resource type="PackedScene" uid="uid://di0xo1fdxrv4i" path="res://Scenes/Game/MainMenuLevel.tscn" id="4_ushg2"]
 [ext_resource type="Script" uid="uid://k8gges7taw3t" path="res://Source/Components/Managment/Managers/WindowManagerComponent.cs" id="6_5k2w5"]
@@ -12,9 +13,14 @@
 [ext_resource type="Script" uid="uid://c53bvymgope1c" path="res://Source/Components/Managment/Managers/HeistManagerComponent.cs" id="10_d6h6d"]
 [ext_resource type="PackedScene" uid="uid://hw7ujh11w0u5" path="res://Scenes/UI/Window/WindowContent/HeistOverview.tscn" id="11_cad5q"]
 [ext_resource type="Script" uid="uid://bh1dsx5rleqsh" path="res://Source/Components/Gameplay/HeistStatsTrackingComponent.cs" id="11_d6h6d"]
+[ext_resource type="Script" uid="uid://b5el40knc4n2u" path="res://Source/Components/Managment/Managers/ObjectiveManagerComponent.cs" id="13_edjvc"]
+[ext_resource type="Script" uid="uid://cf2r33we3q2wx" path="res://Source/Components/Gameplay/ObjectivesTrackingComponent.cs" id="14_6go6g"]
+[ext_resource type="Script" uid="uid://bukny75wwha3c" path="res://Source/Components/Managment/Managers/NotificationManagerComponent.cs" id="15_eu08i"]
 
 [node name="Main" type="Node2D" unique_id=549649426]
 process_mode = 3
+
+[node name="HUD" parent="." unique_id=1469353660 instance=ExtResource("1_dfwoq")]
 
 [node name="Menu" type="CanvasLayer" parent="." unique_id=364623328]
 layer = 2
@@ -23,7 +29,10 @@ layer = 2
 script = ExtResource("2_ushg2")
 metadata/_custom_type_script = "uid://dvdttjai2nnlr"
 
-[node name="HUD" parent="." unique_id=1469353660 instance=ExtResource("1_dfwoq")]
+[node name="NotificationHUD" type="CanvasLayer" parent="." unique_id=844862037]
+layer = 3
+
+[node name="NotificationHUD" parent="NotificationHUD" unique_id=728442763 instance=ExtResource("3_himfo")]
 
 [node name="CurrentLevelContainer" type="Node2D" parent="." unique_id=2142684475]
 process_mode = 1
@@ -37,10 +46,6 @@ metadata/_custom_type_script = "uid://ibxuajmlmuqn"
 [node name="EventsBusUpdaterComponent" type="Node" parent="." unique_id=1303621262]
 script = ExtResource("3_y4a8c")
 metadata/_custom_type_script = "uid://di0gik1l4ld6y"
-
-[node name="EventsDebugComponent" type="Node" parent="." unique_id=1961695616]
-script = ExtResource("6_ushg2")
-metadata/_custom_type_script = "uid://djt0xt3lp3k0f"
 
 [node name="WindowManagerComponent" type="Node" parent="." unique_id=1812856443]
 script = ExtResource("6_5k2w5")
@@ -62,3 +67,17 @@ metadata/_custom_type_script = "uid://c53bvymgope1c"
 [node name="HeistStatsTrackingComponent" type="Node" parent="." unique_id=1465639657]
 script = ExtResource("11_d6h6d")
 metadata/_custom_type_script = "uid://bh1dsx5rleqsh"
+
+[node name="EventsDebugComponent" type="Node" parent="." unique_id=1210780357]
+script = ExtResource("6_ushg2")
+metadata/_custom_type_script = "uid://djt0xt3lp3k0f"
+
+[node name="ObjectiveManagerComponent" type="Node" parent="." unique_id=673256163]
+script = ExtResource("13_edjvc")
+
+[node name="ObjectivesTrackingComponent" type="Node" parent="." unique_id=1010823915]
+script = ExtResource("14_6go6g")
+metadata/_custom_type_script = "uid://cf2r33we3q2wx"
+
+[node name="NotificationManagerComponent" type="Node" parent="." unique_id=570679568]
+script = ExtResource("15_eu08i")

@@ -19,7 +19,8 @@ public partial class InteractorDebugComponent : Node
                     $"Selected Interactable: {e}|{e?.Name}\n"+
                     $"Selected Interaction: {interaction_selector_component_.GetSelected()?.label}"
                 }
-        );
+            );
+        
         };
     }
 

@@ -9,6 +9,6 @@ public partial class HeistResultResource : Resource
     public DateTime end_time;
     public float currency;
     public int kills;
-    public HeistEndState heist_end_state;
+    public HeistEndState end_result;
     public InventoryComponent inventory_used;
 }

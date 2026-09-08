@@ -10,8 +10,8 @@ region = Rect2(0, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_5yku1")
-name = "Test heist"
-description = "Testing level"
+name = "Training"
+description = "A simulation level built to test the gameplay loop."
 icon = SubResource("AtlasTexture_pfisv")
 scene = ExtResource("2_83maw")
 metadata/_custom_type_script = "uid://sr31x1p8agvv"

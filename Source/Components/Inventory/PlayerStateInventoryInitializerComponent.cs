@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/streamline__upload_circle_node.svg")]
 public partial class PlayerStateInventoryInitializerComponent : Node
 {
     private InventoryComponent inventory_component_;
