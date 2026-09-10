@@ -95,4 +95,10 @@ public partial class ThreatAwarenessComponent : Node
             EmitSignal(SignalName.ThreatForgotten, entity);
         }
     }
+    public void ExternalConfirmedThreat(Node entity,float threat_meter_bonus)
+    {
+        confirmed_threats_.Add(entity);
+        actively_detected_.Add(entity);
+        entity_threat_meter_[entity] = threshold + confirmed_meter_bonus + threat_meter_bonus;
+    }
 }

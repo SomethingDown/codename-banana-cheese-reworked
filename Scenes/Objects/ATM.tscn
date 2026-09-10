@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://727uolqg3b74" path="res://Source/Components/Visuals/SignalToOutlineComponent.cs" id="3_adwil"]
 [ext_resource type="Script" uid="uid://cb3ne1gdfuk76" path="res://Source/Resources/SignalToAnimationResource.cs" id="3_mjwbc"]
 [ext_resource type="Script" uid="uid://xtt5itxdehdv" path="res://Source/Components/Security/HackableComponent.cs" id="4_mjwbc"]
-[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="5_d58mo"]
+[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/Currency/CurrencyComponent.cs" id="5_d58mo"]
 [ext_resource type="Script" uid="uid://bkrksibpfbj1" path="res://Source/Components/Interactive/InteractionListeners/CurrencyInteractionListenerComponent.cs" id="6_fgip1"]
 [ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Resources/AuthorizationResource.cs" id="7_fgip1"]
 [ext_resource type="Script" uid="uid://tye6jmwwdjk0" path="res://Source/Components/Visuals/SignalToAnimationComponent.cs" id="8_7ysnp"]
@@ -28,7 +28,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uijmt")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Hacked",
 "speed": 5.0
 }, {
@@ -36,7 +36,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7ysnp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Secured",
 "speed": 5.0
 }]
@@ -148,24 +148,16 @@ label = "Collect ATM"
 authorizations = Array[ExtResource("7_fgip1")]([ExtResource("8_oigph")])
 metadata/_custom_type_script = "uid://c3pa3ibleap0q"
 
-[node name="Interaction2" type="Node" parent="InteractableComponent" unique_id=1875634698]
-script = ExtResource("3_7ysnp")
-label = "Collect ATM2"
-authorizations = Array[ExtResource("7_fgip1")]([ExtResource("8_oigph")])
-metadata/_custom_type_script = "uid://c3pa3ibleap0q"
-
 [node name="HackableComponent" type="Node" parent="." unique_id=1450523997]
 script = ExtResource("4_mjwbc")
 metadata/_custom_type_script = "uid://xtt5itxdehdv"
 
 [node name="CurrencyComponent" type="Node" parent="." unique_id=527468259]
 script = ExtResource("5_d58mo")
-initial_currency = 15.99
+initial_currency = 120.99
 metadata/_custom_type_script = "uid://cjsad3x24fyus"
 
 [node name="CurrencyInteractionListenerComponent" type="Node" parent="." unique_id=1664844210 node_paths=PackedStringArray("interaction")]
 script = ExtResource("6_fgip1")
 interaction = NodePath("../InteractableComponent/Interaction")
 metadata/_custom_type_script = "uid://bkrksibpfbj1"
-
-[node name="Node2D" type="Node2D" parent="." unique_id=536708508]

@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://lcnommejn6jr" path="res://Source/Components/Visuals/SignalToTweenComponent.cs" id="3_5g2ae"]
 [ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Resources/SignalToTweenResource.cs" id="4_ape66"]
 [ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Resources/TweenResource.cs" id="6_teg2t"]
+[ext_resource type="Script" uid="uid://d1g63tu86plw7" path="res://Source/Components/Visuals/OutlineComponent.cs" id="7_urky1"]
+[ext_resource type="Script" uid="uid://727uolqg3b74" path="res://Source/Components/Visuals/SignalToOutlineComponent.cs" id="8_m1elb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_esd16"]
 atlas = ExtResource("1_m0gql")
@@ -107,3 +109,15 @@ metadata/_custom_type_script = "uid://cnahluscj58pv"
 script = ExtResource("3_5g2ae")
 tweens_ = Array[ExtResource("4_ape66")]([SubResource("Resource_m3p82"), SubResource("Resource_hmgnw")])
 metadata/_custom_type_script = "uid://lcnommejn6jr"
+
+[node name="OutlineComponent" type="Node" parent="." unique_id=1880627221 node_paths=PackedStringArray("visual_")]
+script = ExtResource("7_urky1")
+visual_ = NodePath("..")
+metadata/_custom_type_script = "uid://d1g63tu86plw7"
+
+[node name="SignalToOutlineComponent" type="Node" parent="." unique_id=49057779 node_paths=PackedStringArray("source_")]
+script = ExtResource("8_m1elb")
+source_ = NodePath("..")
+enable_outline_signal_ = "mouse_entered"
+disable_outline_signal_ = "mouse_exited"
+metadata/_custom_type_script = "uid://727uolqg3b74"

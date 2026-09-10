@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://doa7okoermkiw" path="res://Scenes/Characters/Player.tscn" id="2_t2f7c"]
 [ext_resource type="PackedScene" uid="uid://cdnhh5kwdpsq1" path="res://Scenes/Objects/Store.tscn" id="3_hvi73"]
 [ext_resource type="PackedScene" uid="uid://c25sahy0qmwns" path="res://Scenes/Objects/HeistBoard.tscn" id="4_bv6i4"]
+[ext_resource type="PackedScene" uid="uid://ex6frfdxpe6e" path="res://Scenes/Objects/ObjectivesBoard.tscn" id="5_t2f7c"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_jw32o"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -36,7 +37,10 @@ y_sort_enabled = true
 position = Vector2(244, 27)
 
 [node name="Store" parent="YSort" unique_id=1204181944 instance=ExtResource("3_hvi73")]
-position = Vector2(211, 22)
+position = Vector2(208, 15)
 
 [node name="HiestBoard" parent="YSort" unique_id=749258439 instance=ExtResource("4_bv6i4")]
-position = Vector2(269, 24)
+position = Vector2(240, 0)
+
+[node name="ObjectivesBoard" parent="YSort" unique_id=1510432895 instance=ExtResource("5_t2f7c")]
+position = Vector2(272, 15)

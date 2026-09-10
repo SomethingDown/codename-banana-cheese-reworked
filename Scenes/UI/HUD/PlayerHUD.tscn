@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://wynm1s6qkdlm"]
 
 [ext_resource type="PackedScene" uid="uid://cutmq780xromc" path="res://Scenes/UI/HUD/HealthBarHUD.tscn" id="1_1pl3s"]
+[ext_resource type="PackedScene" uid="uid://cnfqd0xx5bwxp" path="res://Scenes/UI/HUD/HintsHUD.tscn" id="1_8dixr"]
 [ext_resource type="PackedScene" uid="uid://c18bh1coln4wt" path="res://Scenes/UI/HUD/ItemHeldHUD.tscn" id="2_ypl4r"]
 [ext_resource type="PackedScene" uid="uid://dnxmxooyfwgfp" path="res://Scenes/UI/HUD/InteractionsHud.tscn" id="3_8dixr"]
 [ext_resource type="PackedScene" uid="uid://cugod7krol6e" path="res://Scenes/UI/HUD/CurrencyHUD.tscn" id="4_ypl4r"]
@@ -17,6 +18,10 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 10
 size_flags_vertical = 3
+
+[node name="HintsHUD" parent="Interface" unique_id=1619814241 instance=ExtResource("1_8dixr")]
+visible = false
+layout_mode = 1
 
 [node name="HealthBarHUD" parent="Interface" unique_id=2055633891 instance=ExtResource("1_1pl3s")]
 layout_mode = 1

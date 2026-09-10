@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://b8nh0v0f2y53u"]
+
+[ext_resource type="Texture2D" uid="uid://ckik2y1e6sf5o" path="res://Assets/Spreadsheets/Objects spreadsheet.png" id="1_8pjuj"]
+[ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="2_2ue8d"]
+[ext_resource type="Script" uid="uid://dhbmi1rn6whh" path="res://Source/Components/Detection/EntityLOSComponent.cs" id="3_q6w8y"]
+[ext_resource type="Script" uid="uid://bpb8e2l7376gm" path="res://Source/Components/Detection/EntityDetectorComponent.cs" id="4_cupfr"]
+[ext_resource type="Script" uid="uid://dsx8ali55awx1" path="res://Source/Components/Security/AlertComponent.cs" id="5_suxld"]
+[ext_resource type="Script" uid="uid://c04uct6hgp80m" path="res://Source/Components/AI/EntitiesInRangeMemoryComponent.cs" id="6_4ybyd"]
+[ext_resource type="Script" uid="uid://yw4dln1fdmoo" path="res://Source/Components/AI/EntitiesLOSMemoryComponent.cs" id="7_l80jw"]
+[ext_resource type="Script" uid="uid://c0h7a686qgghg" path="res://Source/Components/Security/ThreatEvaluatorComponent.cs" id="8_pd3t2"]
+[ext_resource type="Script" uid="uid://er3tenwxkt2j" path="res://Source/Components/Security/ThreatAwarenessComponent.cs" id="9_sx7ft"]
+[ext_resource type="Script" uid="uid://mnglrcs32rvw" path="res://Source/Components/Security/SignalToAlertComponent.cs" id="10_l22at"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esd16"]
+atlas = ExtResource("1_8pjuj")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_esd16"]
+radius = 2.236068
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3iy8"]
+radius = 71.02816
+
+[node name="Camera" type="Node2D" unique_id=810651815]
+
+[node name="Graphics" type="Node2D" parent="." unique_id=1834327325]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphics" unique_id=804175617]
+texture = SubResource("AtlasTexture_esd16")
+
+[node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1778333879]
+script = ExtResource("2_2ue8d")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=692040853]
+shape = SubResource("CircleShape2D_esd16")
+
+[node name="EntityLOSComponent" type="Node2D" parent="." unique_id=1222590931]
+position = Vector2(0, 4)
+rotation = 1.5707964
+script = ExtResource("3_q6w8y")
+metadata/_custom_type_script = "uid://dhbmi1rn6whh"
+
+[node name="RayCast2D" type="RayCast2D" parent="EntityLOSComponent" unique_id=1853398877]
+target_position = Vector2(80, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="EntityLOSComponent" unique_id=1506006062]
+position = Vector2(0, -4)
+target_position = Vector2(80, 0)
+
+[node name="RayCast2D3" type="RayCast2D" parent="EntityLOSComponent" unique_id=1623064632]
+position = Vector2(0, 4)
+target_position = Vector2(80, 0)
+
+[node name="RayCast2D4" type="RayCast2D" parent="EntityLOSComponent" unique_id=1492259828]
+position = Vector2(-3, 7)
+target_position = Vector2(80, 0)
+
+[node name="RayCast2D5" type="RayCast2D" parent="EntityLOSComponent" unique_id=1368900447]
+position = Vector2(-3, -7)
+target_position = Vector2(80, 0)
+
+[node name="EntityDetectorComponent" type="Area2D" parent="." unique_id=1871386504]
+script = ExtResource("4_cupfr")
+metadata/_custom_type_script = "uid://bpb8e2l7376gm"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityDetectorComponent" unique_id=528414498]
+shape = SubResource("CircleShape2D_d3iy8")
+
+[node name="AlertComponent" type="Node" parent="." unique_id=1516556575]
+script = ExtResource("5_suxld")
+metadata/_custom_type_script = "uid://dsx8ali55awx1"
+
+[node name="EntitiesInRangeMemoryComponent" type="Node" parent="." unique_id=1046583837]
+script = ExtResource("6_4ybyd")
+metadata/_custom_type_script = "uid://c04uct6hgp80m"
+
+[node name="EntitiesLOSMemoryComponent" type="Node" parent="." unique_id=557651878]
+script = ExtResource("7_l80jw")
+metadata/_custom_type_script = "uid://yw4dln1fdmoo"
+
+[node name="ThreatEvaluatorComponent" type="Node" parent="." unique_id=94731849]
+script = ExtResource("8_pd3t2")
+metadata/_custom_type_script = "uid://c0h7a686qgghg"
+
+[node name="ThreatAwarenessComponent" type="Node" parent="." unique_id=532742034]
+script = ExtResource("9_sx7ft")
+fill_rate = 10.0
+metadata/_custom_type_script = "uid://er3tenwxkt2j"
+
+[node name="SignalToGlobalAlertComponent" type="Node" parent="." unique_id=811029243]
+script = ExtResource("10_l22at")

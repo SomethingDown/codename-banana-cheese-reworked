@@ -26,7 +26,6 @@ public partial class ItemTransferUIComponent : Node
         if (selected_item_ == null) return;
         if (destination_inventory_.HasItem(selected_item_)) destination_inventory_.Remove(selected_item_);
         else destination_inventory_.Add(selected_item_);
-        GD.Print(destination_inventory_.items.Count);
     }
 
 }

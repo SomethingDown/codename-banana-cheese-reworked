@@ -1,0 +1,174 @@
+[gd_scene format=3 uid="uid://cv4tcwetcgaf2"]
+
+[ext_resource type="Texture2D" uid="uid://ckik2y1e6sf5o" path="res://Assets/Spreadsheets/Objects spreadsheet.png" id="1_2ybx7"]
+[ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="1_qs5kq"]
+[ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="2_p3ed1"]
+[ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="3_s3hwt"]
+[ext_resource type="Script" uid="uid://ka47dce8apjs" path="res://Source/Resources/AuthorizationResource.cs" id="4_2ybx7"]
+[ext_resource type="Resource" uid="uid://ccasntywnjfhm" path="res://Resources/Authorizations/ITAuthResource.tres" id="5_d2de8"]
+[ext_resource type="Script" uid="uid://dwqubyc4d1or4" path="res://Source/Components/Interactive/InteractionListeners/AlertManipulatorInteractionListenerComponent.cs" id="6_4tpfd"]
+[ext_resource type="Script" uid="uid://xtt5itxdehdv" path="res://Source/Components/Security/HackableComponent.cs" id="7_bv70s"]
+[ext_resource type="Script" uid="uid://tye6jmwwdjk0" path="res://Source/Components/Visuals/SignalToAnimationComponent.cs" id="9_d2de8"]
+[ext_resource type="Script" uid="uid://cb3ne1gdfuk76" path="res://Source/Resources/SignalToAnimationResource.cs" id="10_4tpfd"]
+[ext_resource type="Script" uid="uid://d1g63tu86plw7" path="res://Source/Components/Visuals/OutlineComponent.cs" id="11_4tpfd"]
+[ext_resource type="Script" uid="uid://727uolqg3b74" path="res://Source/Components/Visuals/SignalToOutlineComponent.cs" id="12_bv70s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bv70s"]
+atlas = ExtResource("1_2ybx7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_56c41"]
+atlas = ExtResource("1_2ybx7")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_esd16"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bv70s")
+}],
+"loop": 1,
+"name": &"Functional",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_56c41")
+}],
+"loop": 1,
+"name": &"Hacked",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esd16"]
+size = Vector2(14, 7)
+
+[sub_resource type="Animation" id="Animation_8yixk"]
+resource_name = "Functional"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Functional"]
+}
+
+[sub_resource type="Animation" id="Animation_tiaiw"]
+resource_name = "Hacked"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Hacked"]
+}
+
+[sub_resource type="Animation" id="Animation_4tpfd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Graphics/AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Hacked"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8lo5r"]
+_data = {
+&"Functional": SubResource("Animation_8yixk"),
+&"Hacked": SubResource("Animation_tiaiw"),
+&"RESET": SubResource("Animation_4tpfd")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d3iy8"]
+size = Vector2(18, 10)
+
+[sub_resource type="Resource" id="Resource_esd16"]
+script = ExtResource("10_4tpfd")
+source_path = NodePath("../HackableComponent")
+signal_name = "Hacked"
+animation_player_path = NodePath("../AnimationPlayer")
+animation_name = "Hacked"
+metadata/_custom_type_script = "uid://cb3ne1gdfuk76"
+
+[node name="SecurityBoard" type="Node2D" unique_id=223517566]
+
+[node name="Graphics" type="Node2D" parent="." unique_id=1976849451]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1794899944]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_esd16")
+animation = &"Hacked"
+autoplay = "Functional"
+
+[node name="Collision" type="Node2D" parent="." unique_id=633904868]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collision" unique_id=143050334]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D" unique_id=1917551515]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_esd16")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=147948648]
+libraries/ = SubResource("AnimationLibrary_8lo5r")
+
+[node name="EntityAreaComponent" type="Area2D" parent="." unique_id=842049846]
+script = ExtResource("1_qs5kq")
+metadata/_custom_type_script = "uid://hgcc0pq50e12"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=1682727016]
+position = Vector2(0, -3)
+shape = SubResource("RectangleShape2D_d3iy8")
+
+[node name="InteractableComponent" type="Node" parent="." unique_id=2008397064]
+script = ExtResource("2_p3ed1")
+metadata/_custom_type_script = "uid://bt6qadveyo2d8"
+
+[node name="Interaction" type="Node" parent="InteractableComponent" unique_id=376197008]
+script = ExtResource("3_s3hwt")
+label = "Disable cameras"
+authorizations = Array[ExtResource("4_2ybx7")]([ExtResource("5_d2de8")])
+metadata/_custom_type_script = "uid://c3pa3ibleap0q"
+
+[node name="AlertManipulatorInteractionListenerComponent" type="Node" parent="." unique_id=1869966765 node_paths=PackedStringArray("interaction")]
+script = ExtResource("6_4tpfd")
+interaction = NodePath("../InteractableComponent/Interaction")
+metadata/_custom_type_script = "uid://dwqubyc4d1or4"
+
+[node name="HackableComponent" type="Node" parent="." unique_id=1462509111]
+script = ExtResource("7_bv70s")
+metadata/_custom_type_script = "uid://xtt5itxdehdv"
+
+[node name="SignalToAnimationComponent" type="Node" parent="." unique_id=1732674752]
+script = ExtResource("9_d2de8")
+signals_to_animations_ = Array[ExtResource("10_4tpfd")]([SubResource("Resource_esd16")])
+metadata/_custom_type_script = "uid://tye6jmwwdjk0"
+
+[node name="OutlineComponent" type="Node" parent="." unique_id=311292923 node_paths=PackedStringArray("visual_")]
+script = ExtResource("11_4tpfd")
+visual_ = NodePath("../Graphics/AnimatedSprite2D")
+metadata/_custom_type_script = "uid://d1g63tu86plw7"
+
+[node name="SignalToOutlineComponent" type="Node" parent="." unique_id=1135423141 node_paths=PackedStringArray("source_")]
+script = ExtResource("12_bv70s")
+source_ = NodePath("../InteractableComponent")
+enable_outline_signal_ = "Selected"
+disable_outline_signal_ = "Unselected"
+metadata/_custom_type_script = "uid://727uolqg3b74"

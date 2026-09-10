@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="ObjectiveResource" format=3 uid="uid://btckmoks3n0al"]
 
-[ext_resource type="Texture2D" uid="uid://ckik2y1e6sf5o" path="res://Assets/Spreadsheets/Objects spreadsheet.png" id="1_8wh2f"]
+[ext_resource type="Texture2D" uid="uid://deev16cm4g36y" path="res://Assets/Spreadsheets/Objectives spreadsheet.png" id="1_8wh2f"]
 [ext_resource type="Script" uid="uid://cdkpg3elokq3t" path="res://Source/Resources/ObjectiveResource.cs" id="1_xb5pb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xb5pb"]
 atlas = ExtResource("1_8wh2f")
-region = Rect2(0, 32, 16, 16)
+region = Rect2(0, 0, 16, 16)
 
 [resource]
 script = ExtResource("1_xb5pb")

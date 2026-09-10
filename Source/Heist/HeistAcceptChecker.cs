@@ -7,7 +7,7 @@ public partial class HeistAcceptChecker : Node
     [Signal] public delegate void HeistRequestAcceptedEventHandler();
     [Signal] public delegate void HeistRequestUnacceptedEventHandler();
 
-    [Export] private HeistSelectorComponent heist_selector_;
+    [Export] private DisplayableResourcesSelectorComponent heist_selector_;
     [Export] private LabelOptionUI option_;
     public override void _Ready()
     {
@@ -16,7 +16,8 @@ public partial class HeistAcceptChecker : Node
 
         option_.Pressed += () =>
         {
-            if (heist_selector_.selected_heist == null)
+            HeistResource heist_resource = heist_selector_.selected_resource as HeistResource;
+            if (heist_resource == null)
             {
                 EmitSignal(SignalName.HeistRequestUnaccepted);
                 return;

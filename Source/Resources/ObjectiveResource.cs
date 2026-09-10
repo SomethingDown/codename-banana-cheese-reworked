@@ -2,10 +2,14 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class ObjectiveResource : Resource
+public partial class ObjectiveResource : Resource ,IDisplayableResource
 {
     [Export]public string name;
     [Export]public string description;
     [Export]public Texture2D icon;
+
+    public string Name {get=>name;set=>name=value;}
+    public string Description  {get=>description;set=>description=value;}
+    public Texture2D Icon {get=>icon;set=>icon=value;}
 
 }

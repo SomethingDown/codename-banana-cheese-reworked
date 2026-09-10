@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://buf21j6blrdj4" path="res://Scenes/UI/TextureContainers/PrettyTextureRect.tscn" id="1_fkwvb"]
 [ext_resource type="PackedScene" uid="uid://dk6khfy84q7wc" path="res://Scenes/UI/Info/InfoCardUI.tscn" id="2_l6xbo"]
-[ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="3_deut4"]
 [ext_resource type="Script" uid="uid://cyugvqebujfuc" path="res://Source/Components/UI/Notification/NotificationRecieverUIComponent.cs" id="4_5pkf0"]
 
 [node name="NotificationHUD" type="Control" unique_id=728442763]
@@ -29,10 +28,6 @@ layout_mode = 2
 layout_mode = 2
 title = "Notification"
 data = "You did something"
-
-[node name="TweenComponent" type="Node" parent="." unique_id=2145524524]
-script = ExtResource("3_deut4")
-metadata/_custom_type_script = "uid://cnahluscj58pv"
 
 [node name="NotificationRecieverUIComponent" type="Node" parent="." unique_id=1419093481 node_paths=PackedStringArray("notif_container", "notif_info", "notif_icon")]
 script = ExtResource("4_5pkf0")

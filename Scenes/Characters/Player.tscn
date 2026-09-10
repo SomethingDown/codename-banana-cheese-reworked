@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://doa7okoermkiw"]
 
 [ext_resource type="Texture2D" uid="uid://irxvq3jh1suw" path="res://Assets/Spreadsheets/Characters spreadsheet.png" id="1_qeewm"]
+[ext_resource type="Script" uid="uid://bio0mrcg37ljh" path="res://Source/Components/Visuals/AnimationComponent.cs" id="2_h1o3h"]
 [ext_resource type="Script" uid="uid://ckf60xy1d5yx" path="res://Source/Components/AI/NavigationAgentComponent.cs" id="2_shd1k"]
+[ext_resource type="Script" uid="uid://c6kx1eo44hjrn" path="res://Source/Components/Visuals/AnimationParameters/VelocityAnimationParameter.cs" id="3_ynkr0"]
 [ext_resource type="Script" uid="uid://bamk2sv23kwhg" path="res://Source/Components/Physics/CharacterMovementComponent.cs" id="4_aal88"]
-[ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/InventoryComponent.cs" id="5_4opfx"]
-[ext_resource type="Script" uid="uid://cly3sbur8n14a" path="res://Source/Components/Inventory/ItemSelectorSwitchComponent.cs" id="8_toq76"]
-[ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="9_hl70s"]
+[ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/Items/InventoryComponent.cs" id="5_4opfx"]
+[ext_resource type="Script" uid="uid://cly3sbur8n14a" path="res://Source/Components/Inventory/Items/ItemSelectorSwitchComponent.cs" id="8_toq76"]
+[ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/Items/ItemSelectorComponent.cs" id="9_hl70s"]
 [ext_resource type="Script" uid="uid://bw1s5y0lofjef" path="res://Source/Components/Controllers/PlayerControllerComponent.cs" id="10_ltdul"]
-[ext_resource type="Script" uid="uid://bvhg2hkb8gvk8" path="res://Source/Components/Inventory/HandComponent.cs" id="11_ibpri"]
+[ext_resource type="Script" uid="uid://bvhg2hkb8gvk8" path="res://Source/Components/Inventory/Items/HandComponent.cs" id="11_ibpri"]
 [ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="12_shd1k"]
 [ext_resource type="Script" uid="uid://bpb8e2l7376gm" path="res://Source/Components/Detection/EntityDetectorComponent.cs" id="13_5kd0c"]
 [ext_resource type="Script" uid="uid://dhbmi1rn6whh" path="res://Source/Components/Detection/EntityLOSComponent.cs" id="14_hl70s"]
@@ -17,7 +19,7 @@
 [ext_resource type="Script" uid="uid://yw4dln1fdmoo" path="res://Source/Components/AI/EntitiesLOSMemoryComponent.cs" id="16_qd2bg"]
 [ext_resource type="Script" uid="uid://bna53qvcvu8ku" path="res://Source/Components/Interactive/InteractorComponent.cs" id="18_hl70s"]
 [ext_resource type="Script" uid="uid://dui6fhdnjnsvc" path="res://Source/Components/Vitality/HealthComponent.cs" id="18_mc0oj"]
-[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="21_ibpri"]
+[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/Currency/CurrencyComponent.cs" id="21_ibpri"]
 [ext_resource type="Script" uid="uid://igpebnom14w3" path="res://Source/Components/Debug/CurrencyDebugComponent.cs" id="22_qd2bg"]
 [ext_resource type="Script" uid="uid://bspbboy231t7e" path="res://Source/Components/Debug/InteractorDebugComponent.cs" id="22_qeewm"]
 [ext_resource type="Script" uid="uid://b703ufrr5qn6k" path="res://Source/Components/Physics/CharacterStuckNotifierComponnet.cs" id="24_81gbe"]
@@ -30,7 +32,7 @@
 [ext_resource type="Script" uid="uid://rh1vvijbxul1" path="res://Source/Components/Heist/HeistEndsWhenDeadComponent.cs" id="31_m2jkf"]
 [ext_resource type="Script" uid="uid://di377n0x7ceig" path="res://Source/Components/Interactive/InteractionSelectorComponent.cs" id="33_ynkr0"]
 [ext_resource type="Script" uid="uid://8acsjhbwwkv3" path="res://Source/Components/Physics/KnockbackOnDamageComponent.cs" id="34_ynkr0"]
-[ext_resource type="Script" uid="uid://1c751b7f3sko" path="res://Source/Components/Inventory/PlayerStateInventoryInitializerComponent.cs" id="35_mrttg"]
+[ext_resource type="Script" uid="uid://1c751b7f3sko" path="res://Source/Components/Inventory/Items/PlayerStateInventoryInitializerComponent.cs" id="35_mrttg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4kmf"]
 radius = 2.65
@@ -42,6 +44,14 @@ region = Rect2(0, 16, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_3vnku"]
 atlas = ExtResource("1_qeewm")
 region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1o3h"]
+atlas = ExtResource("1_qeewm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynkr0"]
+atlas = ExtResource("1_qeewm")
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hqlak"]
 animations = [{
@@ -55,14 +65,158 @@ animations = [{
 "loop": 1,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1o3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynkr0")
+}],
+"loop": 1,
+"name": &"Move",
+"speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_mrttg"]
+resource_name = "Idle"
+length = 0.39999999999999997
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_2ji7n"]
+resource_name = "Move"
+length = 0.39999999999999997
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Move"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_ionog"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Move"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d3415"]
+_data = {
+&"Idle": SubResource("Animation_mrttg"),
+&"Move": SubResource("Animation_2ji7n"),
+&"RESET": SubResource("Animation_ionog")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_h1o3h"]
+animation = &"Move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ynkr0"]
+animation = &"Move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mrttg"]
+animation = &"Move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2ji7n"]
+animation = &"Move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ionog"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7ueij"]
+blend_mode = 2
+blend_point_0/node = SubResource("AnimationNodeAnimation_h1o3h")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_0/name = &"Move"
+blend_point_1/node = SubResource("AnimationNodeAnimation_ynkr0")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_1/name = &"Move 2"
+blend_point_2/node = SubResource("AnimationNodeAnimation_mrttg")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_2/name = &"Move 3"
+blend_point_3/node = SubResource("AnimationNodeAnimation_2ji7n")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_3/name = &"Move 4"
+blend_point_4/node = SubResource("AnimationNodeAnimation_ionog")
+blend_point_4/pos = Vector2(0, 0)
+blend_point_4/name = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m5pkk"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_esd16"]
+states/Velocity/node = SubResource("AnimationNodeBlendSpace2D_7ueij")
+states/Velocity/position = Vector2(351.6, 42.399998)
+transitions = ["Start", "Velocity", SubResource("AnimationNodeStateMachineTransition_m5pkk")]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_spibu"]
 radius = 4.651163
 height = 23.255814
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aal88"]
-radius = 25.079872
+radius = 39.0
 
 [node name="Player" type="CharacterBody2D" unique_id=29278974]
 platform_on_leave = 2
@@ -81,8 +235,25 @@ position = Vector2(0, -5)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1240223573]
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_hqlak")
-animation = &"Idle"
-autoplay = "Idle"
+animation = &"Move"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics" unique_id=2111947476]
+libraries/ = SubResource("AnimationLibrary_d3415")
+autoplay = &"Idle"
+
+[node name="AnimationComponent" type="AnimationTree" parent="." unique_id=57300872]
+root_node = NodePath("../Graphics")
+tree_root = SubResource("AnimationNodeStateMachine_esd16")
+anim_player = NodePath("../Graphics/AnimationPlayer")
+parameters/Velocity/blend_position = Vector2(0, -0.007299304)
+script = ExtResource("2_h1o3h")
+metadata/_custom_type_script = "uid://bio0mrcg37ljh"
+
+[node name="VelocityAnimationParameter" type="Node" parent="AnimationComponent" unique_id=200786297 node_paths=PackedStringArray("movement_component")]
+script = ExtResource("3_ynkr0")
+movement_component = NodePath("../../CharacterMovementComponent")
+parameter_name = "Velocity"
+metadata/_custom_type_script = "uid://c6kx1eo44hjrn"
 
 [node name="NavigationAgentComponent" type="NavigationAgent2D" parent="." unique_id=55730638]
 script = ExtResource("2_shd1k")
@@ -133,7 +304,7 @@ position = Vector2(2.3255816, -16.27907)
 shape = SubResource("CapsuleShape2D_spibu")
 
 [node name="EntityDetectorComponent" type="Area2D" parent="." unique_id=263371898]
-visible = false
+position = Vector2(0, -10)
 script = ExtResource("13_5kd0c")
 metadata/_custom_type_script = "uid://bpb8e2l7376gm"
 
@@ -141,19 +312,27 @@ metadata/_custom_type_script = "uid://bpb8e2l7376gm"
 shape = SubResource("CircleShape2D_aal88")
 
 [node name="EntityLOSComponent" type="Node2D" parent="." unique_id=1663231448]
-visible = false
+position = Vector2(0, -10)
 script = ExtResource("14_hl70s")
 metadata/_custom_type_script = "uid://dhbmi1rn6whh"
+
+[node name="RayCast2D4" type="RayCast2D" parent="EntityLOSComponent" unique_id=1557072696]
+position = Vector2(-7, -7)
+target_position = Vector2(70, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="EntityLOSComponent" unique_id=1638438540]
+position = Vector2(-5, -4)
+target_position = Vector2(70, 0)
 
 [node name="RayCast2D" type="RayCast2D" parent="EntityLOSComponent" unique_id=67678963]
 target_position = Vector2(70, 0)
 
-[node name="RayCast2D2" type="RayCast2D" parent="EntityLOSComponent" unique_id=1638438540]
-position = Vector2(0, -4)
+[node name="RayCast2D3" type="RayCast2D" parent="EntityLOSComponent" unique_id=1481300719]
+position = Vector2(-5, 3)
 target_position = Vector2(70, 0)
 
-[node name="RayCast2D3" type="RayCast2D" parent="EntityLOSComponent" unique_id=1481300719]
-position = Vector2(0, 3)
+[node name="RayCast2D5" type="RayCast2D" parent="EntityLOSComponent" unique_id=522155545]
+position = Vector2(-7, 6)
 target_position = Vector2(70, 0)
 
 [node name="EntitiesInRangeMemoryComponent" type="Node" parent="." unique_id=488205665]

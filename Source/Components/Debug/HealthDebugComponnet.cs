@@ -1,8 +1,9 @@
 using Godot;
 using System;
+using System.Diagnostics;
 
 [GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__speech_bubble_exclamation_node.svg")]
-public partial class HealthDebugComponnet : Node
+public partial class HealthDebugComponnet : DebugComponent
 {
     
     private HealthComponent health_component;
@@ -12,8 +13,8 @@ public partial class HealthDebugComponnet : Node
         health_component = this.GetComponent<HealthComponent>();
         if (health_component == null) return;
 
-        health_component.HealthChanged += f=> EventsQueue.instance.Publish( new EventMessage{message=$"New health: {f}"});
-        health_component.HealthDepleted += ()=> EventsQueue.instance.Publish( new EventMessage{message=$"Health depleted"});
+        health_component.HealthChanged += f=> {if (enabled) EventsQueue.instance.Publish( new EventMessage{message=$"New health: {f}"});};
+        health_component.HealthDepleted += ()=> {if (enabled) EventsQueue.instance.Publish( new EventMessage{message=$"Health depleted"});};
 
     }
 

@@ -6,6 +6,7 @@ public partial class CharacterMovementComponent : Node
 {
     [Export] public bool enabled = true; 
     [Export] public float speed = 40.0f;
+    public Vector2 last_calculated_velocity {get;private set;} = Vector2.Zero;
     private ControllerComponent controller_component_;
     private CharacterBody2D character_body_;
 
@@ -22,8 +23,10 @@ public partial class CharacterMovementComponent : Node
         if (!enabled) return;
 
         Vector2 move_axis = controller_component_.GetMovementAxis();
-        character_body_.Velocity = move_axis.Normalized() * speed;
+        Vector2 velocity = move_axis.Normalized() * speed;
+        character_body_.Velocity = velocity;
         character_body_.MoveAndSlide();
+        last_calculated_velocity = character_body_.Velocity;
 
     }
 

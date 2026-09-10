@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/streamline__workspace_desk_node.svg")]
 public partial class NotificationManagerComponent : Node
 {
     private Queue<NotificationResource> notifications_queue_ = new Queue<NotificationResource>();

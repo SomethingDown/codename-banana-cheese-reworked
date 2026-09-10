@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/@icons__speech_bubble_exclamation_node.svg")]
-public partial class InteractorDebugComponent : Node
+public partial class InteractorDebugComponent : DebugComponent
 {
     private InteractablesSelectorComponent interactables_selector_component_;
     private InteractionSelectorComponent interaction_selector_component_;
@@ -13,6 +13,7 @@ public partial class InteractorDebugComponent : Node
         interaction_selector_component_ = this.GetComponent<InteractionSelectorComponent>();
         interactables_selector_component_.SelectionChanged += e =>
         {
+            if (enabled)
             EventsQueue.instance.Publish(
                 new EventMessage{
                     message=

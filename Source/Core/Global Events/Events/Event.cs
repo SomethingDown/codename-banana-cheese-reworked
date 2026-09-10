@@ -15,6 +15,11 @@ public record Event
 public record EventMessage : Event
 {
     public string message;
+    public EventMessage(){}
+    public EventMessage(string message)
+    {
+        this.message = message;
+    }
 }
 
 public record EventGameover : Event

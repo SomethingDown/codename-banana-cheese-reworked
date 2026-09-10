@@ -1,21 +1,47 @@
 [gd_scene format=3 uid="uid://c25sahy0qmwns"]
 
+[ext_resource type="Texture2D" uid="uid://ckik2y1e6sf5o" path="res://Assets/Spreadsheets/Objects spreadsheet.png" id="1_018ky"]
 [ext_resource type="Script" uid="uid://c3pa3ibleap0q" path="res://Source/Components/Interactive/Interaction.cs" id="2_018ky"]
 [ext_resource type="Script" uid="uid://bt6qadveyo2d8" path="res://Source/Components/Interactive/InteractableComponent.cs" id="2_q7roe"]
 [ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="3_igfgw"]
 [ext_resource type="Script" uid="uid://ctdvpr8bsb7hb" path="res://Source/Components/Interactive/InteractionListeners/InstanceWindowedSceneInteractionListenerComponent.cs" id="4_w87ab"]
 [ext_resource type="PackedScene" uid="uid://by2o1qprok8uf" path="res://Scenes/UI/Window/WindowContent/StartHeist.tscn" id="5_xke5u"]
+[ext_resource type="Script" uid="uid://d1g63tu86plw7" path="res://Source/Components/Visuals/OutlineComponent.cs" id="7_w87ab"]
+[ext_resource type="Script" uid="uid://727uolqg3b74" path="res://Source/Components/Visuals/SignalToOutlineComponent.cs" id="8_xke5u"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_esd16"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_esd16"]
+atlas = ExtResource("1_018ky")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esd16"]
+size = Vector2(10, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vl0kk"]
+size = Vector2(15, 4)
 
 [node name="HiestBoard" type="Node2D" unique_id=749258439]
+
+[node name="Graphics" type="Node2D" parent="." unique_id=1389981433]
+
+[node name="Sprite2D" type="Sprite2D" parent="Graphics" unique_id=1115777340]
+position = Vector2(0, -8)
+texture = SubResource("AtlasTexture_esd16")
+
+[node name="Collision" type="Node2D" parent="." unique_id=1059337802]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Collision" unique_id=367058281]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collision/StaticBody2D" unique_id=907228827]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_esd16")
 
 [node name="EntityAreaComponent" type="Area2D" parent="." unique_id=1082150325]
 script = ExtResource("3_igfgw")
 metadata/_custom_type_script = "uid://hgcc0pq50e12"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntityAreaComponent" unique_id=121308873]
-shape = SubResource("CircleShape2D_esd16")
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_vl0kk")
 
 [node name="InteractableComponent" type="Node" parent="." unique_id=342425951]
 script = ExtResource("2_q7roe")
@@ -31,3 +57,15 @@ script = ExtResource("4_w87ab")
 scene_scene_ = ExtResource("5_xke5u")
 interaction = NodePath("../InteractableComponent/Interaction")
 metadata/_custom_type_script = "uid://ctdvpr8bsb7hb"
+
+[node name="OutlineComponent" type="Node" parent="." unique_id=1346385088 node_paths=PackedStringArray("visual_")]
+script = ExtResource("7_w87ab")
+visual_ = NodePath("../Graphics/Sprite2D")
+metadata/_custom_type_script = "uid://d1g63tu86plw7"
+
+[node name="SignalToOutlineComponent" type="Node" parent="." unique_id=1321068120 node_paths=PackedStringArray("source_")]
+script = ExtResource("8_xke5u")
+source_ = NodePath("../InteractableComponent")
+enable_outline_signal_ = "Selected"
+disable_outline_signal_ = "Unselected"
+metadata/_custom_type_script = "uid://727uolqg3b74"

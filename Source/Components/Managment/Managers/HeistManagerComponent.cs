@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Security.Cryptography.X509Certificates;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/streamline__workspace_desk_node.svg")]
 public partial class HeistManagerComponent : Node
 {
     [Export] private PackedScene overview_scene_;

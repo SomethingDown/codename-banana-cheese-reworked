@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 
-[GlobalClass]
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/streamline__workspace_desk_node.svg")]
 public partial class WindowManagerComponent : Node
 {
     private PackedScene windowui_scene_ = GD.Load<PackedScene>("res://Scenes/UI/Window/Window.tscn");

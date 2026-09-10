@@ -2,6 +2,7 @@ using Godot;
 using System;
 using System.Reflection.Emit;
 
+[GlobalClass, Icon("res://addons/godot-easy-icons/generated/node_icons/streamline__workspace_desk_node.svg")]
 public partial class ObjectiveManagerComponent : Node
 {
 

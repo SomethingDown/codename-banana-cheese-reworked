@@ -55,7 +55,6 @@ public partial class ObjectivesTrackingComponent : Node
     }
     public void OnHeistEnded(HeistEndState state)
     {
-        GD.Print("fsdgs");
         if (state == HeistEndState.Fail) return;
 
         accuired_objective_.ForEach(o=>{EventsQueue.instance.Publish(new EventObjectiveSecureRequest(o));});

@@ -4,7 +4,6 @@ using System.Reflection.Emit;
 
 public partial class NotificationRecieverUIComponent : Node
 {
-    [Signal] public delegate void NotificationReadyEventHandler();
     [Export] private Control notif_container;
     [Export] private InfoCardUI notif_info;
     [Export] private TextureRect notif_icon;
@@ -54,8 +53,6 @@ public partial class NotificationRecieverUIComponent : Node
 
         notif_info.title = notification.title;
         notif_info.data = notification.data;
-
-        EmitSignal(SignalName.NotificationReady);
 
         notif_container.Visible = true;
 

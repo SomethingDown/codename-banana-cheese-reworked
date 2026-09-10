@@ -20,7 +20,7 @@ public partial class HeistOverviewDisplayUIComponent : Node
         if (time_info_ != null)
         {
             TimeSpan elapsed = results.end_time - results.start_time;
-            time_info_.data = $"{elapsed.Minutes} Minutes";
+            time_info_.data = $"{elapsed.Minutes}:{elapsed.Seconds} Minutes";
         }
 
         if (kills_info != null)

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://sr31x1p8agvv" path="res://Source/Resources/HeistResource.cs" id="1_5yku1"]
 [ext_resource type="Texture2D" uid="uid://dl4c6iwd4el8w" path="res://Assets/Spreadsheets/Heists Spreadsheet.png" id="1_qcvu6"]
-[ext_resource type="PackedScene" uid="uid://c7csrb8b58l6u" path="res://Scenes/Game/TestHeistLevel.tscn" id="2_83maw"]
+[ext_resource type="PackedScene" uid="uid://c7csrb8b58l6u" path="res://Scenes/Game/TrainingHeistLevel.tscn" id="2_83maw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfisv"]
 atlas = ExtResource("1_qcvu6")

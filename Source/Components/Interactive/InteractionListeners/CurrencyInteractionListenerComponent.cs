@@ -22,10 +22,18 @@ public partial class CurrencyInteractionListenerComponent : InteractionListenerC
         if (currency_component_.GetCurrency() <= 0) return;
 
         HackableComponent hackable = this.GetComponent<HackableComponent>();
-        if (hackable != null && !hackable.IsHacked) return;
+        if (hackable != null && !hackable.IsHacked)
+        {
+            EventsQueue.instance.Publish(new EventNotificationTransmitted(new NotificationResource{title="Warning",Description="Requires [wave]hacking!"}));
+            return;
+        }
 
         BreachableComponent breachable = this.GetComponent<BreachableComponent>();
-        if (breachable != null && !breachable.IsBreached) return;
+        if (breachable != null && !breachable.IsBreached)
+        {
+            EventsQueue.instance.Publish(new EventNotificationTransmitted(new NotificationResource{title="Warning",Description="Requires [wave]breaching!"}));
+            return;
+        }
 
         entity.GetComponentInEntity<CurrencyComponent>()?.AddCurrency(currency_component_.SpendAllCurrency());
         EmitSignal(SignalName.CurrencyDepleated);

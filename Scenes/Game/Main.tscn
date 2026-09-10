@@ -64,20 +64,20 @@ script = ExtResource("10_d6h6d")
 overview_scene_ = ExtResource("11_cad5q")
 metadata/_custom_type_script = "uid://c53bvymgope1c"
 
+[node name="ObjectiveManagerComponent" type="Node" parent="." unique_id=673256163]
+script = ExtResource("13_edjvc")
+
+[node name="NotificationManagerComponent" type="Node" parent="." unique_id=570679568]
+script = ExtResource("15_eu08i")
+
 [node name="HeistStatsTrackingComponent" type="Node" parent="." unique_id=1465639657]
 script = ExtResource("11_d6h6d")
 metadata/_custom_type_script = "uid://bh1dsx5rleqsh"
-
-[node name="EventsDebugComponent" type="Node" parent="." unique_id=1210780357]
-script = ExtResource("6_ushg2")
-metadata/_custom_type_script = "uid://djt0xt3lp3k0f"
-
-[node name="ObjectiveManagerComponent" type="Node" parent="." unique_id=673256163]
-script = ExtResource("13_edjvc")
 
 [node name="ObjectivesTrackingComponent" type="Node" parent="." unique_id=1010823915]
 script = ExtResource("14_6go6g")
 metadata/_custom_type_script = "uid://cf2r33we3q2wx"
 
-[node name="NotificationManagerComponent" type="Node" parent="." unique_id=570679568]
-script = ExtResource("15_eu08i")
+[node name="EventsDebugComponent" type="Node" parent="." unique_id=1210780357]
+script = ExtResource("6_ushg2")
+metadata/_custom_type_script = "uid://djt0xt3lp3k0f"

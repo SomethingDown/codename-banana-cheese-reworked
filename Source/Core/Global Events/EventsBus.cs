@@ -14,13 +14,12 @@ public class EventsBus
     public void Subscribe(Action<Event> callback)
     {
         observer_callbacks.Add(callback);
-        GD.Print("Subscribed: ",callback);
+
     }
 
     public void Unsubscribe(Action<Event> callback)
     {
         observer_callbacks.Remove(callback);
-        GD.Print("Unubscribed: ",callback);
     }
 
     public void Update()

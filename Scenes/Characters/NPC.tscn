@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://irxvq3jh1suw" path="res://Assets/Spreadsheets/Characters spreadsheet.png" id="1_gy426"]
 [ext_resource type="Script" uid="uid://dft1kx1vjj81f" path="res://Source/Components/Controllers/AIControllerComponent.cs" id="1_lhmbd"]
+[ext_resource type="Script" uid="uid://bio0mrcg37ljh" path="res://Source/Components/Visuals/AnimationComponent.cs" id="2_7qo8i"]
 [ext_resource type="Script" uid="uid://ckf60xy1d5yx" path="res://Source/Components/AI/NavigationAgentComponent.cs" id="2_a0igq"]
 [ext_resource type="Script" uid="uid://b0xp48htsan7h" path="res://Source/Components/AI/BrainComponent.cs" id="2_b07n7"]
 [ext_resource type="Script" uid="uid://cnahluscj58pv" path="res://Source/Components/Visuals/TweenComponent.cs" id="3_5simk"]
@@ -10,19 +11,20 @@
 [ext_resource type="Script" uid="uid://chu18liur6wt6" path="res://Source/Resources/SignalToTweenResource.cs" id="5_w6yc2"]
 [ext_resource type="Script" uid="uid://db7kxmotuff4y" path="res://Source/Components/AI/CharacterIntentsComponent.cs" id="5_we08j"]
 [ext_resource type="Script" uid="uid://dmjwv0s4xmquh" path="res://Source/Resources/TweenResource.cs" id="6_oxv2e"]
+[ext_resource type="Script" uid="uid://c6kx1eo44hjrn" path="res://Source/Components/Visuals/AnimationParameters/VelocityAnimationParameter.cs" id="6_ye3fu"]
 [ext_resource type="Script" uid="uid://li6c8wf25gt" path="res://Source/Components/AI/Decisons/RandomWanderDecision.cs" id="7_hcars"]
 [ext_resource type="Resource" uid="uid://b2aa20rcninj0" path="res://Assets/Tweens/DamageEffect01.tres" id="7_q7vcw"]
 [ext_resource type="Script" uid="uid://bpb8e2l7376gm" path="res://Source/Components/Detection/EntityDetectorComponent.cs" id="8_hcars"]
 [ext_resource type="Script" uid="uid://cmmbkuu3xp1kc" path="res://Source/Components/AI/Decisons/FleeDecision.cs" id="9_wea0g"]
 [ext_resource type="Script" uid="uid://ckilslj6l8gye" path="res://Source/Components/AI/Decisons/ChaseDecision.cs" id="10_heust"]
 [ext_resource type="Script" uid="uid://dhbmi1rn6whh" path="res://Source/Components/Detection/EntityLOSComponent.cs" id="10_iqlxx"]
-[ext_resource type="Script" uid="uid://bvhg2hkb8gvk8" path="res://Source/Components/Inventory/HandComponent.cs" id="11_2bmg2"]
+[ext_resource type="Script" uid="uid://bvhg2hkb8gvk8" path="res://Source/Components/Inventory/Items/HandComponent.cs" id="11_2bmg2"]
 [ext_resource type="Script" uid="uid://yw4dln1fdmoo" path="res://Source/Components/AI/EntitiesLOSMemoryComponent.cs" id="11_gy426"]
 [ext_resource type="Script" uid="uid://ds2qccesiw55x" path="res://Source/Components/AI/Decisons/HoldWeaponDecision.cs" id="11_vg632"]
 [ext_resource type="Script" uid="uid://hgcc0pq50e12" path="res://Source/Components/Detection/EntityAreaComponent.cs" id="12_7blul"]
 [ext_resource type="Script" uid="uid://c04uct6hgp80m" path="res://Source/Components/AI/EntitiesInRangeMemoryComponent.cs" id="12_lka2k"]
 [ext_resource type="Script" uid="uid://bytwum3vklvy3" path="res://Source/Components/AI/Decisons/UnholdWeaponDecision.cs" id="12_vkwbg"]
-[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/CurrencyComponent.cs" id="13_gy426"]
+[ext_resource type="Script" uid="uid://cjsad3x24fyus" path="res://Source/Components/Inventory/Currency/CurrencyComponent.cs" id="13_gy426"]
 [ext_resource type="Script" uid="uid://cp2rdbfskdygf" path="res://Source/Components/AI/Decisons/UseWeaponDecision.cs" id="13_xync2"]
 [ext_resource type="Script" uid="uid://b703ufrr5qn6k" path="res://Source/Components/Physics/CharacterStuckNotifierComponnet.cs" id="14_lka2k"]
 [ext_resource type="Script" uid="uid://c6wrgm0vfcok2" path="res://Source/Components/Security/AuthorizationComponent.cs" id="15_abgwp"]
@@ -35,40 +37,193 @@
 [ext_resource type="Resource" uid="uid://bkjt3su6ey1tv" path="res://Resources/Items/GenericWeaponResource.tres" id="21_xync2"]
 [ext_resource type="Script" uid="uid://d0d1dd5vdn4ks" path="res://Source/Components/Vitality/DeleteOnDeathComponent.cs" id="22_knnuf"]
 [ext_resource type="Script" uid="uid://dyjx130p2s1e6" path="res://Source/Components/Debug/BrainDebugComponent.cs" id="22_x307b"]
-[ext_resource type="Script" uid="uid://cly3sbur8n14a" path="res://Source/Components/Inventory/ItemSelectorSwitchComponent.cs" id="25_12pmu"]
-[ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/InventoryComponent.cs" id="26_xhvfd"]
-[ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/ItemSelectorComponent.cs" id="27_ji2ae"]
+[ext_resource type="Script" uid="uid://cly3sbur8n14a" path="res://Source/Components/Inventory/Items/ItemSelectorSwitchComponent.cs" id="25_12pmu"]
+[ext_resource type="Script" uid="uid://bgx6j4m6rux5q" path="res://Source/Components/Inventory/Items/InventoryComponent.cs" id="26_xhvfd"]
+[ext_resource type="Script" uid="uid://5f2k3yn2la62" path="res://Source/Components/Inventory/Items/ItemSelectorComponent.cs" id="27_ji2ae"]
 [ext_resource type="Script" uid="uid://dui6fhdnjnsvc" path="res://Source/Components/Vitality/HealthComponent.cs" id="34_dpuba"]
 [ext_resource type="Script" uid="uid://dm8pem0le2ymo" path="res://Source/Components/UI/Vitality/HealthVisualUIComponent.cs" id="35_31vux"]
 [ext_resource type="Script" uid="uid://cwk0755gqfbmu" path="res://Source/Components/Vitality/DisableBrainOnDeathComponent.cs" id="37_jjcjf"]
 [ext_resource type="Script" uid="uid://8acsjhbwwkv3" path="res://Source/Components/Physics/KnockbackOnDamageComponent.cs" id="40_dsdj3"]
 [ext_resource type="Script" uid="uid://cpkki4ums7wor" path="res://Source/Components/Vitality/DamageRecieverComponent.cs" id="41_we3hc"]
 [ext_resource type="Script" uid="uid://bwo6grccsbtfu" path="res://Source/Components/Visuals/DamageIndicatorComponent.cs" id="42_we3hc"]
+[ext_resource type="Script" uid="uid://5mncdkb6ej8x" path="res://Source/Components/Security/AlertRecieverComponent.cs" id="47_85fcw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p0yww"]
 radius = 3.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lka2k"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_81gbe"]
 atlas = ExtResource("1_gy426")
 region = Rect2(0, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lk8q2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vnku"]
 atlas = ExtResource("1_gy426")
 region = Rect2(16, 16, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_gebkd"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1o3h"]
+atlas = ExtResource("1_gy426")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynkr0"]
+atlas = ExtResource("1_gy426")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ye3fu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lka2k")
+"texture": SubResource("AtlasTexture_81gbe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lk8q2")
+"texture": SubResource("AtlasTexture_3vnku")
 }],
 "loop": 1,
 "name": &"Idle",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h1o3h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynkr0")
+}],
+"loop": 1,
+"name": &"Move",
+"speed": 5.0
 }]
+
+[sub_resource type="Animation" id="Animation_ye3fu"]
+resource_name = "Idle"
+length = 0.39999999999999997
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_85fcw"]
+resource_name = "Move"
+length = 0.39999999999999997
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Move"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_x1oaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Move"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wgvpe"]
+_data = {
+&"Idle": SubResource("Animation_ye3fu"),
+&"Move": SubResource("Animation_85fcw"),
+&"RESET": SubResource("Animation_x1oaa")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x1oaa"]
+animation = &"Move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wgvpe"]
+animation = &"Move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_io8sx"]
+animation = &"Move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q56tg"]
+animation = &"Move"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejuen"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_7ueij"]
+blend_mode = 2
+blend_point_0/node = SubResource("AnimationNodeAnimation_x1oaa")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_0/name = &"Move"
+blend_point_1/node = SubResource("AnimationNodeAnimation_wgvpe")
+blend_point_1/pos = Vector2(-1, 0)
+blend_point_1/name = &"Move 2"
+blend_point_2/node = SubResource("AnimationNodeAnimation_io8sx")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_2/name = &"Move 3"
+blend_point_3/node = SubResource("AnimationNodeAnimation_q56tg")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_3/name = &"Move 4"
+blend_point_4/node = SubResource("AnimationNodeAnimation_ejuen")
+blend_point_4/pos = Vector2(0, 0)
+blend_point_4/name = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_m5pkk"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_uqsdr"]
+states/Velocity/node = SubResource("AnimationNodeBlendSpace2D_7ueij")
+states/Velocity/position = Vector2(351.6, 42.399998)
+transitions = ["Start", "Velocity", SubResource("AnimationNodeStateMachineTransition_m5pkk")]
 
 [sub_resource type="FontFile" id="FontFile_q7vcw"]
 subpixel_positioning = 0
@@ -117,7 +272,7 @@ metadata/_custom_type_script = "uid://chu18liur6wt6"
 
 [sub_resource type="Resource" id="Resource_jjcjf"]
 script = ExtResource("6_oxv2e")
-node_path = NodePath("../Graphics/AnimatedSprite2D")
+node_path = NodePath("")
 action = "modulate:g"
 value = 0.6
 duration = 0.1
@@ -125,7 +280,7 @@ metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
 
 [sub_resource type="Resource" id="Resource_7qo8i"]
 script = ExtResource("6_oxv2e")
-node_path = NodePath("../Graphics/AnimatedSprite2D")
+node_path = NodePath("")
 parallel_to_previous = true
 action = "modulate:b"
 value = 0.6
@@ -134,7 +289,7 @@ metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
 
 [sub_resource type="Resource" id="Resource_ye3fu"]
 script = ExtResource("6_oxv2e")
-node_path = NodePath("../Graphics/AnimatedSprite2D")
+node_path = NodePath("")
 parallel_to_previous = true
 action = "scale"
 value = Vector2(0.8, 0.8)
@@ -143,7 +298,7 @@ metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
 
 [sub_resource type="Resource" id="Resource_85fcw"]
 script = ExtResource("6_oxv2e")
-node_path = NodePath("../Graphics/AnimatedSprite2D")
+node_path = NodePath("")
 action = "modulate:g"
 value = 1.0
 duration = 0.1
@@ -151,7 +306,7 @@ metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
 
 [sub_resource type="Resource" id="Resource_x1oaa"]
 script = ExtResource("6_oxv2e")
-node_path = NodePath("../Graphics/AnimatedSprite2D")
+node_path = NodePath("")
 parallel_to_previous = true
 action = "modulate:b"
 value = 1.0
@@ -160,7 +315,7 @@ metadata/_custom_type_script = "uid://dmjwv0s4xmquh"
 
 [sub_resource type="Resource" id="Resource_wgvpe"]
 script = ExtResource("6_oxv2e")
-node_path = NodePath("../Graphics/AnimatedSprite2D")
+node_path = NodePath("")
 parallel_to_previous = true
 action = "scale"
 value = Vector2(1, 1)
@@ -188,11 +343,12 @@ shape = SubResource("CircleShape2D_p0yww")
 [node name="Graphics" type="Node2D" parent="." unique_id=52135343]
 position = Vector2(0, -3)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=1887175315]
-position = Vector2(0, -5)
-sprite_frames = SubResource("SpriteFrames_gebkd")
-animation = &"Idle"
-autoplay = "Idle"
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Graphics" unique_id=495337997]
+sprite_frames = SubResource("SpriteFrames_ye3fu")
+animation = &"Move"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Graphics" unique_id=815809155]
+libraries/ = SubResource("AnimationLibrary_wgvpe")
 
 [node name="ProgressBar" type="ProgressBar" parent="Graphics" unique_id=1564427192]
 anchors_preset = 8
@@ -208,6 +364,20 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(10, 2)
 show_percentage = false
+
+[node name="AnimationComponent" type="AnimationTree" parent="." unique_id=2048269049]
+root_node = NodePath("../Graphics")
+tree_root = SubResource("AnimationNodeStateMachine_uqsdr")
+anim_player = NodePath("../Graphics/AnimationPlayer")
+parameters/Velocity/blend_position = Vector2(0, -0.007299304)
+script = ExtResource("2_7qo8i")
+metadata/_custom_type_script = "uid://bio0mrcg37ljh"
+
+[node name="VelocityAnimationParameter" type="Node" parent="AnimationComponent" unique_id=1331313595 node_paths=PackedStringArray("movement_component")]
+script = ExtResource("6_ye3fu")
+movement_component = NodePath("../../CharacterMovementComponent")
+parameter_name = "Velocity"
+metadata/_custom_type_script = "uid://c6kx1eo44hjrn"
 
 [node name="HealthVisualComponent" type="Node" parent="." unique_id=1556112236 node_paths=PackedStringArray("health_bar_")]
 script = ExtResource("35_31vux")
@@ -254,7 +424,7 @@ metadata/_custom_type_script = "uid://ckf60xy1d5yx"
 
 [node name="CharacterMovementComponent" type="Node" parent="." unique_id=1201953596]
 script = ExtResource("3_a8o6n")
-speed = 20.0
+speed = 10.0
 metadata/_custom_type_script = "uid://bamk2sv23kwhg"
 
 [node name="AIControllerComponent" type="Node" parent="." unique_id=839493860]
@@ -425,3 +595,7 @@ metadata/_custom_type_script = "uid://bbekkpx11njnj"
 [node name="BrainDebugComponent" type="Node" parent="." unique_id=1684210454]
 script = ExtResource("22_x307b")
 metadata/_custom_type_script = "uid://dyjx130p2s1e6"
+
+[node name="GlobalAlertRecieverComponent" type="Node" parent="." unique_id=761761890]
+script = ExtResource("47_85fcw")
+metadata/_custom_type_script = "uid://5mncdkb6ej8x"
